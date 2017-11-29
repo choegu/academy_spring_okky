@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- Member -->
+	<!-- Member c -->
 	<bean name="no_login" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/board/no_login.jsp"></property>
 	</bean>
