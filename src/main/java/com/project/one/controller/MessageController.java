@@ -14,6 +14,7 @@ import com.project.one.service.MessageService;
 import com.project.one.vo.MessageVO;
 
 @Controller
+//@RequestMapping("/one")
 public class MessageController {
 	@Autowired
 	private MessageService service;
