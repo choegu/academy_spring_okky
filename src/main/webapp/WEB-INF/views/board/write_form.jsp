@@ -5,27 +5,34 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
 <title>WRITE FORM</title>
 
 <!-- include libraries(jQuery, bootstrap) -->
-<!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.3/css/bootstrap.css" rel="stylesheet"> -->
-<!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>  -->
-<!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.3/js/bootstrap.js"></script>  -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet">
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.js"></script> 
 
 <!-- Bootstrap core CSS-->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- Custom fonts for this template-->
-<link href="vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+<!-- <link href="vendor/font-awesome/css/font-awesome.min.css" -->
+<!-- 	rel="stylesheet" type="text/css"> -->
 <!-- Page level plugin CSS-->
-<link href="vendor/datatables/dataTables.bootstrap4.css"
-	rel="stylesheet">
+<!-- <link href="vendor/datatables/dataTables.bootstrap4.css" -->
+<!-- 	rel="stylesheet"> -->
 
-<script src="https://code.jquery.com/jquery-3.2.1.js"
-	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-	crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.js" -->
+<!-- 	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" -->
+<!-- 	crossorigin="anonymous"></script> -->
 
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!-- <script src="./ckeditor.js"></script> -->
