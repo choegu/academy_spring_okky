@@ -20,11 +20,25 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
+	// 게시판 리스트
 	@RequestMapping("/board.do")
 	public ModelAndView board(@RequestParam(defaultValue="1")int page) {
 		ModelAndView mv = new ModelAndView();
 		BoardPageVO boardPage = service.makeBoardPage(page);
 		mv.addObject("boardPage", boardPage);
+		mv.addObject("page", page);
+		mv.setViewName("board_list");
+		return mv;
+	}
+	
+	// 게시판 검색
+	@RequestMapping("/boardSearch.do")
+	public ModelAndView search(@RequestParam(defaultValue="1")int page, String searchOption, String searchText) {
+		ModelAndView mv = new ModelAndView();
+		
+		BoardPageVO boardPage = service.searchBoardPage(page, searchOption, searchText);
+		mv.addObject("boardPage", boardPage);
+		mv.addObject("page", page);
 		mv.setViewName("board_list");
 		return mv;
 	}

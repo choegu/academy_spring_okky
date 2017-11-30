@@ -38,10 +38,62 @@
 		SELECT COUNT(LIST) FROM BOARD WHERE LIST=#{list}
 	</select>
 	
+	<select id="searchTitleCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') 
+	</select>
+	
+	<select id="searchContentCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE CONTENT LIKE CONCAT('%',#{keyword},'%') 
+	</select>
+	
+	<select id="searchTitleContentCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%')   
+	</select>		
+	
+	<select id="searchWriterCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE WRITER LIKE CONCAT('%',#{keyword},'%') 
+	</select>	
+	
 	<select id="selectList" resultType="BoardVO">
 		SELECT * 
 		FROM BOARD 
 		WHERE NOT OPEN=2 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>
+	
+	<select id="searchTitle" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>
+	
+	<select id="searchContent" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE CONTENT LIKE CONCAT('%',#{keyword},'%') 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>
+	
+	<select id="searchTitleContent" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%') 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>
+	
+	<select id="searchWriter" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE WRITER LIKE CONCAT('%',#{keyword},'%') 
 		ORDER BY LIST DESC, RIDX ASC 
 		LIMIT #{startRow}, #{count}
 	</select>

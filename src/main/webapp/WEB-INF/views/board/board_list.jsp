@@ -183,10 +183,34 @@ $(document).bind("mousedown", function (e) {
 		</c:if>
 	</table>
 	<div id="bottom">
+		<c:if test="${boardPage.startPage!=1 }">
+			<a href="board.do?page=${boardPage.startPage-1 }">[이전]</a>
+		</c:if>
 		<c:forEach begin="${boardPage.startPage }" end="${boardPage.endPage }" var="p" step="1">
-			<a href="board.do?page=${p }">[${p }]</a>
+			<c:choose>
+				<c:when test="${page==p }">
+					[${p }]
+				</c:when>
+				<c:otherwise>
+					<a href="board.do?page=${p }">[${p }]</a>
+				</c:otherwise>
+			</c:choose>
 		</c:forEach>
+		<c:if test="${boardPage.endPage!=boardPage.totalPage }">
+			<a href="board.do?page=${boardPage.endPage+1 }">[다음]</a>
+		</c:if>
 	</div>
+	<form action="boardSearch.do">
+		<select name="searchOption">
+			<option value="option">검색옵션</option>
+		    <option value="title">제목</option>
+		    <option value="content">내용</option>
+		    <option value="titleContent">제목+내용</option>
+		    <option value="writer">작성자</option>
+		</select>
+		<input type="text" name="searchText" size="30">
+		<input type="submit" name="searchSubmit" value="검색">
+	</form>
 	<a href="writeForm.do"><button>글쓰기</button></a>
 </body>
 </html>

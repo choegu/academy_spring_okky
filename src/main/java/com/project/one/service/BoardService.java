@@ -39,6 +39,52 @@ public class BoardService {
 		return new BoardPageVO(boardList, currentPage, startPage, endPage, totalPage);
 	}
 	
+	// 게시판 페이지 검색
+	public BoardPageVO searchBoardPage(int currentPage, String searchOption ,String searchText) {
+		int totalCount;
+		if (searchOption.equals("title")) {
+			totalCount = dao.searchTitleCount(searchText);
+		} else if (searchOption.equals("content")) {
+			totalCount = dao.searchContentCount(searchText);
+		} else if (searchOption.equals("titleContent")) {
+			totalCount = dao.searchTitleContentCount(searchText);
+		} else if (searchOption.equals("writer")) {
+			totalCount = dao.searchWriterCount(searchText);
+		} else {
+			totalCount = dao.selectTotalCount();
+		}
+		
+		
+		int totalPage = totalCount/COUNT_PER_PAGE;
+		if (totalCount%COUNT_PER_PAGE!=0) {
+			totalPage++;
+		}
+		
+		int startPage = (currentPage-1)/10*10+1;
+		int endPage = startPage+9;
+		
+		if (totalPage<endPage) {
+			endPage = totalPage;
+		}
+		
+		int startRow = (currentPage-1)*COUNT_PER_PAGE;
+		
+		List<BoardVO> boardList;
+		if (searchOption.equals("title")) {
+			boardList = dao.searchTitle(startRow, COUNT_PER_PAGE, searchText);
+		} else if (searchOption.equals("content")) {
+			boardList = dao.searchContent(startRow, COUNT_PER_PAGE, searchText);
+		} else if (searchOption.equals("titleContent")) {
+			boardList = dao.searchTitleContent(startRow, COUNT_PER_PAGE, searchText);
+		} else if (searchOption.equals("writer")) {
+			boardList = dao.searchWriter(startRow, COUNT_PER_PAGE, searchText);
+		} else {
+			boardList = dao.selectList(startRow, COUNT_PER_PAGE);
+		}
+		
+		return new BoardPageVO(boardList, currentPage, startPage, endPage, totalPage);
+	}
+	
 	// 글쓰기
 	public int write(BoardVO board, String loginId) {
 		board.setRead_count(0);

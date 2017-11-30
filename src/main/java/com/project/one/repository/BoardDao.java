@@ -2,7 +2,6 @@ package com.project.one.repository;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,13 +23,45 @@ public class BoardDao {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.selectTotalCount();
 	}
+	public int searchTitleCount(String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchTitleCount(keyword);
+	}
+	public int searchContentCount(String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchContentCount(keyword);
+	}
+	public int searchTitleContentCount(String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchTitleContentCount(keyword);
+	}
+	public int searchWriterCount(String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchWriterCount(keyword);
+	}
 	public BoardVO select(int board_num) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.select(board_num);
 	}
-	public List<BoardVO> selectList(@Param("startRow")int startRow, @Param("count")int count) {
+	public List<BoardVO> selectList(int startRow, int count) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.selectList(startRow, count);
+	}
+	public List<BoardVO> searchTitle(int startRow, int count, String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchTitle(startRow, count, keyword);
+	}
+	public List<BoardVO> searchContent(int startRow, int count, String keyword){
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchContent(startRow, count, keyword);
+	}
+	public List<BoardVO> searchTitleContent(int startRow, int count, String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchTitleContent(startRow, count, keyword);
+	}
+	public List<BoardVO> searchWriter(int startRow, int count, String keyword){
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchWriter(startRow, count, keyword);
 	}
 	public int updateReadCount(int board_num) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
