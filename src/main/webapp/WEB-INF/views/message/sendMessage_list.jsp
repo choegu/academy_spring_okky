@@ -17,6 +17,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+
 <title>쪽지함</title>
 </head>
 <body>
@@ -63,7 +64,8 @@
 					<div style="text-align: center;">
 						<c:forEach begin="${messagePage.startPage }"
 							end="${messagePage.endPage}" var="p" step="1">
-							<a href="sendMessage.do?page=${p}">${p}</a>
+							
+							&nbsp;&nbsp;<a href="sendMessage.do?page=${p}"><b>${p}</b></a>
 						</c:forEach>
 						<br>
 					</div> 
