@@ -3,79 +3,79 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- Member c -->
-	<bean name="no_login" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/no_login.jsp"></property>
-	</bean>
+	<!-- Member -->
+<!-- 	<bean name="no_login" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/no_login.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="join_form" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/join_form.jsp"></property>
-	</bean>
+<!-- 	<bean name="join_form" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/join_form.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="join_success" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/join_success.jsp"></property>
-	</bean>
+<!-- 	<bean name="join_success" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/join_success.jsp"></property> -->
+<!-- 	</bean> -->
 
-	<bean name="join_fail" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/join_fail.jsp"></property>
-	</bean>
+<!-- 	<bean name="join_fail" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/join_fail.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="login_form" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/login_form.jsp"></property>
-	</bean>
+<!-- 	<bean name="login_form" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/login_form.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="login_success" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/login_success.jsp"></property>
-	</bean>
+<!-- 	<bean name="login_success" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/login_success.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="login_fail" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/login_fail.jsp"></property>
-	</bean>
+<!-- 	<bean name="login_fail" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/login_fail.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="my_page" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/my_page.jsp"></property>
-	</bean>
+<!-- 	<bean name="my_page" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/my_page.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="logout" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/logout.jsp"></property>
-	</bean>
+<!-- 	<bean name="logout" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/logout.jsp"></property> -->
+<!-- 	</bean> -->
 
 
 	<!-- Board -->
-	<bean name="board_list" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/board_list.jsp"></property>
-	</bean>
+<!-- 	<bean name="board_list" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/board_list.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="write_form" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/write_form.jsp"></property>
-	</bean>
+<!-- 	<bean name="write_form" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/write_form.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="write_result" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/write_result.jsp"></property>
-	</bean>
+<!-- 	<bean name="write_result" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/write_result.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="update_success" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/update_success.jsp"></property>
-	</bean>
+<!-- 	<bean name="update_success" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/update_success.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="update_fail" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/update_fail.jsp"></property>
-	</bean>
+<!-- 	<bean name="update_fail" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/update_fail.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="read" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/read.jsp"></property>
-	</bean>
+<!-- 	<bean name="read" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/read.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="update_success" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/update_success.jsp"></property>
-	</bean>
+<!-- 	<bean name="update_success" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/update_success.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="update_fail" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/update_fail.jsp"></property>
-	</bean>
+<!-- 	<bean name="update_fail" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/update_fail.jsp"></property> -->
+<!-- 	</bean> -->
 	
-	<bean name="delete_result" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/views/board/delete_result.jsp"></property>
-	</bean>
+<!-- 	<bean name="delete_result" class="org.springframework.web.servlet.view.JstlView"> -->
+<!-- 		<property name="url" value="/WEB-INF/views/board/delete_result.jsp"></property> -->
+<!-- 	</bean> -->
 	
 </beans>
