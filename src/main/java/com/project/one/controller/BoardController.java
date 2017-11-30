@@ -29,7 +29,7 @@ public class BoardController {
 		mv.addObject("page", page);
 		mv.setViewName("board_list");
 		return mv;
-	}d
+	}
 	
 	// 게시판 검색
 	@RequestMapping("/boardSearch.do")
