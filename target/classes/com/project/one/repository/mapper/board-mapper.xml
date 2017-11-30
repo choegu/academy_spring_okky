@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.one.repository.mapper.BoardMapper">
+	<insert id="insert" parameterType="BoardVO">
+		INSERT INTO BOARD(TITLE,WRITER,CONTENT,READ_COUNT,WRITE_DATE,LIST,LEVEL,RIDX) 
+		VALUES(#{title},#{writer},#{content},#{read_count},#{write_date},#{list},#{level},#{ridx})
+	</insert>
+	
+	<select id="maxList" resultType="int">
+		SELECT MAX(LIST) FROM BOARD
+	</select>
+	
+	<select id="selectTotalCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+	</select>
+	
+	<select id="select" parameterType="int" resultType="BoardVO">
+		SELECT * FROM BOARD WHERE BOARD_NUM=#{board_num} 
+	</select>
+	
+	<select id="replyList" resultType="int">
+		SELECT LIST FROM BOARD WHERE BOARD_NUM=#{board_num}
+	</select>
+	
+	<select id="replyLevel" resultType="int">
+		SELECT LEVEL FROM BOARD WHERE BOARD_NUM=#{board_num}
+	</select>
+	
+	<select id="replyRidx" resultType="int">
+		SELECT RIDX FROM BOARD WHERE BOARD_NUM=#{board_num}
+	</select>
+	
+	<select id="replyExistCheck" resultType="int">
+		SELECT COUNT(*) FROM BOARD WHERE LIST=#{list} AND LEVEL=#{level} AND RIDX=#{ridx}
+	</select>
+	
+	<select id="listCount" resultType="int">
+		SELECT COUNT(LIST) FROM BOARD WHERE LIST=#{list}
+	</select>
+	
+	<select id="selectList" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE NOT OPEN=2 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>
+	
+	<update id="update" parameterType="BoardVO">
+		UPDATE BOARD SET TITLE=#{title}, CONTENT=#{content}, WRITE_DATE=#{write_date} 
+		WHERE BOARD_NUM=#{board_num}
+	</update>
+	
+	<update id="updateOpen" parameterType="int">
+		UPDATE BOARD SET OPEN=#{open} 
+		WHERE BOARD_NUM=#{board_num}
+	</update>
+	
+	<update id="updateReadCount" parameterType="int">
+		UPDATE BOARD SET READ_COUNT=READ_COUNT+1 WHERE BOARD_NUM=#{board_num}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM BOARD WHERE BOARD_NUM=#{board_num}
+	</delete>
+	
+	<select id="countRidx" resultType="int">
+		<![CDATA[
+		SELECT COUNT(RIDX) FROM BOARD 
+		WHERE LIST=#{list} AND RIDX > #{ridx} AND LEVEL <= #{level}
+		]]>
+	</select>
+	
+	<select id="inputRidx" resultType="int">
+		<![CDATA[
+		SELECT MIN(RIDX) FROM BOARD 
+		WHERE LIST=#{list} AND RIDX > #{ridx} AND LEVEL <= #{level}
+		]]>
+	</select>
+	
+	<select id="inputMaxRidx" resultType="int">
+		SELECT MAX(RIDX)+1 FROM BOARD WHERE LIST=#{list}
+	</select>
+	
+	<update id="increaseRidx" parameterType="int">
+		UPDATE BOARD SET RIDX=RIDX+1 WHERE LIST=#{list} AND RIDX>=#{ridx}
+	</update>	
+</mapper>

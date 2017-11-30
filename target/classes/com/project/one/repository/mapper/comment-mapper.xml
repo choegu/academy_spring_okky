@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.one.repository.mapper.CommentMapper">
+	<select id="commentCount" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM COMMENT
+	</select>
+
+	<select id="commentList" resultType="CommentVO">
+		SELECT 
+		* 
+		FROM COMMENT 
+		WHERE BOARD_NUM=#{board_num} 
+		ORDER BY LIST ASC, RIDX ASC
+	</select>
+	
+	<select id="commentListCno" resultType="int">
+		SELECT COMMENT_NUM FROM COMMENT 
+		WHERE BOARD_NUM=#{board_num}
+	</select>
+	
+	<select id="selectTotalCommentCount" resultType="int">
+		SELECT COUNT(*) FROM COMMENT WHERE BOARD_NUM=#{board_num}
+	</select>
+	
+	<select id="maxCommentList" resultType="int">
+		SELECT MAX(LIST) FROM COMMENT WHERE BOARD_NUM=#{board_num}
+	</select>
+	
+	<select id="replyCommentList" resultType="int">
+		SELECT LIST FROM COMMENT WHERE COMMENT_NUM=#{comment_num}
+	</select>
+	
+	<select id="replyCommentLevel" resultType="int">
+		SELECT LEVEL FROM COMMENT WHERE COMMENT_NUM=#{comment_num}
+	</select>
+	
+	<select id="replyCommentRidx" resultType="int">
+		SELECT RIDX FROM COMMENT WHERE COMMENT_NUM=#{comment_num}
+	</select>
+	
+	<select id="listCountComment" resultType="int">
+		SELECT COUNT(LIST) FROM COMMENT WHERE LIST=#{list} AND BOARD_NUM=#{board_num}
+	</select>
+	
+	<select id="countCommentRidx" resultType="int">
+		<![CDATA[
+		SELECT COUNT(RIDX) FROM COMMENT 
+		WHERE LIST=#{list} AND RIDX > #{ridx} AND LEVEL <= #{level} AND BOARD_NUM=#{board_num} 
+		]]>
+	</select>
+	
+	<select id="inputCommentRidx" resultType="int">
+		<![CDATA[
+		SELECT MIN(RIDX) FROM COMMENT 
+		WHERE LIST=#{list} AND RIDX > #{ridx} AND LEVEL <= #{level} AND BOARD_NUM=#{board_num} 
+		]]>
+	</select>
+	
+	<select id="inputCommentMaxRidx" resultType="int">
+		SELECT MAX(RIDX)+1 FROM COMMENT WHERE LIST=#{list} AND BOARD_NUM=#{board_num} 
+	</select>
+	
+	<update id="increaseCommentRidx" parameterType="int">
+		UPDATE COMMENT SET RIDX=RIDX+1 WHERE LIST=#{list} AND RIDX>=#{ridx} AND BOARD_NUM=#{board_num} 
+	</update>	
+
+	<insert id="commentInsert" parameterType="CommentVO">
+		INSERT INTO
+		COMMENT (BOARD_NUM, CONTENT, WRITER, WRITE_DATE, LIST, LEVEL, RIDX, OPEN)
+		VALUES(#{board_num},#{content},#{writer},#{write_date},#{list},#{level},#{ridx},#{open})
+	</insert>
+
+	<update id="commentUpdate" parameterType="CommentVO">
+		UPDATE COMMENT
+		SET
+		CONTENT = #{content}
+		WHERE COMMENT_NUM = #{comment_num}
+	</update>
+
+	<delete id="commentDelete" parameterType="int">
+		DELETE FROM COMMENT WHERE COMMENT_NUM = #{comment_num}
+	</delete>
+	
+	<select id="selectComment" parameterType="int" resultType="CommentVO">
+		SELECT * FROM COMMENT WHERE COMMENT_NUM=#{comment_num} 
+	</select>
+	
+	<select id="replyExistCheckComment" resultType="int">
+		SELECT COUNT(*) FROM COMMENT WHERE LIST=#{list} AND LEVEL=#{level} AND RIDX=#{ridx} AND BOARD_NUM=#{board_num}
+	</select>
+
+	<update id="updateOpenComment" parameterType="int">
+		UPDATE COMMENT SET OPEN=#{open} 
+		WHERE COMMENT_NUM=#{comment_num}
+	</update>
+
+</mapper>
