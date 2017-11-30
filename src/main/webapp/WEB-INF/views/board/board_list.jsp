@@ -43,7 +43,8 @@ $(function(){
 	var clickedId = "test";
 	
 	$('.user-writer').click(function(){
-		alert('test3');
+		clickedId = $(this).text();
+		
 		//	Show contextmenu
 	 	 $(".custom-menu").finish().toggle(100).
 		 
@@ -62,10 +63,10 @@ $(function(){
 	     
 	     // A case for each action. Your actions here
 	     case "first": 
-	    	 alert("first"); 
+	    	 alert('쪽지보낼대상:'+clickedId); 
 	    	 break;
 	     case "second": 
-	    	 alert("second"); 
+	    	 alert('회원정보대상:'+clickedId); 
 	    	 break;
 	     case "third": 
 	    	 alert("third"); 
@@ -131,7 +132,7 @@ $(document).bind("mousedown", function (e) {
 <ul class='custom-menu'>
   <li data-action="first">쪽지 보내기</li>
   <li data-action="second">회원정보 보기</li>
-  <li data-action="third">Third thing</li>
+<!--   <li data-action="third">Third thing</li> -->
 </ul>
 	<table class="table">
 		<tr>
@@ -200,17 +201,26 @@ $(document).bind("mousedown", function (e) {
 			<a href="board.do?page=${boardPage.endPage+1 }">[다음]</a>
 		</c:if>
 	</div>
-	<form action="boardSearch.do">
-		<select name="searchOption">
-			<option value="option">검색옵션</option>
-		    <option value="title">제목</option>
-		    <option value="content">내용</option>
-		    <option value="titleContent">제목+내용</option>
-		    <option value="writer">작성자</option>
-		</select>
-		<input type="text" name="searchText" size="30">
-		<input type="submit" name="searchSubmit" value="검색">
-	</form>
-	<a href="writeForm.do"><button>글쓰기</button></a>
+	<table>
+		<tr>
+			<td>
+				<form action="boardSearch.do">
+					<select name="searchOption">
+						<option value="option">검색옵션</option>
+					    <option value="title">제목</option>
+					    <option value="content">내용</option>
+					    <option value="titleContent">제목+내용</option>
+					    <option value="writer">작성자</option>
+					</select>
+					<input type="text" name="searchText" size="30">
+					<input type="submit" name="searchSubmit" value="검색">
+				</form>
+			</td>
+			<td>
+				<a href="writeForm.do"><button>글쓰기</button></a>
+			</td>
+		</tr>
+	</table>
+	
 </body>
 </html>
