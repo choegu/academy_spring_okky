@@ -97,15 +97,18 @@
 			
 			<optgroup label="IT">
 				<option value="java">JAVA</option>
-				<option value="spring">Spring</option>
+				<option value="javascript">Java Script</option>
+				<option value="css">CSS</option>
 				<option value="jsp">JSP</option>
+				<option value="spring">Spring</option>
+				<option value="database">Database</option>
+				<option value="android">Android</option>
 			</optgroup>
 
 			<optgroup label="English">
-				<option value="listening">listening</option>
-				<option value="writing">writing</option>
-				<option value="speaking">speaking</option>
-				<option value="reading">reading</option>
+				<option value="song">Song</option>
+				<option value="colloquialism">±¸¾îÃ¼</option>
+				<option value="memo">Memo</option>
 			</optgroup>
 
 			<option value="etc">ETC</option>
