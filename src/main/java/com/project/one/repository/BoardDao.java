@@ -39,6 +39,10 @@ public class BoardDao {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.searchWriterCount(keyword);
 	}
+	public int searchCategoryCount(String keyword) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryCount(keyword);
+	}
 	public BoardVO select(int board_num) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.select(board_num);
@@ -62,6 +66,10 @@ public class BoardDao {
 	public List<BoardVO> searchWriter(int startRow, int count, String keyword){
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.searchWriter(startRow, count, keyword);
+	}
+	public List<BoardVO> searchCategory(int startRow, int count, String keyword){
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategory(startRow, count, keyword);
 	}
 	public int updateReadCount(int board_num) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);

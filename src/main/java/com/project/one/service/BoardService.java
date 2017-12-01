@@ -50,6 +50,8 @@ public class BoardService {
 			totalCount = dao.searchTitleContentCount(searchText);
 		} else if (searchOption.equals("writer")) {
 			totalCount = dao.searchWriterCount(searchText);
+		} else if (searchOption.equals("category")) {
+			totalCount = dao.searchCategoryCount(searchText);
 		} else {
 			totalCount = dao.selectTotalCount();
 		}
@@ -78,6 +80,8 @@ public class BoardService {
 			boardList = dao.searchTitleContent(startRow, COUNT_PER_PAGE, searchText);
 		} else if (searchOption.equals("writer")) {
 			boardList = dao.searchWriter(startRow, COUNT_PER_PAGE, searchText);
+		} else if (searchOption.equals("category")) {
+			boardList = dao.searchCategory(startRow, COUNT_PER_PAGE, searchText);
 		} else {
 			boardList = dao.selectList(startRow, COUNT_PER_PAGE);
 		}

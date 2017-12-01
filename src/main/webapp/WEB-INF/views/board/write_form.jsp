@@ -73,11 +73,17 @@
 
 	$(function() {
 		
-		$('.menu li').click(function(){
-			var category = $(this).text();
-			$('#categorySelected').html(category);
-			$('#category').val(category);
-		})
+// 		$('.menu li').click(function(){
+// 			var category = $(this).text();
+// 			$('#categorySelected').html(category);
+// 			$('#category').val(category);
+// 		})
+				
+// 		$('#submit').click(function(){
+// 			var category = $('#category').text();
+// 			alert(category);
+// 			return false;
+// 		})
 	})
 </script>
 
@@ -92,26 +98,26 @@
 </head>
 <body id="main">
 	<form action="write.do" method="post">
-		<select name="browser" required="required">
+		<select name="category" id="category" required="required">
 			<option value="">Category</option>
 			
 			<optgroup label="IT">
-				<option value="java">JAVA</option>
-				<option value="javascript">Java Script</option>
-				<option value="css">CSS</option>
-				<option value="jsp">JSP</option>
-				<option value="spring">Spring</option>
-				<option value="database">Database</option>
-				<option value="android">Android</option>
+				<option value="JAVA">JAVA</option>
+				<option value="JavaScript">Java Script</option>
+				<option value="CSS">CSS</option>
+				<option value="JSP">JSP</option>
+				<option value="Spring">Spring</option>
+				<option value="Database">Database</option>
+				<option value="Android">Android</option>
 			</optgroup>
 
 			<optgroup label="English">
-				<option value="song">Song</option>
-				<option value="colloquialism">구어체</option>
-				<option value="memo">Memo</option>
+				<option value="SONG">SONG</option>
+				<option value="구어체">구어체</option>
+				<option value="MEMO">MEMO</option>
 			</optgroup>
 
-			<option value="etc">ETC</option>
+			<option value="ETC">ETC</option>
 
 		</select>
 

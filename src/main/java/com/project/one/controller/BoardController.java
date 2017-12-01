@@ -1,5 +1,6 @@
 package com.project.one.controller;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,9 @@ public class BoardController {
 	
 	// 게시판 검색
 	@RequestMapping("/boardSearch.do")
-	public ModelAndView search(@RequestParam(defaultValue="1")int page, String searchOption, String searchText) {
+	public ModelAndView search(@RequestParam(defaultValue="1")int page, String searchOption, String searchText, HttpServletResponse resp) {
+		resp.setContentType("text/html;charset=UTF-8");
+		System.out.println(searchText);
 		ModelAndView mv = new ModelAndView();
 		
 		BoardPageVO boardPage = service.searchBoardPage(page, searchOption, searchText);
@@ -65,6 +68,10 @@ public class BoardController {
 	public ModelAndView write(BoardVO board, HttpSession session, int ref_num, String task) {
 		String loginId = (String) session.getAttribute("loginId");
 		ModelAndView mv = new ModelAndView();
+		String category = board.getCategory();
+		category = category.substring(0, category.length()-1);
+		board.setCategory(category);
+		
 		if (loginId!=null && loginId.length()>0) {
 			if (task!=null && task.equals("write")) { //글쓰기
 				service.write(board, loginId);

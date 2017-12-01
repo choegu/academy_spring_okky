@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.one.repository.mapper.BoardMapper">
 	<insert id="insert" parameterType="BoardVO">
-		INSERT INTO BOARD(TITLE,WRITER,CONTENT,READ_COUNT,WRITE_DATE,LIST,LEVEL,RIDX) 
-		VALUES(#{title},#{writer},#{content},#{read_count},#{write_date},#{list},#{level},#{ridx})
+		INSERT INTO BOARD(TITLE,WRITER,CONTENT,READ_COUNT,WRITE_DATE,LIST,LEVEL,RIDX,CATEGORY) 
+		VALUES(#{title},#{writer},#{content},#{read_count},#{write_date},#{list},#{level},#{ridx},#{category})
 	</insert>
 	
 	<select id="maxList" resultType="int">
@@ -58,6 +58,11 @@
 		WHERE WRITER LIKE CONCAT('%',#{keyword},'%') 
 	</select>	
 	
+	<select id="searchCategoryCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE CATEGORY LIKE #{keyword} 
+	</select>
+	
 	<select id="selectList" resultType="BoardVO">
 		SELECT * 
 		FROM BOARD 
@@ -97,6 +102,14 @@
 		ORDER BY LIST DESC, RIDX ASC 
 		LIMIT #{startRow}, #{count}
 	</select>
+	
+	<select id="searchCategory" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE CATEGORY LIKE #{keyword} 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>	
 	
 	<update id="update" parameterType="BoardVO">
 		UPDATE BOARD SET TITLE=#{title}, CONTENT=#{content}, WRITE_DATE=#{write_date} 

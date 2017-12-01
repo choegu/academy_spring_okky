@@ -30,18 +30,55 @@
 <script type="text/javascript">
 // 	do 요청 보내는곳
 	$(function() {
-		$('#changeInfo').click(function() {
+		var categoryName;
+		
+		$('#all').click(function() {
 			$('#target iframe').attr('src', 'board.do');
 		})
-		$('#writingList').click(function() {
-			$('#target iframe').attr('src', 'writingList.do');
+		$('#java').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
 		})
-		$('#sendMessage').click(function() {
-			$('#target iframe').attr('src', 'sendMessage.do');
+		$('#javascript').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
 		})
-		$('#receiveMessage').click(function() {
-			$('#target iframe').attr('src', 'receiveMessage.do');
+		$('#css').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
 		})
+		$('#jsp').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+		})
+		$('#spring').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+		})
+		$('#database').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+		})
+		$('#android').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+		})
+		$('#song').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+		})
+		$('#colloquialism').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+		})
+		$('#memo').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+		})
+		$('#etc').click(function() {
+			categoryName = $(this).text();
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+		})		
 	})
 	function resizeFrame(frm) {
 		frm.style.height = "auto";
@@ -71,29 +108,39 @@
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 <!-- 			카테고리 부분 -->
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="전체보기"><a class="nav-link" href="#" id="changeInfo">
+					title="전체보기"><a class="nav-link" href="#" id="all">
 						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">전체보기</span>
-				</a></li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Dashboard"><a class="nav-link" href="#" id="changeInfo">
-						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">회원정보
-							</span>
-				</a></li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Charts"><a class="nav-link" href="#" id="writingList">
-						<i class="fa fa-fw  fa-pencil-square-o"></i> <span
-						class="nav-link-text">나의 글 목록</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Components"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
 					href="#collapseComponents" data-parent="#exampleAccordion"> <i
-						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">쪽지함</span>
+						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">IT</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseComponents">
-						<li><a href="#" id="sendMessage">보낸 쪽지함</a></li>
-						<li><a href="#" id="receiveMessage">받은 쪽지함</a></li>
+						<li><a href="#" id="java">JAVA</a></li>
+						<li><a href="#" id="javascript">JavaScript</a></li>
+						<li><a href="#" id="css">CSS</a></li>
+						<li><a href="#" id="jsp">JSP</a></li>
+						<li><a href="#" id="spring">Spring</a></li>
+						<li><a href="#" id="database">Database</a></li>
+						<li><a href="#" id="android">Android</a></li>
 					</ul></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Components"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#englishParents" data-parent="#exampleAccordion"> <i
+						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">English</span>
+				</a>
+					<ul class="sidenav-second-level collapse" id="englishParents">
+						<li><a href="#" id="song">SONG</a></li>
+						<li><a href="#" id="colloquialism">구어체</a></li>
+						<li><a href="#" id="memo">MEMO</a></li>
+					</ul></li>		
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="전체보기"><a class="nav-link" href="#" id="etc">
+						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">ETC</span>
+				</a></li>								
 <!-- 			카테고리 끝 -->
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">
