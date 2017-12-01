@@ -71,8 +71,14 @@
 // 		});
 // 	})
 
-	
-
+	$(function() {
+		
+		$('.menu li').click(function(){
+			var category = $(this).text();
+			$('#categorySelected').html(category);
+			$('#category').val(category);
+		})
+	})
 </script>
 
 <!-- <script src="../../../ckeditor.js"></script> -->
@@ -86,16 +92,41 @@
 </head>
 <body id="main">
 	<form action="write.do" method="post">
+		<select name="browser">
+			<option value="">Category</option>
+			
+			<optgroup label="IT">
+				<option value="java">JAVA</option>
+				<option value="spring">Spring</option>
+				<option value="jsp">JSP</option>
+			</optgroup>
+
+			<optgroup label="English">
+				<option value="listening">listening</option>
+				<option value="writing">writing</option>
+				<option value="speaking">speaking</option>
+				<option value="reading">reading</option>
+			</optgroup>
+
+			<option value="etc">ETC</option>
+
+		</select>
+
+		<div id="categorySelected">
+			TEST
+		</div>
+		<input type="hidden" id="category" name="category" value="">
+
 		Á¦¸ñ :
 		<c:choose>
 			<c:when test="${task=='write' }">
-				<input type="text" name="title" size="20">
+				<input type="text" name="title" size="80%" required="required">
 			</c:when>
 			<c:when test="${task=='update' }">
-				<input type="text" name="title" size="20" value="${original.title }">
+				<input type="text" name="title" size="80%" value="${original.title }" required="required">
 			</c:when>
 			<c:otherwise>
-				<input type="text" name="title" size="20" value="Re:${reply.title }">
+				<input type="text" name="title" size="80%" value="Re:${reply.title }" required="required">
 			</c:otherwise>
 		</c:choose>
 		<br>
