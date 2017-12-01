@@ -25,7 +25,6 @@ public class MessageController {
 	@RequestMapping("/receiveMessage.do")
 	public ModelAndView receiveMessage(@RequestParam(defaultValue = "1") int page, HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
-		loginId = "asd";
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("messagePage", service.makeMessagePage(page, loginId, 1));
 		mv.setViewName("receiveMessage_list");
@@ -35,7 +34,6 @@ public class MessageController {
 	@RequestMapping("/sendMessage.do")
 	public ModelAndView sendMessage(@RequestParam(defaultValue = "1") int page, HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
-		loginId = "asd";
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("messagePage", service.makeMessagePage(page, loginId, 2));
 		mv.setViewName("sendMessage_list");
@@ -51,7 +49,6 @@ public class MessageController {
 	@RequestMapping(value = "writeMessage.do", method = RequestMethod.POST)
 	public String writeMessage(MessageVO message, HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
-		loginId = "ase";
 		if (memberService.receiveIdCheck(message.getReceive_id())) {
 			if (service.writeMessage(message, loginId)) {
 				return String.valueOf(0);
@@ -84,7 +81,6 @@ public class MessageController {
 	@RequestMapping("/deleteReceiveAll.do")
 	public String deleteReceiveAll(HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
-		loginId = "ase";
 		if(service.deleteReceiveAll(loginId)) {
 			return "deleteReceiveAll_success";
 		}else {
@@ -96,7 +92,6 @@ public class MessageController {
 	public String deleteSendAll(HttpSession session) {
 		System.out.println("dsadsadsad");
 		String loginId = (String) session.getAttribute("loginId");
-		loginId = "ase";
 		if(service.deleteSendAll(loginId)) {
 			return "deleteSendAll_success";
 		}else {
