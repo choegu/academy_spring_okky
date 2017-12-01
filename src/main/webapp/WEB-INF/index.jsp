@@ -38,8 +38,8 @@
 			$('#target iframe').attr('src', 'searchPwForm.do');
 		})
 		$('#newMessage').click(function(){
-			$('#target iframe').attr('src', 'receiveMessage.do')
-		}
+			$('#target iframe').attr('src', 'receiveMessage.do');
+		})
 	})
 	function resizeFrame(frm) {
 		frm.style.height = "auto";
