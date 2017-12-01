@@ -9,10 +9,11 @@ public class MessageVO {
 	private Date write_date;
 	private String send_id;
 	private String receive_id;
-	private String readCheck;
+	private int send_open;
+	private int receive_open;
 	/////////////////////////////////////////////////////
 	public MessageVO(int message_num, String title, String content, Date write_date, String send_id, String receive_id,
-			String readCheck) {
+			int send_open, int receive_open) {
 		super();
 		this.message_num = message_num;
 		this.title = title;
@@ -20,10 +21,11 @@ public class MessageVO {
 		this.write_date = write_date;
 		this.send_id = send_id;
 		this.receive_id = receive_id;
-		this.readCheck = readCheck;
+		this.send_open = send_open;
+		this.receive_open = receive_open;
 	}
 	public MessageVO() {}
-	/////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////
 	public int getMessage_num() {
 		return message_num;
 	}
@@ -60,18 +62,24 @@ public class MessageVO {
 	public void setReceive_id(String receive_id) {
 		this.receive_id = receive_id;
 	}
-	public String getReadCheck() {
-		return readCheck;
+	public int getSend_open() {
+		return send_open;
 	}
-	public void setReadCheck(String readCheck) {
-		this.readCheck = readCheck;
+	public void setSend_open(int send_open) {
+		this.send_open = send_open;
+	}
+	public int getReceive_open() {
+		return receive_open;
+	}
+	public void setReceive_open(int receive_open) {
+		this.receive_open = receive_open;
 	}
 	@Override
 	public String toString() {
 		return "MessageVO [message_num=" + message_num + ", title=" + title + ", content=" + content + ", write_date="
-				+ write_date + ", send_id=" + send_id + ", receive_id=" + receive_id + ", readCheck=" + readCheck + "]";
-	}
-	
+				+ write_date + ", send_id=" + send_id + ", receive_id=" + receive_id + ", send_open=" + send_open
+				+ ", receive_open=" + receive_open + "]";
+	};
 	////////////////////////////////////////////////////////
 	
 	

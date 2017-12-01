@@ -7,27 +7,53 @@
 	</select>
 	
 	<select id="selectReceiveMessageCount" resultType="int">
-		SELECT COUNT(*) FROM MESSAGE WHERE RECEIVE_ID = #{loginId}
+		SELECT COUNT(*) FROM MESSAGE WHERE RECEIVE_ID = #{loginId} and RECEIVE_OPEN != 0
 	</select>
 	
 	<select id="selectSendMessageCount" resultType="int">
-		SELECT COUNT(*) FROM MESSAGE WHERE SEND_ID = #{loginId}
+		SELECT COUNT(*) FROM MESSAGE WHERE SEND_ID = #{loginId} and SEND_OPEN != 0
 	</select>
 
 	<select id="selectReceiveMessageList" resultType="MessageVO">
-		SELECT * FROM MESSAGE WHERE RECEIVE_ID = #{loginId} ORDER BY MESSAGE_NUM DESC LIMIT #{startRow},#{limitBoardCount}
+		SELECT * FROM MESSAGE WHERE RECEIVE_ID = #{loginId} and RECEIVE_OPEN != 0 ORDER BY MESSAGE_NUM DESC LIMIT #{startRow},#{limitBoardCount}
 	</select>
-	
+
 	<select id="selectSendMessageList" resultType="MessageVO">
-		SELECT * FROM MESSAGE WHERE SEND_ID = #{loginId} ORDER BY MESSAGE_NUM DESC LIMIT #{startRow},#{limitBoardCount}
+		SELECT * FROM MESSAGE WHERE SEND_ID = #{loginId} and SEND_OPEN != 0 ORDER BY MESSAGE_NUM DESC LIMIT #{startRow},#{limitBoardCount}
 	</select>
 	
-	<select id="receiveIdCheck" resultType="int">
-		SELECT COUNT(*) FROM MEMBER WHERE ID=#{receiveId}
-	</select> 
+	<select id="sendMessageRead" resultType="MessageVO">
+		SELECT * FROM MESSAGE WHERE MESSAGE_NUM = #{message_num}
+	</select>
+	
+	<select id="receiveMessageRead" resultType="MessageVO">
+		SELECT * FROM MESSAGE WHERE MESSAGE_NUM = #{message_num}
+	</select>
+	
+	<select id="noCheckMessageCount" resultType="int">
+		SELECT COUNT(*) FROM MESSAGE WHERE RECEIVE_ID = #{loginId} and RECEIVE_OPEN = 1
+	</select>
 	
 	<insert id="writeMessage" parameterType="MessageVO">
-		INSERT INTO MESSAGE(TITLE,CONTENT,WRITE_DATE,SEND_ID,RECEIVE_ID,READCHECK)
-		VALUES(#{title},#{content},#{write_date},#{send_id},#{receive_id},#{readCheck})
+		INSERT INTO MESSAGE(TITLE,CONTENT,WRITE_DATE,SEND_ID,RECEIVE_ID,SEND_OPEN,RECEIVE_OPEN)
+		VALUES(#{title},#{content},#{write_date},#{send_id},#{receive_id},#{send_open},#{receive_open})
 	</insert>
+	
+	<update id="sendMessageReadCheck" parameterType="int">
+		UPDATE MESSAGE SET SEND_OPEN = 2 WHERE MESSAGE_NUM = #{message_num}
+	</update>
+	
+	<update id="receiveMessageReadCheck" parameterType="int">
+		UPDATE MESSAGE SET RECEIVE_OPEN = 2 WHERE MESSAGE_NUM = #{message_num}
+	</update>
+	
+	<update id="deleteReceiveAll" parameterType="String">
+		UPDATE MESSAGE SET RECEIVE_OPEN = 0 WHERE RECEIVE_ID = #{loginId}
+	</update>
+	
+	<update id="deleteSendAll" parameterType="String">
+		UPDATE MESSAGE SET SEND_OPEN = 0 WHERE SEND_ID = #{loginId}
+	</update>
+	
+	
 </mapper>

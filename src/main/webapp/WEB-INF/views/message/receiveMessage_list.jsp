@@ -18,6 +18,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>쪽지함</title>
+
+
 </head>
 <body>
 	<div class="container-fluid">
@@ -32,32 +34,28 @@
 						<thead>
 							<tr>
 								<td width="5%"><i class="fa fa-fw fa-trash-o"></i></td>
-								<td width="7%">번호</td>
 								<td width="15%">작성자</td>
-								<td width="43%">제목</td>
+								<td width="50%">제목</td>
 								<td width="30%">작성일</td>
 							</tr>
 						</thead>
 						<tbody>
 							<c:if test="${empty messagePage.messageList}">
 								<tr>
-									<td colspan="5"><span style="color: blue;">받은 쪽지가 없습니다.</span></td>
+									<td colspan="4"><span style="color: blue;">받은 쪽지가 없습니다.</span></td>
 								</tr>
 							</c:if>
 							<c:if test="${not empty messagePage.messageList}">
 								<c:forEach items="${messagePage.messageList}" var="messageVO">
 									<tr>
 										<td style="text-align: center; padding-top: 16px;"><input type="checkbox" name="checkDelete" value="${messageVO.message_num}"/></td>
-										<td>${messageVO.message_num}</td>
 										<td>${messageVO.send_id}</td>
-<%-- 										<c:if test="${messageVO.readCheck ==  }"> --%>
-										<td><a id="checkBtn"
-											href="read.do?message_num=${messageVO.message_num}">${messageVO.title}</a></td>
-<%-- 										</c:if> --%>
-<%-- 										<c:if test="${messageVO.readCheck ==  }"> --%>
-<!-- 										<td><a id="checkBtn" -->
-<%-- 											href="read.do?message_num=${messageVO.message_num}">${messageVO.title}</a></td> --%>
-<%-- 										</c:if> --%>
+										<c:if test="${messageVO.receive_open == 1 }">
+										<td><a href="receiveMessageRead.do?message_num=${messageVO.message_num}">${messageVO.title}</a></td>
+										</c:if>
+										<c:if test="${messageVO.receive_open == 2 }">
+										<td><a href="receiveMessageRead.do?message_num=${messageVO.message_num}"><span style="color: #333333">${messageVO.title}</span></a></td>
+										</c:if>
 										<td><fmt:formatDate type="both"
 												value="${messageVO.write_date}" dateStyle="short"
 												timeStyle="short" /></td>
@@ -75,7 +73,7 @@
 					</div> 
 					<div style="text-align: right;">	
 						<a href="messageWriteForm.do" title="글쓰기"><button style="background:#dcdcdc; border-radius:5px; cursor: pointer;" ><i class="fa fa-fw fa-pencil"></i></button></a>
-						<a href="deleteAll.do" title="전체 삭제"><button style="background:#dcdcdc; border-radius:5px; cursor: pointer;" ><i class="fa fa-fw fa-trash"></i></button></a>
+						<a href="deleteReceiveAll.do" title="전체 삭제"><button style="background:#dcdcdc; border-radius:5px; cursor: pointer;" ><i class="fa fa-fw fa-trash"></i></button></a>
 					</div>
 				</div>
 			</div>

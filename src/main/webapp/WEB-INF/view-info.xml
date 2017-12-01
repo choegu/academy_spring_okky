@@ -77,7 +77,24 @@
 	<bean name="receiveMessage_list" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/message/receiveMessage_list.jsp"></property>
 	</bean>
+	<bean name="receiveMessageRead" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/message/receiveMessageRead.jsp"></property>
+	</bean>
 	<bean name="sendMessage_list" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/message/sendMessage_list.jsp"></property>
 	</bean>
+		<bean name="sendMessageRead" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/message/sendMessageRead.jsp"></property>
+	</bean>
+	
+    <!-- member -->
+    <bean name="login_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/login_fail.jsp"></property>
+	</bean>
+	
+	<!--web-inf -->
+	<bean name="index" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/index.jsp"></property>
+	</bean>
+	
 </beans>
