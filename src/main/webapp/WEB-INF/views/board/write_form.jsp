@@ -92,7 +92,7 @@
 </head>
 <body id="main">
 	<form action="write.do" method="post">
-		<select name="browser">
+		<select name="browser" required="required">
 			<option value="">Category</option>
 			
 			<optgroup label="IT">
@@ -112,24 +112,21 @@
 
 		</select>
 
-		<div id="categorySelected">
-			TEST
-		</div>
 		<input type="hidden" id="category" name="category" value="">
 
 		Á¦¸ñ :
 		<c:choose>
 			<c:when test="${task=='write' }">
-				<input type="text" name="title" size="80%" required="required">
+				<input type="text" name="title" size="60%" required="required">
 			</c:when>
 			<c:when test="${task=='update' }">
-				<input type="text" name="title" size="80%" value="${original.title }" required="required">
+				<input type="text" name="title" size="60%" value="${original.title }" required="required">
 			</c:when>
 			<c:otherwise>
-				<input type="text" name="title" size="80%" value="Re:${reply.title }" required="required">
+				<input type="text" name="title" size="60%" value="Re:${reply.title }" required="required">
 			</c:otherwise>
 		</c:choose>
-		<br>
+		<p></p>
 		<!--				
 				<c:choose>
 					<c:when test="${task=='write' }">
