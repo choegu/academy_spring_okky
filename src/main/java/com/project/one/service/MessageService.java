@@ -46,23 +46,48 @@ public class MessageService {
 		}
 	}
 	
-	public boolean receiveIdCheck(String receiveId) {
-		if(dao.receiveIdCheck(receiveId)==1) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
 	public boolean writeMessage(MessageVO message,String loginId) {
 		message.setWrite_date(new Date());
 		message.setSend_id(loginId);
-		message.setReadCheck("off");
+		message.setSend_open(1);
+		message.setReceive_open(1);
 		
 		if(dao.writeMessage(message)==1){
 			return true;
 		}else {
 			return false;
 		}
+	}
+	
+	public MessageVO sendMessageRead(int message_num) {
+		dao.sendMessageReadCheck(message_num);
+		MessageVO message = dao.sendMessageRead(message_num);
+		return message;
+	}
+	
+	public MessageVO receiveMessageRead(int message_num) {
+		dao.receiveMessageReadCheck(message_num);
+		MessageVO message = dao.receiveMessageRead(message_num);
+		return message;
+	}
+	
+	public boolean deleteReceiveAll(String loginId) {
+		if(dao.deleteReceiveAll(loginId)==1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean deleteSendAll(String loginId) {
+		if(dao.deleteSendAll(loginId)>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public int noCheckMessageCount(String loginId) {
+		return dao.noCheckMessageCount(loginId);
 	}
 }

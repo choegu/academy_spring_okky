@@ -41,13 +41,45 @@ public class MessageDao {
 		return mapper.selectSendMessageList(startRow,limitBoardCount,loginId);
 	}
 	
-	public int receiveIdCheck(String receiveId) {
-		MessageMapper mapper = session.getMapper(MessageMapper.class);
-		return mapper.receiveIdCheck(receiveId);
-	}
+
 	
 	public int writeMessage(MessageVO message) {
 		MessageMapper mapper = session.getMapper(MessageMapper.class);
 		return mapper.writeMessage(message);	
+	}
+	
+	public void sendMessageReadCheck(int message_num) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		mapper.sendMessageReadCheck(message_num);
+	}
+	
+	public MessageVO sendMessageRead(int message_num) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		return mapper.sendMessageRead(message_num);
+	}
+	
+	public void receiveMessageReadCheck(int message_num) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		mapper.receiveMessageReadCheck(message_num);
+	}
+	
+	public MessageVO receiveMessageRead(int message_num) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		return mapper.receiveMessageRead(message_num);
+	}
+	
+	public int deleteReceiveAll(String loginId) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		return mapper.deleteReceiveAll(loginId);
+	}
+	
+	public int deleteSendAll(String loginId) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		return mapper.deleteSendAll(loginId);
+	}
+	
+	public int noCheckMessageCount(String loginId) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		return mapper.noCheckMessageCount(loginId);
 	}
 }

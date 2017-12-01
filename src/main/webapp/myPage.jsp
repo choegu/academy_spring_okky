@@ -1,6 +1,8 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>SB Admin - Start Bootstrap Template</title>
+<title>My Page</title>
 <!-- Bootstrap core CSS-->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom fonts for this template-->
@@ -51,7 +53,7 @@
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
 		id="mainNav">
-		<a class="navbar-brand" href="index.html">Knowledge Sharing!!</a>
+		<a class="navbar-brand" href="main.do">Knowledge Sharing!!</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false"
@@ -61,24 +63,23 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Dashboard"><a class="nav-link" href="#" id="changeInfo">
-						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">íšŒì›ì •ë³´
-							ìˆ˜ì •</span>
+					title="È¸¿øÁ¤º¸ ¼öÁ¤"><a class="nav-link" href="#" id="changeInfo">
+						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">È¸¿øÁ¤º¸ ¼öÁ¤</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Charts"><a class="nav-link" href="#" id="writingList">
-						<i class="fa fa-fw  fa-pencil-square-o"></i> <span
-						class="nav-link-text">ë‚˜ì˜ ê¸€ ëª©ë¡</span>
+					title="³ªÀÇ ±Û ¸ñ·Ï"><a class="nav-link" href="#" id="writingList">
+						<i class="fa fa-fw fa-pencil-square-o"></i> <span
+						class="nav-link-text">³ªÀÇ ±Û ¸ñ·Ï</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Components"><a
+					title="ÂÊÁöÇÔ"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
 					href="#collapseComponents" data-parent="#exampleAccordion"> <i
-						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">ìª½ì§€í•¨</span>
+						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">ÂÊÁöÇÔ</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseComponents">
-						<li><a href="#" id="sendMessage">ë³´ë‚¸ ìª½ì§€í•¨</a></li>
-						<li><a href="#" id="receiveMessage">ë°›ì€ ìª½ì§€í•¨</a></li>
+						<li><a href="#" id="sendMessage">º¸³½ ÂÊÁöÇÔ</a></li>
+						<li><a href="#" id="receiveMessage">¹ŞÀº ÂÊÁöÇÔ</a></li>
 					</ul></li>
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">
@@ -86,21 +87,23 @@
 					id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i>
 				</a></li>
 			</ul>
-			<!-- 			ë©”ì„¸ì§€ ë¶€ë¶„ ìœ„ì— í•´ë“œ  -->
+			<!-- 			¸Ş¼¼Áö ºÎºĞ À§¿¡ ÇØµå  -->
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item"><a class="nav-link" href="study_room.html"><i
+				<li class="nav-item"><a class="nav-link" href="study_room.jsp"><i
 						class="fa fa-fw fa-book"></i>STUDY ROOM</a></li>
-				<li class="nav-item"><a class="nav-link" href="community.html"><i
+				<li class="nav-item"><a class="nav-link" href="community.jsp"><i
 						class="fa fa-fw fa-comments-o"></i>COMMUNITY</a></li>
-				<li class="nav-item"><a class="nav-link" href="myPage.html"><i
-						class="fa fa-fw  fa-user"></i>MY PAGE</a></li>
-				<li class="nav-item"><a class="nav-link" data-toggle="modal"
-					data-target="#exampleModal"><i class="fa fa-fw fa-unlock-alt"></i>LOGOUT</a></li>
+				<c:if test="${not empty sessionScope.loginId}">
+					<li class="nav-item"><a class="nav-link" href="myPage.jsp">
+						<i class="fa fa-fw  fa-user"></i>MY PAGE</a></li>
+					<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+						<i class="fa fa-fw fa-unlock-alt"></i>LOGOUT</a></li>
+				</c:if>
 			</ul>
 		</div>
 	</nav>
 	<div class="content-wrapper">
-		<!-- 	iframe!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ìë™ ë†’ì´ ì¡°ì ˆ -->
+		<!-- 	iframe!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ÀÚµ¿ ³ôÀÌ Á¶Àı -->
 		<div id="target">
 			<iframe src="receiveMessage.do" id="the_iframe" width="100%"
 				onload=resizeFrame(this) frameborder=0 framespacing=0 marginheight=0
@@ -120,7 +123,7 @@
 							Leave?</h5>
 						<button class="close" type="button" data-dismiss="modal"
 							aria-label="Close">
-							<span aria-hidden="true">Ã—</span>
+							<span aria-hidden="true">¡¿</span>
 						</button>
 					</div>
 					<div class="modal-body">Select "Logout" below if you are
@@ -128,7 +131,7 @@
 					<div class="modal-footer">
 						<button class="btn btn-secondary" type="button"
 							data-dismiss="modal">Cancel</button>
-						<a class="btn btn-primary" href="logOut.html">Logout</a>
+						<a class="btn btn-primary" href="logOut.do">Logout</a>
 					</div>
 				</div>
 			</div>
