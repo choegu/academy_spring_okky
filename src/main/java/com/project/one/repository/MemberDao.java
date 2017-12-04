@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.project.one.repository.mapper.MemberMapper;
+import com.project.one.vo.MemberVO;
+
 
 
 
@@ -22,5 +24,15 @@ public class MemberDao {
 	public int receiveIdCheck(String receiveId) {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		return mapper.receiveIdCheck(receiveId);
+	}
+	
+	public int selectIdCheck(String id) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.selectIdCheck(id);
+	}
+	
+	public int joinInsert(MemberVO member) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.joinInsert(member);
 	}
 }

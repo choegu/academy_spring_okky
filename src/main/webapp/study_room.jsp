@@ -154,6 +154,10 @@
 						class="fa fa-fw fa-book"></i>STUDY ROOM</a></li>
 				<li class="nav-item"><a class="nav-link" href="community.jsp"><i
 						class="fa fa-fw fa-comments-o"></i>COMMUNITY</a></li>
+				<c:if test="${empty sessionScope.loginId}">
+					<li class="nav-item"><a class="nav-link" href="index.jsp">
+						<i class="fa fa-fw fa-lock"></i>LOGIN</a></li>
+				</c:if>
 				<c:if test="${not empty sessionScope.loginId}">
 					<li class="nav-item"><a class="nav-link" href="myPage.jsp">
 						<i class="fa fa-fw  fa-user"></i>MY PAGE</a></li>
@@ -181,19 +185,18 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Ready to
-							Leave?</h5>
+						<h5 class="modal-title" id="exampleModalLabel">·Î±×¾Æ¿ô</h5>
 						<button class="close" type="button" data-dismiss="modal"
 							aria-label="Close">
 							<span aria-hidden="true">¡¿</span>
 						</button>
 					</div>
-					<div class="modal-body">Select "Logout" below if you are
-						ready to end your current session.</div>
+					<div class="modal-body">Ready to
+							Leave?</div>
 					<div class="modal-footer">
+						<a class="btn btn-primary" href="logOut.do">Logout</a>
 						<button class="btn btn-secondary" type="button"
 							data-dismiss="modal">Cancel</button>
-						<a class="btn btn-primary" href="logOut.do">Logout</a>
 					</div>
 				</div>
 			</div>
