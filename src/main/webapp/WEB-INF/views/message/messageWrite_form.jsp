@@ -63,7 +63,7 @@
 							<table>
 								<tr>
 									<td>받는 사람 :</td>
-									<td><input type="text" name="receive_id" size="20"></td>
+									<td><input type="text" name="receive_id" size="20" value="${receiveId }"></td>
 								</tr>
 								<tr>
 									<td>제목 :</td>

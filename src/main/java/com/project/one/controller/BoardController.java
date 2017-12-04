@@ -65,12 +65,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/write.do", method=RequestMethod.POST)
-	public ModelAndView write(BoardVO board, HttpSession session, int ref_num, String task) {
+	public ModelAndView write(BoardVO board, int ref_num, String task,HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
 		ModelAndView mv = new ModelAndView();
 		String category = board.getCategory();
 		category = category.substring(0, category.length()-1);
 		board.setCategory(category);
+		board.setBoard_num(ref_num);
 		
 		if (loginId!=null && loginId.length()>0) {
 			if (task!=null && task.equals("write")) { //±Û¾²±â
@@ -110,7 +111,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	@RequestMapping("/updateForm")
+	@RequestMapping("/updateForm.do")
 	public ModelAndView updateForm(int board_num) {
 		BoardVO board = service.readNoCount(board_num);
 		ModelAndView mv = new ModelAndView();

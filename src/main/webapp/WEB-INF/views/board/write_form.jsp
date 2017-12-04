@@ -70,8 +70,12 @@
 // 		      readURL(this);
 // 		});
 // 	})
-
+	// 12월 4일 해야함
 	$(function() {
+		
+// 		var category = $('#originCategory').val();
+// 		alert('category:'+category);
+// 		$('#category').val(category);
 		
 // 		$('.menu li').click(function(){
 // 			var category = $(this).text();
@@ -85,6 +89,13 @@
 // 			return false;
 // 		})
 	})
+	
+	window.onload=function(){
+		var category = $('#originCategory').val();
+		alert('category:'+category);
+		$('#category').val(category);
+	};
+	
 </script>
 
 <!-- <script src="../../../ckeditor.js"></script> -->
@@ -97,6 +108,9 @@
 
 </head>
 <body id="main">
+<!-- 	12월 4일 해야함 -->
+	<input type="hidden" id="originCategory" value="${board.category }">
+
 	<form action="write.do" method="post">
 		<select name="category" id="category" required="required">
 			<option value="">Category</option>
@@ -216,7 +230,7 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 	        $('#summernote').summernote({
-	        	height:300
+	        	height:500
 	        });
 	        
 			$('form').submit(function(){

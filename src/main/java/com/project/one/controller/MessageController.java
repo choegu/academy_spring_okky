@@ -41,8 +41,11 @@ public class MessageController {
 	}
 
 	@RequestMapping("/messageWriteForm.do")
-	public String messageWriteForm() {
-		return "messageWrite_form";
+	public ModelAndView messageWriteForm(@RequestParam(defaultValue = "") String receiveId) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("receiveId", receiveId);
+		mv.setViewName("messageWrite_form");
+		return mv;
 	}
 
 	@ResponseBody

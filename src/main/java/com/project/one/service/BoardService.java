@@ -150,7 +150,6 @@ public class BoardService {
 	// ¼öÁ¤
 	public boolean update(BoardVO board, String loginId) {
 		BoardVO original = dao.select(board.getBoard_num());
-		
 		if (loginId!=null && loginId.equals(original.getWriter())) {
 			board.setWrite_date(new Date());
 			dao.update(board);

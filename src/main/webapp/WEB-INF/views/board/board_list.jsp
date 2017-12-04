@@ -64,9 +64,10 @@ $(function(){
 	     // A case for each action. Your actions here
 	     case "first": 
 	    	 alert('쪽지보낼대상:'+clickedId); 
+	    	 location.href='messageWriteForm.do?receiveId='+clickedId;
 	    	 break;
 	     case "second": 
-	    	 alert('회원정보대상:'+clickedId); 
+	    	 alert('회원정보대상:'+clickedId);
 	    	 break;
 	     case "third": 
 	    	 alert("third"); 
