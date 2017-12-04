@@ -194,12 +194,12 @@ $(document).bind("mousedown", function (e) {
 					[${p }]
 				</c:when>
 				<c:otherwise>
-					<a href="board.do?page=${p }">[${p }]</a>
+					<a href="boardSearch.do?page=${p }&searchOption=${searchOption}&searchText=${searchText}">[${p }]</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${boardPage.endPage!=boardPage.totalPage }">
-			<a href="board.do?page=${boardPage.endPage+1 }">[다음]</a>
+			<a href="boardSearch.do?page=${boardPage.endPage+1 }&searchOption=${searchOption}&searchText=${searchText}">[다음]</a>
 		</c:if>
 	</div>
 	<table>
@@ -211,7 +211,7 @@ $(document).bind("mousedown", function (e) {
 					    <option value="title">제목</option>
 					    <option value="content">내용</option>
 					    <option value="titleContent">제목+내용</option>
-					    <option value="writer">작성자</option>
+					    <option value="writer ">작성자</option>
 					</select>
 					<input type="text" name="searchText" size="30">
 					<input type="submit" name="searchSubmit" value="검색">

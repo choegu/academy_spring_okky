@@ -42,6 +42,8 @@ public class BoardController {
 		BoardPageVO boardPage = service.searchBoardPage(page, searchOption, searchText);
 		mv.addObject("boardPage", boardPage);
 		mv.addObject("page", page);
+		mv.addObject("searchOption", searchOption);
+		mv.addObject("searchText", searchText);
 		mv.setViewName("board_list");
 		return mv;
 	}
@@ -146,6 +148,20 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("result", result);
 		mv.setViewName("delete_result");
+		return mv;
+	}
+	
+	@RequestMapping("/writingList.do")
+	public ModelAndView myWritingList(HttpSession session) {
+		String loginId = (String) session.getAttribute("loginId");
+		ModelAndView mv = new ModelAndView();
+		
+		BoardPageVO boardPage = service.searchBoardPage(1, "writer", loginId);
+		mv.addObject("boardPage", boardPage);
+		mv.addObject("page", 1);
+		mv.addObject("searchOption", "writer");
+		mv.addObject("searchText", loginId);
+		mv.setViewName("board_list");
 		return mv;
 	}
 	
