@@ -16,7 +16,7 @@ public class BoardService {
 	@Autowired
 	private BoardDao dao;
 	
-	private static final int COUNT_PER_PAGE = 10;
+	private static final int COUNT_PER_PAGE = 12;
 	
 	// 게시판 페이지 작성
 	public BoardPageVO makeBoardPage(int currentPage) {
@@ -63,7 +63,6 @@ public class BoardService {
 			} else if (searchOption.equals("content")) {
 				totalCount = dao.searchCategoryContentCount(searchText, category);
 			} else if (searchOption.equals("titleContent")) {
-				System.out.println("titleContent : (category/searchText) "+category+" / " + searchText);
 				totalCount = dao.searchCategoryTitleContentCount(searchText, category);
 			} else if (searchOption.equals("writer")) {
 				totalCount = dao.searchCategoryWriterCount(searchText, category);

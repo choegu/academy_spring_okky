@@ -127,6 +127,65 @@ $(document).bind("mousedown", function (e) {
     background-color: #DEF;
 }
 
+ #container {
+      width: 70%;
+      margin: 0 auto;     /* 가로로 중앙에 배치 */
+      padding-top: 10%;   /* 테두리와 내용 사이의 패딩 여백 */
+    }
+   
+    #write {
+      text-align: right;
+    }
+     
+    #bottom {
+      text-align: center;
+    }
+
+    #search {
+      text-align: center;
+    }    
+     
+    /* Bootstrap 수정 */
+    .table > thead {
+      background-color: #b3c6ff;
+    }
+    .table > thead > tr > th {
+      text-align: center;
+    }
+    .table-hover > tbody > tr:hover {
+      background-color: #e6ecff;
+    }
+    .table > tbody > tr > td {
+      text-align: center;
+    }
+    .table > tbody > tr > #title {
+      text-align: left;
+    }
+     
+    div > #paging {
+      text-align: center;
+    }
+     
+    .hit {
+      animation-name: blink;
+      animation-duration: 1.5s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+      /* 위 속성들을 한 줄로 표기하기 */
+      /* -webkit-animation: blink 1.5s ease infinite; */
+    }
+     
+    /* 애니메이션 지점 설정하기 */
+    /* 익스플로러 10 이상, 최신 모던 브라우저에서 지원 */
+    @keyframes blink {
+      from {color: white;}
+      30% {color: yellow;}
+      to {color: red; font-weight: bold;}
+      /* 0% {color:white;}
+      30% {color: yellow;}
+      100% {color:red; font-weight: bold;} */
+    }
+
 </style>
 </head>
 <body>
@@ -135,55 +194,64 @@ $(document).bind("mousedown", function (e) {
   <li data-action="second">회원정보 보기</li>
 <!--   <li data-action="third">Third thing</li> -->
 </ul>
-	<table class="table">
-		<tr>
-			<th>글번호</th>
-			<th>카테고리</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>조회수</th>
-		</tr>
-		<c:if test="${empty boardPage.boardList }">
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
 			<tr>
-				<td colspan="6">
-					작성된 게시글이 존재하지 않습니다
-				</td>
+				<th>글번호</th>
+				<th>카테고리</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회수</th>
 			</tr>
-		</c:if>
-		<c:if test="${not empty boardPage.boardList}">
-			<c:forEach items="${boardPage.boardList}" var="boardVO">
-				<c:if test="${boardVO.open!=3 }">
-					<tr>
-						<td>${boardVO.board_num }</td>
-						<td>${boardVO.category }</td>
-						<td>
-							<a href="read.do?board_num=${boardVO.board_num }">
-								${boardVO.title }
-							</a>
-						</td>
-						<td>
-							<span class="context-menu-one btn btn-neutral user-writer">${boardVO.writer }</span>
-						</td>
-						<td>
-							<fmt:formatDate value="${boardVO.write_date }" type="date" dateStyle="short" timeStyle="short"/>
-						</td>
-						<td>${boardVO.read_count }</td>
-					</tr>
-				</c:if>
-				<c:if test="${boardVO.open==3 }">
-					<tr>
-						<td></td>
-						<td></td>
-						<td>[삭제된 글입니다.]</td>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-				</c:if>
-			</c:forEach>
-		</c:if>
+		</thead>
+		<tbody>
+			<c:if test="${empty boardPage.boardList }">
+				<tr>
+					<td colspan="6">
+						작성된 게시글이 존재하지 않습니다
+					</td>
+				</tr>
+			</c:if>
+			<c:if test="${not empty boardPage.boardList}">
+				<c:forEach items="${boardPage.boardList}" var="boardVO">
+					<c:if test="${boardVO.open!=3 }">
+						<tr>
+							<td>${boardVO.board_num }</td>
+							<td>${boardVO.category }</td>
+							<td id="title">
+								<a href="read.do?board_num=${boardVO.board_num }">
+									${boardVO.title }
+								</a>
+							</td>
+							<td>
+								<span class="context-menu-one btn btn-neutral user-writer">${boardVO.writer }</span>
+							</td>
+							<td>
+								<fmt:formatDate value="${boardVO.write_date }" type="date" dateStyle="short" timeStyle="short"/>
+							</td>
+							<td>${boardVO.read_count }</td>
+						</tr>
+					</c:if>
+					<c:if test="${boardVO.open==3 }">
+						<tr>
+							<td></td>
+							<td></td>
+							<td id="title">[삭제된 글입니다.]</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</c:if>
+				</c:forEach>
+			</c:if>
+		</tbody>
 	</table>
+	
+	<div id="write">
+		<a href="writeForm.do"><button>글쓰기</button></a>
+	</div>
+	
 	<div id="bottom">
 		<c:if test="${boardPage.startPage!=1 }">
 			<a href="boardSearch.do?page=${boardPage.startPage-1 }&searchOption=${searchOption}&searchText=${searchText}&category=${category}">[이전]</a>
@@ -191,7 +259,7 @@ $(document).bind("mousedown", function (e) {
 		<c:forEach begin="${boardPage.startPage }" end="${boardPage.endPage }" var="p" step="1">
 			<c:choose>
 				<c:when test="${page==p }">
-					[${p }]
+					<b>[${p }]</b>
 				</c:when>
 				<c:otherwise>
 					<a href="boardSearch.do?page=${p }&searchOption=${searchOption}&searchText=${searchText}&category=${category}">[${p }]</a>
@@ -202,27 +270,20 @@ $(document).bind("mousedown", function (e) {
 			<a href="boardSearch.do?page=${boardPage.endPage+1 }&searchOption=${searchOption}&searchText=${searchText}&category=${category}">[다음]</a>
 		</c:if>
 	</div>
-	<table>
-		<tr>
-			<td>
-				<form action="boardSearch.do">
-					<select name="searchOption" required="required">
-						<option value="">검색옵션</option>
-					    <option value="title">제목</option>
-					    <option value="content">내용</option>
-					    <option value="titleContent">제목+내용</option>
-					    <option value="writer ">작성자</option>
-					</select>
-					<input type="hidden" name="category" value="${category}">
-					<input type="text" name="searchText" size="30" value="${searchText }">
-					<input type="submit" name="searchSubmit" value="검색">
-				</form>
-			</td>
-			<td>
-				<a href="writeForm.do"><button>글쓰기</button></a>
-			</td>
-		</tr>
-	</table>
-	
+
+	<div id="search">
+		<form action="boardSearch.do">
+			<select name="searchOption" required="required">
+				<option value="">검색옵션</option>
+			    <option value="title">제목</option>
+			    <option value="content">내용</option>
+			    <option value="titleContent">제목+내용</option>
+			    <option value="writer ">작성자</option>
+			</select>
+			<input type="hidden" name="category" value="${category}">
+			<input type="text" name="searchText" size="30" value="${searchText }">
+			<input type="submit" name="searchSubmit" value="검색">
+		</form>
+	</div>
 </body>
 </html>
