@@ -43,6 +43,22 @@ public class BoardDao {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.searchCategoryCount(keyword);
 	}
+	public int searchCategoryTitleCount(String keyword, String category) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryTitleCount(keyword, category);
+	}
+	public int searchCategoryContentCount(String keyword, String category) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryContentCount(keyword, category);
+	}
+	public int searchCategoryTitleContentCount(String keyword, String category) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryTitleContentCount(keyword, category);
+	}
+	public int searchCategoryWriterCount(String keyword, String category) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryWriterCount(keyword, category);
+	}
 	public BoardVO select(int board_num) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.select(board_num);
@@ -70,6 +86,22 @@ public class BoardDao {
 	public List<BoardVO> searchCategory(int startRow, int count, String keyword){
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.searchCategory(startRow, count, keyword);
+	}
+	public List<BoardVO> searchCategoryTitle(int startRow, int count, String keyword, String category) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryTitle(startRow, count, keyword, category);
+	}
+	public List<BoardVO> searchCategoryContent(int startRow, int count, String keyword, String category){
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryContent(startRow, count, keyword, category);
+	}
+	public List<BoardVO> searchCategoryTitleContent(int startRow, int count, String keyword, String category) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryTitleContent(startRow, count, keyword, category);
+	}
+	public List<BoardVO> searchCategoryWriter(int startRow, int count, String keyword, String category){
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.searchCategoryWriter(startRow, count, keyword, category);
 	}
 	public int updateReadCount(int board_num) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);

@@ -40,21 +40,40 @@ public class BoardService {
 	}
 	
 	// 게시판 페이지 검색
-	public BoardPageVO searchBoardPage(int currentPage, String searchOption ,String searchText) {
+	public BoardPageVO searchBoardPage(int currentPage, String searchOption ,String searchText, String category) {
 		int totalCount;
-		if (searchOption.equals("title")) {
-			totalCount = dao.searchTitleCount(searchText);
-		} else if (searchOption.equals("content")) {
-			totalCount = dao.searchContentCount(searchText);
-		} else if (searchOption.equals("titleContent")) {
-			totalCount = dao.searchTitleContentCount(searchText);
-		} else if (searchOption.equals("writer")) {
-			totalCount = dao.searchWriterCount(searchText);
-		} else if (searchOption.equals("category")) {
-			totalCount = dao.searchCategoryCount(searchText);
+		
+		if (category==null || category.isEmpty()) {
+			if (searchOption.equals("title")) {
+				totalCount = dao.searchTitleCount(searchText);
+			} else if (searchOption.equals("content")) {
+				totalCount = dao.searchContentCount(searchText);
+			} else if (searchOption.equals("titleContent")) {
+				totalCount = dao.searchTitleContentCount(searchText);
+			} else if (searchOption.equals("writer")) {
+				totalCount = dao.searchWriterCount(searchText);
+			} else if (searchOption.equals("category")) {
+				totalCount = dao.searchCategoryCount(category);
+			} else {
+				totalCount = dao.selectTotalCount();
+			}
 		} else {
-			totalCount = dao.selectTotalCount();
+			if (searchOption.equals("title")) {
+				totalCount = dao.searchCategoryTitleCount(searchText, category);
+			} else if (searchOption.equals("content")) {
+				totalCount = dao.searchCategoryContentCount(searchText, category);
+			} else if (searchOption.equals("titleContent")) {
+				System.out.println("titleContent : (category/searchText) "+category+" / " + searchText);
+				totalCount = dao.searchCategoryTitleContentCount(searchText, category);
+			} else if (searchOption.equals("writer")) {
+				totalCount = dao.searchCategoryWriterCount(searchText, category);
+			} else if (searchOption.equals("category")) {
+				totalCount = dao.searchCategoryCount(category);
+			} else {
+				totalCount = dao.selectTotalCount();
+			}
 		}
+
 		
 		
 		int totalPage = totalCount/COUNT_PER_PAGE;
@@ -72,19 +91,37 @@ public class BoardService {
 		int startRow = (currentPage-1)*COUNT_PER_PAGE;
 		
 		List<BoardVO> boardList;
-		if (searchOption.equals("title")) {
-			boardList = dao.searchTitle(startRow, COUNT_PER_PAGE, searchText);
-		} else if (searchOption.equals("content")) {
-			boardList = dao.searchContent(startRow, COUNT_PER_PAGE, searchText);
-		} else if (searchOption.equals("titleContent")) {
-			boardList = dao.searchTitleContent(startRow, COUNT_PER_PAGE, searchText);
-		} else if (searchOption.equals("writer")) {
-			boardList = dao.searchWriter(startRow, COUNT_PER_PAGE, searchText);
-		} else if (searchOption.equals("category")) {
-			boardList = dao.searchCategory(startRow, COUNT_PER_PAGE, searchText);
+		
+		if (category==null || category.isEmpty()) {
+			if (searchOption.equals("title")) {
+				boardList = dao.searchTitle(startRow, COUNT_PER_PAGE, searchText);
+			} else if (searchOption.equals("content")) {
+				boardList = dao.searchContent(startRow, COUNT_PER_PAGE, searchText);
+			} else if (searchOption.equals("titleContent")) {
+				boardList = dao.searchTitleContent(startRow, COUNT_PER_PAGE, searchText);
+			} else if (searchOption.equals("writer")) {
+				boardList = dao.searchWriter(startRow, COUNT_PER_PAGE, searchText);
+			} else if (searchOption.equals("category")) {
+				boardList = dao.searchCategory(startRow, COUNT_PER_PAGE, category);
+			} else {
+				boardList = dao.selectList(startRow, COUNT_PER_PAGE);
+			}
 		} else {
-			boardList = dao.selectList(startRow, COUNT_PER_PAGE);
+			if (searchOption.equals("title")) {
+				boardList = dao.searchCategoryTitle(startRow, COUNT_PER_PAGE, searchText, category);
+			} else if (searchOption.equals("content")) {
+				boardList = dao.searchCategoryContent(startRow, COUNT_PER_PAGE, searchText, category);
+			} else if (searchOption.equals("titleContent")) {
+				boardList = dao.searchCategoryTitleContent(startRow, COUNT_PER_PAGE, searchText, category);
+			} else if (searchOption.equals("writer")) {
+				boardList = dao.searchCategoryWriter(startRow, COUNT_PER_PAGE, searchText, category);
+			} else if (searchOption.equals("category")) {
+				boardList = dao.searchCategory(startRow, COUNT_PER_PAGE, category);
+			} else {
+				boardList = dao.selectList(startRow, COUNT_PER_PAGE);
+			}
 		}
+
 		
 		return new BoardPageVO(boardList, currentPage, startPage, endPage, totalPage);
 	}

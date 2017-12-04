@@ -58,9 +58,30 @@
 		WHERE WRITER LIKE CONCAT('%',#{keyword},'%') 
 	</select>	
 	
+	<select id="searchCategoryTitleCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category} 
+	</select>
+	
+	<select id="searchCategoryContentCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE CONTENT LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category}  
+	</select>
+	
+	<select id="searchCategoryTitleContentCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%'))
+		AND CATEGORY=#{category}    
+	</select>		
+	
+	<select id="searchCategoryWriterCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD 
+		WHERE WRITER LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category}  
+	</select>		
+	
 	<select id="searchCategoryCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE CATEGORY LIKE #{keyword} 
+		WHERE CATEGORY LIKE #{category} 
 	</select>
 	
 	<select id="selectList" resultType="BoardVO">
@@ -106,7 +127,40 @@
 	<select id="searchCategory" resultType="BoardVO">
 		SELECT * 
 		FROM BOARD 
-		WHERE CATEGORY LIKE #{keyword} 
+		WHERE CATEGORY=#{category} 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>	
+	
+	<select id="searchCategoryTitle" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category} 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>
+	
+	<select id="searchCategoryContent" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE CONTENT LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category} 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>
+	
+	<select id="searchCategoryTitleContent" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%')) 
+		AND CATEGORY=#{category} 
+		ORDER BY LIST DESC, RIDX ASC 
+		LIMIT #{startRow}, #{count}
+	</select>
+	
+	<select id="searchCategoryWriter" resultType="BoardVO">
+		SELECT * 
+		FROM BOARD 
+		WHERE WRITER LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category} 
 		ORDER BY LIST DESC, RIDX ASC 
 		LIMIT #{startRow}, #{count}
 	</select>	

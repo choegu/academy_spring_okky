@@ -37,47 +37,47 @@
 		})
 		$('#java').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#javascript').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#css').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#jsp').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#spring').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#database').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#android').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#song').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#colloquialism').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#memo').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})
 		$('#etc').click(function() {
 			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&searchText='+categoryName);
+			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})		
 	})
 	function resizeFrame(frm) {
@@ -112,7 +112,7 @@
 						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">전체보기</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Components"><a
+					title="IT"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
 					href="#collapseComponents" data-parent="#exampleAccordion"> <i
 						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">IT</span>
@@ -127,7 +127,7 @@
 						<li><a href="#" id="android">Android</a></li>
 					</ul></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Components"><a
+					title="English"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
 					href="#englishParents" data-parent="#exampleAccordion"> <i
 						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">English</span>
@@ -138,7 +138,7 @@
 						<li><a href="#" id="memo">MEMO</a></li>
 					</ul></li>		
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="전체보기"><a class="nav-link" href="#" id="etc">
+					title="ETC"><a class="nav-link" href="#" id="etc">
 						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">ETC</span>
 				</a></li>								
 <!-- 			카테고리 끝 -->

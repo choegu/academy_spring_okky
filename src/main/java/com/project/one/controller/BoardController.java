@@ -34,16 +34,23 @@ public class BoardController {
 	
 	// 게시판 검색
 	@RequestMapping("/boardSearch.do")
-	public ModelAndView search(@RequestParam(defaultValue="1")int page, String searchOption, String searchText, HttpServletResponse resp) {
+	public ModelAndView search(@RequestParam(defaultValue="1")int page, String searchOption, String searchText, String category, HttpServletResponse resp) {
 		resp.setContentType("text/html;charset=UTF-8");
-		System.out.println(searchText);
+		System.out.println(category);
 		ModelAndView mv = new ModelAndView();
 		
-		BoardPageVO boardPage = service.searchBoardPage(page, searchOption, searchText);
+		if (searchText==null || searchText.isEmpty()) {
+			searchText = "";
+		}
+		if (category==null || category.isEmpty()) {
+			category = "";
+		}
+		BoardPageVO boardPage = service.searchBoardPage(page, searchOption, searchText, category);
 		mv.addObject("boardPage", boardPage);
 		mv.addObject("page", page);
 		mv.addObject("searchOption", searchOption);
 		mv.addObject("searchText", searchText);
+		mv.addObject("category", category);
 		mv.setViewName("board_list");
 		return mv;
 	}
@@ -156,7 +163,7 @@ public class BoardController {
 		String loginId = (String) session.getAttribute("loginId");
 		ModelAndView mv = new ModelAndView();
 		
-		BoardPageVO boardPage = service.searchBoardPage(1, "writer", loginId);
+		BoardPageVO boardPage = service.searchBoardPage(1, "writer", loginId, null);
 		mv.addObject("boardPage", boardPage);
 		mv.addObject("page", 1);
 		mv.addObject("searchOption", "writer");

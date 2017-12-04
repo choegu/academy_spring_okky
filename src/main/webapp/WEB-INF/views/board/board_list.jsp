@@ -186,7 +186,7 @@ $(document).bind("mousedown", function (e) {
 	</table>
 	<div id="bottom">
 		<c:if test="${boardPage.startPage!=1 }">
-			<a href="board.do?page=${boardPage.startPage-1 }">[이전]</a>
+			<a href="boardSearch.do?page=${boardPage.startPage-1 }&searchOption=${searchOption}&searchText=${searchText}&category=${category}">[이전]</a>
 		</c:if>
 		<c:forEach begin="${boardPage.startPage }" end="${boardPage.endPage }" var="p" step="1">
 			<c:choose>
@@ -194,26 +194,27 @@ $(document).bind("mousedown", function (e) {
 					[${p }]
 				</c:when>
 				<c:otherwise>
-					<a href="boardSearch.do?page=${p }&searchOption=${searchOption}&searchText=${searchText}">[${p }]</a>
+					<a href="boardSearch.do?page=${p }&searchOption=${searchOption}&searchText=${searchText}&category=${category}">[${p }]</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 		<c:if test="${boardPage.endPage!=boardPage.totalPage }">
-			<a href="boardSearch.do?page=${boardPage.endPage+1 }&searchOption=${searchOption}&searchText=${searchText}">[다음]</a>
+			<a href="boardSearch.do?page=${boardPage.endPage+1 }&searchOption=${searchOption}&searchText=${searchText}&category=${category}">[다음]</a>
 		</c:if>
 	</div>
 	<table>
 		<tr>
 			<td>
 				<form action="boardSearch.do">
-					<select name="searchOption">
-						<option value="option">검색옵션</option>
+					<select name="searchOption" required="required">
+						<option value="">검색옵션</option>
 					    <option value="title">제목</option>
 					    <option value="content">내용</option>
 					    <option value="titleContent">제목+내용</option>
 					    <option value="writer ">작성자</option>
 					</select>
-					<input type="text" name="searchText" size="30">
+					<input type="hidden" name="category" value="${category}">
+					<input type="text" name="searchText" size="30" value="${searchText }">
 					<input type="submit" name="searchSubmit" value="검색">
 				</form>
 			</td>
