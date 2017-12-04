@@ -109,13 +109,13 @@
 <!-- 			카테고리 부분 -->
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="전체보기"><a class="nav-link" href="#" id="all">
-						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">전체보기</span>
+						<i class="fa fa-fw fa-inbox"></i><span class="nav-link-text">전체보기</span>
 				</a></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="IT"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
 					href="#collapseComponents" data-parent="#exampleAccordion"> <i
-						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">IT</span>
+						class="fa fa-fw  fa-list-alt"></i> <span class="nav-link-text">IT</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseComponents">
 						<li><a href="#" id="java">JAVA</a></li>
@@ -130,7 +130,7 @@
 					title="English"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
 					href="#englishParents" data-parent="#exampleAccordion"> <i
-						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">English</span>
+						class="fa fa-fw  fa-list-alt"></i> <span class="nav-link-text">English</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="englishParents">
 						<li><a href="#" id="song">SONG</a></li>
@@ -139,7 +139,7 @@
 					</ul></li>		
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="ETC"><a class="nav-link" href="#" id="etc">
-						<i class="fa fa-fw fa-key"></i><span class="nav-link-text">ETC</span>
+						<i class="fa fa-fw fa-list-alt"></i><span class="nav-link-text">ETC</span>
 				</a></li>								
 <!-- 			카테고리 끝 -->
 			</ul>
