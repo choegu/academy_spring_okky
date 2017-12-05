@@ -109,7 +109,7 @@
 </head>
 <body id="main">
 <!-- 	12월 4일 해야함 -->
-	<input type="hidden" id="originCategory" value="${board.category }">
+	<input type="hidden" id="originCategory" value="${original.category}">
 
 	<form action="write.do" method="post">
 		<select name="category" id="category" required="required">

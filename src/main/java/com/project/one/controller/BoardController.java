@@ -158,6 +158,7 @@ public class BoardController {
 		return mv;
 	}
 	
+	// 마이페이지에서 내 글 보기
 	@RequestMapping("/writingList.do")
 	public ModelAndView myWritingList(HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");

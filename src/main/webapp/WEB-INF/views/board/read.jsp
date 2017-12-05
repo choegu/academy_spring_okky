@@ -42,6 +42,8 @@
 		    var insertData = $('[name=commentInsertForm]').serialize(); //commentInsertForm의 내용을 가져옴
 		    commentInsert(insertData); //Insert 함수호출(아래)
 		});	
+		
+		
 
 	})
 	
@@ -98,6 +100,7 @@
 	            });
 	            
 	            $(".commentList").html(a);
+	            
 	            $(document).on("click","#btnCmtDel",function(){
 	            	var cmtNum = $(this).siblings('input[name=cno]').val();
 	            	commentDelete(cmtNum);
@@ -106,6 +109,16 @@
 // 	            	var cmtNum = $(this).siblings('input[name=cno]').val();
 // 	            	commentReply(cmtNum);
 // 	            })
+
+	    	    var parent= window.parent.document;
+	    		var ifrm = $(parent).find('body');
+	    		var target_div = $(parent).find('#target');
+	    		var content_div = $(parent).find('.content-wrapper');
+	    		
+	    		var board_height = $(document).height();
+	    		
+	    		ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+				
 	        },
 	        error:function(e){
 	        	$.each(e,function(key,value){
@@ -114,7 +127,27 @@
 	        	alert('error:'+e)
 	        }
 	    });
-	} 
+	}
+	
+	$( document ).ajaxComplete(function( event, request, settings ) {
+// 	    var modal = $('#YOUR_ID'),
+// 	    contents = modal.find(".modal-contents").first();
+// 	    alert(contents.height());
+	    
+	    var parent= window.parent.document;
+// 		var ifrm = $(parent).find('#the_iframe');
+
+// 		var ifrm = $(parent).find('body');
+// 		var target_div = $(parent).find('#target');
+// 		var content_div = $(parent).find('.content-wrapper');
+// 		var board_height = $(document).height();
+// 		ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+		
+// 		alert(board_height+"/"+(board_height+100));
+// 		target_div.css('height', board_height+100);
+// 		content_div.css('height', board_height+200);
+	});
+
 	 
 	//댓글 등록
 	function commentInsert(insertData){

@@ -80,15 +80,27 @@
 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
 		})		
 	})
-	function resizeFrame(frm) {
+	function resizeFrame(frm, height) {
 		frm.style.height = "auto";
-// 		contentHeight = frm.contentWindow.document.body.scrollHeight;
-// 		frm.style.height = contentHeight + 4 + "px";
+		contentHeight = frm.contentWindow.document.body.scrollHeight;
+		frm.style.height = contentHeight + 4 + "px";
 		
-		frm.style.height = 100 + "vh";
-		
+// 		if(height){
+// 			alert(height);	
+// 			frm.style.height = height;
+// 		}else{
+// 			alert('height none');
+// 			frm.style.height = 100 + "vh";
+// 		}	
 	}
+	
+
 </script>
+<style type="text/css">
+/* 	iframe{ */
+/* 		height: 100vh; */
+/* 	} */
+</style>
 
 </head>
 
@@ -172,8 +184,8 @@
 		<div id="target">
 <!-- 			Ã¹È­¸é -->
 			<iframe src="board.do" id="the_iframe" width="100%" 
-				onload=resizeFrame(this) frameborder=0 framespacing=0 marginheight=0
-				marginwidth=0 scrolling=no vspace=0></iframe>
+				 frameborder="0" framespacing="0" marginheight="0"
+				marginwidth="0" scrolling="no" vspace="0" onload="resizeFrame(this)"></iframe>
 		</div>
 		<!-- Scroll to Top Button-->
 		<a class="scroll-to-top rounded" href="#page-top"> <i
