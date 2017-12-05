@@ -14,9 +14,10 @@ public class BoardVO {
 	private int ridx;
 	private String category;
 	private int open;
+	private int comment_count;
 	
 	public BoardVO(int board_num, String title, String writer, String content, int read_count, Date write_date,
-			int list, int level, int ridx, String category, int open) {
+			int list, int level, int ridx, String category, int open, int comment_count) {
 		this.board_num = board_num;
 		this.title = title;
 		this.writer = writer;
@@ -28,10 +29,11 @@ public class BoardVO {
 		this.ridx = ridx;
 		this.category = category;
 		this.open = open;
+		this.comment_count = comment_count;
 	}
 	
 	public BoardVO(String title, String writer, String content, int read_count, Date write_date,
-			int list, int level, int ridx, String category, int open) {
+			int list, int level, int ridx, String category, int open, int comment_count) {
 		this.title = title;
 		this.writer = writer;
 		this.content = content;
@@ -42,6 +44,7 @@ public class BoardVO {
 		this.ridx = ridx;
 		this.category = category;
 		this.open = open;
+		this.comment_count = comment_count;
 	}
 
 	public BoardVO() {}
@@ -133,12 +136,21 @@ public class BoardVO {
 	public void setOpen(int open) {
 		this.open = open;
 	}
+	
+	public int getcomment_count() {
+		return comment_count;
+	}
+	
+	public void setcomment_count(int comment_count) {
+		this.comment_count = comment_count;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardVO [board_num=" + board_num + ", title=" + title + ", writer=" + writer + ", content=" + content
 				+ ", read_count=" + read_count + ", write_date=" + write_date + ", list=" + list + ", level=" + level
-				+ ", ridx=" + ridx + ", category=" + category + ", open=" + open + "]";
+				+ ", ridx=" + ridx + ", category=" + category + ", open=" + open + ", comment_count=" + comment_count
+				+ "]";
 	}
 	
 }

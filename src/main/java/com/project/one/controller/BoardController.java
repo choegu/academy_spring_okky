@@ -36,7 +36,6 @@ public class BoardController {
 	@RequestMapping("/boardSearch.do")
 	public ModelAndView search(@RequestParam(defaultValue="1")int page, String searchOption, String searchText, String category, HttpServletResponse resp) {
 		resp.setContentType("text/html;charset=UTF-8");
-		System.out.println(category);
 		ModelAndView mv = new ModelAndView();
 		
 		if (searchText==null || searchText.isEmpty()) {
@@ -51,6 +50,21 @@ public class BoardController {
 		mv.addObject("searchOption", searchOption);
 		mv.addObject("searchText", searchText);
 		mv.addObject("category", category);
+		mv.setViewName("board_list");
+		return mv;
+	}
+	
+	// 마이페이지에서 내 글 보기
+	@RequestMapping("/writingList.do")
+	public ModelAndView myWritingList(HttpSession session) {
+		String loginId = (String) session.getAttribute("loginId");
+		ModelAndView mv = new ModelAndView();
+		
+		BoardPageVO boardPage = service.searchBoardPage(1, "writer", loginId, null);
+		mv.addObject("boardPage", boardPage);
+		mv.addObject("page", 1);
+		mv.addObject("searchOption", "writer");
+		mv.addObject("searchText", loginId);
 		mv.setViewName("board_list");
 		return mv;
 	}
@@ -155,21 +169,6 @@ public class BoardController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("result", result);
 		mv.setViewName("delete_result");
-		return mv;
-	}
-	
-	// 마이페이지에서 내 글 보기
-	@RequestMapping("/writingList.do")
-	public ModelAndView myWritingList(HttpSession session) {
-		String loginId = (String) session.getAttribute("loginId");
-		ModelAndView mv = new ModelAndView();
-		
-		BoardPageVO boardPage = service.searchBoardPage(1, "writer", loginId, null);
-		mv.addObject("boardPage", boardPage);
-		mv.addObject("page", 1);
-		mv.addObject("searchOption", "writer");
-		mv.addObject("searchText", loginId);
-		mv.setViewName("board_list");
 		return mv;
 	}
 	

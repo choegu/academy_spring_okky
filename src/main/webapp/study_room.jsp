@@ -35,63 +35,66 @@
 		$('#all').click(function() {
 			$('#target iframe').attr('src', 'board.do');
 		})
-		$('#java').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#javascript').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#css').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#jsp').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#spring').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#database').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#android').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#song').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#colloquialism').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#memo').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})
-		$('#etc').click(function() {
-			categoryName = $(this).text();
-			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
-		})		
-	})
-	function resizeFrame(frm, height) {
-		frm.style.height = "auto";
-		contentHeight = frm.contentWindow.document.body.scrollHeight;
-		frm.style.height = contentHeight + 4 + "px";
 		
-// 		if(height){
-// 			alert(height);	
-// 			frm.style.height = height;
-// 		}else{
-// 			alert('height none');
-// 			frm.style.height = 100 + "vh";
-// 		}	
+		$('.sidenav-second-level a, #etc').click(function(){
+			categoryName = $.trim($(this).text());
+			$('#hiddenCategory').val(categoryName);
+			$('#ifrmForm').submit();			
+		})
+// 		$('#java').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#javascript').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#css').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#jsp').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#spring').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#database').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#android').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#song').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#colloquialism').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#memo').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})
+// 		$('#etc').click(function() {
+// 			categoryName = $(this).text();
+// 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
+// 		})		
+	})
+	window.resizeFrame = function (frm, height) {
+		
+		if(height){
+			$(frm).css('height',height);
+			$('#target').height = height;
+			$('.content-wrapper').height = height;
+		}else{
+			frm.style.height = 100 + "vh";
+		}	
 	}
 	
 
@@ -183,7 +186,12 @@
 		<!-- 	iframe!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!자동 높이 조절 -->
 		<div id="target">
 <!-- 			첫화면 -->
-			<iframe src="board.do" id="the_iframe" width="100%" 
+			<form id="ifrmForm" target="the_iframe" method="post" action="boardSearch.do">
+				<input type="hidden" name="searchOption" value="category">
+				<input type="hidden" id="hiddenCategory" name="category">
+			</form>
+			
+			<iframe src="board.do" name="the_iframe" id="the_iframe" width="100%" 
 				 frameborder="0" framespacing="0" marginheight="0"
 				marginwidth="0" scrolling="no" vspace="0" onload="resizeFrame(this)"></iframe>
 		</div>

@@ -91,8 +91,10 @@ $(document).bind("mousedown", function (e) {
  }
 });
 
-
-
+window.onload=function(){
+	var searchOption = $('#originSearchOption').val();
+	$('#searchOption').val(searchOption);
+};
 
 </script>
 
@@ -225,8 +227,11 @@ $(document).bind("mousedown", function (e) {
 							<td>${boardVO.category }</td>
 							<td id="title">
 								<a href="read.do?board_num=${boardVO.board_num }">
-									${boardVO.title }
-								</a>
+									${boardVO.title}
+								</a> 
+								<c:if test="${boardVO.comment_count!=0 }">
+									[${boardVO.comment_count }]
+								</c:if>
 							</td>
 							<td>
 								<span class="context-menu-one btn btn-neutral user-writer">${boardVO.writer }</span>
@@ -283,14 +288,15 @@ $(document).bind("mousedown", function (e) {
 
 	<div id="search">
 		<form action="boardSearch.do">
-			<select name="searchOption" required="required">
+			<select id="searchOption" name="searchOption" required="required">
 				<option value="">검색옵션</option>
 			    <option value="title">제목</option>
 			    <option value="content">내용</option>
 			    <option value="titleContent">제목+내용</option>
-			    <option value="writer ">작성자</option>
+			    <option value="writer">작성자</option>
 			</select>
 			<input type="hidden" name="category" value="${category}">
+			<input type="hidden" id="originSearchOption" value="${searchOption }">
 			<input type="text" name="searchText" size="30" value="${searchText }">
 			<input type="submit" name="searchSubmit" value="검색">
 		</form>
