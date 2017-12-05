@@ -135,6 +135,56 @@ public class MemberController {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping("/myPageMain.do")
+	public ModelAndView myPageMain(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		String loginId = (String) session.getAttribute("loginId");
+		MemberVO member = service.selectMemberInfo(loginId);
+		mv.addObject("member", member);
+		mv.setViewName("myPage_main");
+		return mv;
+	}
+
+	@RequestMapping("/beforeChangeInfo.do")
+	public String beforeChangeInfo() {
+		return "beforeChangeInfo_form";
+	}
+
+	@RequestMapping("/changeInfoForm.do")
+	public ModelAndView changeInfoForm(String pw, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		String loginId = (String) session.getAttribute("loginId");
+		if (service.checkPassword(loginId, pw)) {
+			MemberVO member = service.selectMemberInfo(loginId);
+			mv.addObject("member", member);
+			mv.setViewName("changeInfo_form");
+		} else {
+			mv.setViewName("changeInfo_fail");
+		}
+		return mv;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/changeInfo.do", method = RequestMethod.POST)
+	public String changeInfo(MemberVO member, String pwCheck,HttpSession session) {
+		String loginId = (String)session.getAttribute("loginId");
+		member.setId(loginId);
+		if (member.getPw().equals("") || member.getName().equals("") || member.geteMail().equals("")
+				|| member.getQuestion().equals("") || member.getQuestionAnswer().equals("")) {
+			return String.valueOf(3);
+		} else {
+			if (!member.getPw().equals(pwCheck)) {
+				return String.valueOf(1);
+			} else {
+				if (service.updateMemberInfo(member)) {
+					return String.valueOf(0);
+				} else {
+					return String.valueOf(2);
+				}
+			}
+		}
+	}
 
 	@RequestMapping("/logOut.do")
 	public String logOut(HttpSession session) {

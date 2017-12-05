@@ -68,4 +68,21 @@ public class MemberService {
 		return dao.selectMemberInfo(loginId);
 	}
 	
+	public boolean checkPassword(String loginId,String pw) {
+		if(dao.checkPassword(loginId,pw)>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean updateMemberInfo(MemberVO member) {
+		if(dao.updateMemberInfo(member)>0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	
 }

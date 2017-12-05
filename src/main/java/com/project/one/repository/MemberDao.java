@@ -65,4 +65,14 @@ public class MemberDao {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		return mapper.selectMemberInfo(loginId);
 	}
+	
+	public int checkPassword(String loginId,String pw) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.checkPassword(loginId,pw);
+	}
+	
+	public int updateMemberInfo(MemberVO member) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.updateMemberInfo(member);
+	}
 }
