@@ -35,7 +35,7 @@
 			$('#target iframe').attr('src', 'searchIdForm.do');
 		})
 		$('#searchPw').click(function() {
-			$('#target iframe').attr('src', 'searchPwForm.do');
+			$('#target iframe').attr('src', 'beforeSearchPw.do');
 		})
 	})
 	function resizeFrame(frm) {
