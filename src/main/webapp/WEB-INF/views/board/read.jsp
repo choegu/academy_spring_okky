@@ -18,9 +18,30 @@
 
 
 <style type="text/css">
+	.container {
+		width: 90%;
+	}
+
 	textarea {
 	    resize: none;
 	}
+	
+	#bottom {
+		text-align: right;
+	}
+	
+	#articleInfo {
+		border: 1px solid green;
+	}
+	
+	#articleTitle {
+	}
+	
+	#bodyContent {
+		border: 1px solid silver;
+		padding-top: 10px;
+	}
+
 </style>
 
 <script type="text/javascript">
@@ -71,10 +92,15 @@
 	                } else {
 	                	a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
 	                	for (var i = 0; i < value.level; i++) {
-							a += 'Re: ';
+	                		if (i!=0) {
+								a += '&nbsp;&nbsp;&nbsp;';
+							}
+							if (i==value.level-1) {
+								a += '<b>┗ </b>';
+							}
 						}
-		                a += '<span class="commentInfo'+value.comment_num+'">'+'댓글번호 : '+value.comment_num+' / 작성자 : '+value.writer;
-		                a += ' / 작성일 : '+value.write_date+' </span>';
+		                a += '<span class="commentInfo'+value.comment_num+'"> <b>★ '+value.writer+'</b>';
+		                a += ' ('+value.write_date+') </span>';
 		                a += '<span>';
 		                if("${sessionScope.loginId}"== value.writer){
 		                	a += '<a onclick="commentUpdate('+value.comment_num+');"> <input type="button" value="수정"></a>';
@@ -85,7 +111,14 @@
 		                a += '<input type="hidden" name="cno" value="'+value.comment_num+'"/></span>';
 		                
 		                var text_content = value.content.replace(/\n/gi,"<br>");
-		                a += '<div class="commentContentH'+value.comment_num+'"> <p> 내용 :<br> '+text_content+'</p></div>';
+		                a += '<div class="commentContentH'+value.comment_num+'"> <p><br> ';
+	                	for (var i = 0; i < value.level; i++) {
+	                		if (i==0) {
+								a += '&nbsp;&nbsp;';
+							}
+							a += '&nbsp;&nbsp;&nbsp;';
+						}		                
+		                a += text_content+'</p></div>';
 		        	    a += '<div class="commentContentT'+value.comment_num+'" style="display: none">';
 		        	    a += '<textarea class="form-control" rows="3" name="content_'+value.comment_num+'">'+value.content+'</textarea>';
 		        	    a += '<button class="btn btn-default" type="button" onclick="commentUpdateProc('+value.comment_num+');">확인</button></div> ';
@@ -301,35 +334,26 @@
 </script>
 </head>
 <body>
-	<table class="table">
-		<tr>
-			<td>제목 : </td>
-			<td>${board.title }</td>
-		</tr>
-		<tr>
-			<td>작성자 : </td>
-			<td>${board.writer }</td>
-		</tr>
-		<tr>
-			<td>조회수 : </td>
-			<td>${board.read_count }</td>
-		</tr>
-		<tr>
-			<td>작성일시 : </td>
-			<td><fmt:formatDate value="${board.write_date }" type="both" dateStyle="short" timeStyle="short"/></td>
-		</tr>
-		<tr>
-			<td colspan="2">${board.content }</td>
-		</tr>
+	<div class="container" id="articleInfo">
+		<h4 id="articleTitle"><b>${board.title }</b></h4>
+		작성자 : ${board.writer }<br>
+		조회수 : ${board.read_count }<br>
+		작성일시 : <fmt:formatDate value="${board.write_date }" type="both" dateStyle="short" timeStyle="short"/>
+	</div>
 	
-	</table>
-
-	<a href="board.do">[목록]</a>
-	<c:if test="${not empty sessionScope.loginId }">
-		<a href="updateForm.do?board_num=${board.board_num }">[수정]</a>
-		<a href="replyForm.do?board_num=${board.board_num }">[답변]</a>
-		<a href="#" onclick="del_func()">[삭제]</a>
-	</c:if>
+	<div class="container" id="bodyContent">
+		${board.content }
+	</div>
+	
+	<div class="container" id="bottom">
+		<a href="board.do"><button>목록</button></a>
+		<c:if test="${not empty sessionScope.loginId }">
+			<a href="updateForm.do?board_num=${board.board_num }"><button>수정</button></a>
+			<a href="replyForm.do?board_num=${board.board_num }"><button>답변</button></a>
+			<a href="#" onclick="del_func()"><button>삭제</button></a>
+		</c:if>
+	</div>
+	<p>
 	
 	<!--  댓글  -->
 	<div class="container">

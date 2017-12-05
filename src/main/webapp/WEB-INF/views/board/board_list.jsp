@@ -63,14 +63,14 @@ $(function(){
 	     
 	     // A case for each action. Your actions here
 	     case "first": 
-	    	 alert('쪽지보낼대상:'+clickedId); 
 	    	 location.href='messageWriteForm.do?receiveId='+clickedId;
 	    	 break;
 	     case "second": 
 	    	 alert('회원정보대상:'+clickedId);
 	    	 break;
 	     case "third": 
-	    	 alert("third"); 
+	    	 $('#searchForWriterName').val(clickedId);
+	    	 $('#searchForWriter').submit();
 	    	 break;
 	 }
 
@@ -93,7 +93,9 @@ $(document).bind("mousedown", function (e) {
 
 window.onload=function(){
 	var searchOption = $('#originSearchOption').val();
-	$('#searchOption').val(searchOption);
+	if (searchOption!='category' || searchOption=='') {
+		$('#searchOption').val(searchOption);
+	}
 };
 
 </script>
@@ -129,15 +131,15 @@ window.onload=function(){
     background-color: #DEF;
 }
 
- #container {
-      width: 70%;
-      margin: 0 auto;     /* 가로로 중앙에 배치 */
-      padding-top: 10%;   /* 테두리와 내용 사이의 패딩 여백 */
-    }
+#container {
+	width: 90%;
+	margin: 0 auto;     /* 가로로 중앙에 배치 */
+	padding-top: 10%;   /* 테두리와 내용 사이의 패딩 여백 */
+}
    
-    #write {
-      text-align: right;
-    }
+#write {
+	text-align: right;
+}
      
     #bottom {
       text-align: center;
@@ -188,13 +190,18 @@ window.onload=function(){
       100% {color:red; font-weight: bold;} */
     }
 
+ 	body { 
+ 		padding-left: 10px; 
+ 		padding-right: 10px; 
+ 	} 
+
 </style>
 </head>
 <body>
 <ul class='custom-menu'>
   <li data-action="first">쪽지 보내기</li>
   <li data-action="second">회원정보 보기</li>
-<!--   <li data-action="third">Third thing</li> -->
+  <li data-action="third">작성자로 검색</li>
 </ul>
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
@@ -299,6 +306,12 @@ window.onload=function(){
 			<input type="hidden" id="originSearchOption" value="${searchOption }">
 			<input type="text" name="searchText" size="30" value="${searchText }">
 			<input type="submit" name="searchSubmit" value="검색">
+		</form>
+		<!--작성자로 검색 -->
+		<form action="boardSearch.do" id="searchForWriter">
+			<input type="hidden" name="category" value="${category}">
+			<input type="hidden" name="searchOption" value="writer">
+			<input type="hidden" id="searchForWriterName" name="searchText" value="">
 		</form>
 	</div>
 </body>
