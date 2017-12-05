@@ -24,4 +24,9 @@ public class MainController {
 		mv.setViewName("index");
 		return mv;
 	}
+	
+	@RequestMapping("/mainPage.do")
+	public String mainPage() {
+		return "main";
+	}
 }

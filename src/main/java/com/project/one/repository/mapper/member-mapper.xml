@@ -13,6 +13,26 @@
 		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id}
 	</select>
 	
+	<select id="searchIdCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE NAME=#{name} and EMAIL=#{eMail}
+	</select>
+	
+	<select id="selectId" resultType="String">
+		SELECT ID FROM MEMBER WHERE NAME=#{name} and EMAIL=#{eMail}
+	</select>
+	
+	<select id="questionSelect" parameterType="String" resultType="String">
+		SELECT QUESTION FROM MEMBER WHERE ID = #{id}
+	</select>
+	
+	<select id="checkQuestionAnswer" resultType="int">
+		SELECT COUNT(*) FROM MEMBER WHERE QUESTIONANSWER = #{answer} and ID=#{id}
+	</select>
+	
+	<select id="selectPw" resultType="String">
+		SELECT PW FROM MEMBER WHERE QUESTIONANSWER = #{answer} and ID=#{id}
+	</select>
+	
 	<insert id="joinInsert" parameterType="MemberVO">
 		INSERT INTO MEMBER(ID,PW,NAME,EMAIL,QUESTION,QUESTIONANSWER,JOIN_DATE)
 		VALUES(#{id},#{pw},#{name},#{eMail},#{question},#{questionAnswer},#{join_date})

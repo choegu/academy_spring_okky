@@ -35,4 +35,29 @@ public class MemberDao {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		return mapper.joinInsert(member);
 	}
+	
+	public int searchIdCount(String name,String eMail) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.searchIdCount(name,eMail);
+	}
+	
+	public String selectId(String name,String eMail) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.selectId(name,eMail);
+	}
+	
+	public String questionSelect(String id) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.questionSelect(id);
+	}
+	
+	public int checkQuestionAnswer(String answer,String id) {
+		MemberMapper mapper =session.getMapper(MemberMapper.class);
+		return mapper.checkQuestionAnswer(answer,id);
+	}
+	
+	public String selectPw(String answer,String id) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.selectPw(answer,id);
+	}
 }

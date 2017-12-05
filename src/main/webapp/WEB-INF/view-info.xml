@@ -58,9 +58,45 @@
 		<property name="url" value="/WEB-INF/views/member/join_form.jsp"></property>
 	</bean>
 	
+	<bean name="beforeSearchPw_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/beforeSearchPw_fail.jsp"></property>
+	</bean>
+	
+	<bean name="beforeSearchPw_form" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/beforeSearchPw_form.jsp"></property>
+	</bean>
+	
+	<bean name="searchId_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/searchId_fail.jsp"></property>
+	</bean>
+	
+	<bean name="searchId_form" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/searchId_form.jsp"></property>
+	</bean>
+	
+	<bean name="searchId_success" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/searchId_success.jsp"></property>
+	</bean>
+	
+	<bean name="searchPw_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/searchPw_fail.jsp"></property>
+	</bean>
+		<bean name="searchPw_form" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/searchPw_form.jsp"></property>
+	</bean>
+		<bean name="searchPw_success" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/searchPw_Success.jsp"></property>
+	</bean>
+	
 	<!--web-inf -->
 	<bean name="index" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/index.jsp"></property>
 	</bean>
+	
+	<bean name="main" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/main.jsp"></property>
+	</bean>
+	
+	
 	
 </beans>

@@ -43,4 +43,24 @@ public class MemberService {
 			return false;
 		}
 	}
+
+	public int searchIdCount(String name,String eMail) {
+		return dao.searchIdCount(name,eMail);
+	}
+	
+	public String selectId(String name,String eMail) {
+		return dao.selectId(name,eMail);
+	}
+	
+	public String questionSelect(String id) {
+		return dao.questionSelect(id);
+	}
+	
+	public int checkQuestionAnswer(String answer,String id) {
+		return dao.checkQuestionAnswer(answer,id);
+	}
+	
+	public String selectPw(String answer,String id) {
+		return dao.selectPw(answer,id);
+	}
 }

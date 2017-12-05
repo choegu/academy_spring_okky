@@ -1,5 +1,8 @@
 package com.project.one.controller;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +77,62 @@ public class MemberController {
 					return String.valueOf(3);
 				}
 			}
+		}
+	}
+	
+	@RequestMapping("/searchIdForm.do")
+	public String searchIdForm() {
+		return "searchId_form";
+	}
+
+	@RequestMapping("/searchId.do")
+	public ModelAndView searchId(String name, String eMail) {
+		System.out.println(name + eMail);
+		ModelAndView mv = new ModelAndView();
+		if (service.searchIdCount(name, eMail) > 0) {
+			String searchId = service.selectId(name, eMail);
+			mv.addObject("searchId", searchId);
+			mv.setViewName("searchId_success");
+		} else {
+			mv.setViewName("searchId_fail");
+		}
+		return mv;
+	}
+
+	@RequestMapping("/beforeSearchPw.do")
+	public String beforeSearchPw() {
+		return "beforeSearchPw_form";
+	}
+
+	@RequestMapping(value="searchPwForm.do",method=RequestMethod.POST)
+	public ModelAndView searchPwForm(String id) {
+		ModelAndView mv = new ModelAndView();
+		if (service.selectIdCheck(id)>0) {
+			System.out.println(service.selectIdCheck(id));
+			String question = service.questionSelect(id);
+			mv.addObject("id", id);
+			mv.addObject("question", question);
+			mv.setViewName("searchPw_form");
+		}else {
+			mv.setViewName("beforeSearchPw_fail");
+		}
+		return mv;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/searchPw.do", method = RequestMethod.POST)
+	public void searchPw(MemberVO member, HttpServletResponse resp) {
+		String result = "0";
+		if(service.checkQuestionAnswer(member.getQuestionAnswer(),member.getId())>0) {
+			String pw = service.selectPw(member.getQuestionAnswer(),member.getId());
+			result = pw;
+		}else {
+			result = "0";
+		}
+		try {
+			resp.getWriter().println(result);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
