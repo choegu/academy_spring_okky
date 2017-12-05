@@ -77,12 +77,22 @@ public class BoardController {
 		return mv;
 	}
 	
+	@RequestMapping("/updateForm.do")
+	public ModelAndView updateForm(int board_num) {
+		BoardVO board = service.readNoCount(board_num);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("task", "update");
+		mv.addObject("original", board);
+		mv.setViewName("write_form");
+		return mv;
+	}
+	
 	@RequestMapping("/replyForm.do")
 	public ModelAndView replyForm(int board_num) {
 		ModelAndView mv = new ModelAndView();
 		BoardVO board = service.readNoCount(board_num);
 		mv.addObject("task", "reply");
-		mv.addObject("reply", board);
+		mv.addObject("original", board);
 		mv.setViewName("write_form");
 		return mv;
 	}
@@ -131,16 +141,6 @@ public class BoardController {
 		
 		mv.addObject("board", board);
 		mv.setViewName("read");
-		return mv;
-	}
-	
-	@RequestMapping("/updateForm.do")
-	public ModelAndView updateForm(int board_num) {
-		BoardVO board = service.readNoCount(board_num);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("original", board);
-		mv.addObject("task", "update");
-		mv.setViewName("write_form");
 		return mv;
 	}
 	

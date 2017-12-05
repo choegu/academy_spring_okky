@@ -21,17 +21,21 @@
 		<property name="order" value="0"></property>
 	</bean>
 
-<!-- 	<mvc:interceptors> -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/myPage.do"/> -->
-<!-- 			<mvc:mapping path="/writeForm.do"/> -->
-<!-- 			<mvc:mapping path="/replyForm.do"/> -->
-<!-- 			<mvc:mapping path="/insert.do"/> -->
-<!-- 			<mvc:mapping path="/insertComment.do"/> -->
-<!-- 			<mvc:mapping path="/updateComment.do"/> -->
-<!-- 			<mvc:mapping path="/replyComment.do"/> -->
-<!-- 			<bean class="interceptor.LoginCheckInterceptor"></bean> -->
-<!-- 		</mvc:interceptor> -->
-<!-- 	</mvc:interceptors> -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/writingList.do"/>
+			<mvc:mapping path="/writeForm.do"/>
+			<mvc:mapping path="/updateForm.do"/>
+			<mvc:mapping path="/replyForm.do"/>
+			<mvc:mapping path="/write.do"/>
+			<mvc:mapping path="/update.do"/>
+			<mvc:mapping path="/delete.do"/>
+			<mvc:mapping path="/insertComment.do"/>
+			<mvc:mapping path="/updateComment.do"/>
+			<mvc:mapping path="/replyComment.do"/>
+			<mvc:mapping path="/deleteComment.do"/>
+			<bean class="com.project.one.interceptor.LoginCheckInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

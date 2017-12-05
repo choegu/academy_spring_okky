@@ -92,7 +92,6 @@
 	
 	window.onload=function(){
 		var category = $('#originCategory').val();
-		alert('category:'+category);
 		$('#category').val(category);
 	};
 	
@@ -104,7 +103,16 @@
 <!-- 	<link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css"> -->
 
 <!-- include summernote css/js-->
+<style type="text/css">
+ 	body { 
+ 		padding-left: 10px; 
+ 		padding-right: 10px; 
+ 	} 
+ 	#divSubmit {
+ 		text-align: right;
+ 	}
 
+</style>
 
 </head>
 <body id="main">
@@ -112,44 +120,51 @@
 	<input type="hidden" id="originCategory" value="${original.category}">
 
 	<form action="write.do" method="post">
-		<select name="category" id="category" required="required">
-			<option value="">Category</option>
-			
-			<optgroup label="IT">
-				<option value="JAVA">JAVA</option>
-				<option value="JavaScript">Java Script</option>
-				<option value="CSS">CSS</option>
-				<option value="JSP">JSP</option>
-				<option value="Spring">Spring</option>
-				<option value="Database">Database</option>
-				<option value="Android">Android</option>
-			</optgroup>
-
-			<optgroup label="English">
-				<option value="SONG">SONG</option>
-				<option value="구어체">구어체</option>
-				<option value="MEMO">MEMO</option>
-			</optgroup>
-
-			<option value="ETC">ETC</option>
-
-		</select>
-
-		<input type="hidden" id="category" name="category" value="">
-
-		제목 :
-		<c:choose>
-			<c:when test="${task=='write' }">
-				<input type="text" name="title" size="60%" required="required">
-			</c:when>
-			<c:when test="${task=='update' }">
-				<input type="text" name="title" size="60%" value="${original.title }" required="required">
-			</c:when>
-			<c:otherwise>
-				<input type="text" name="title" size="60%" value="Re:${reply.title }" required="required">
-			</c:otherwise>
-		</c:choose>
-		<p></p>
+		<div>
+			<select name="category" id="category" required="required">
+				<option value="">Category</option>
+				
+				<optgroup label="IT">
+					<option value="JAVA">JAVA</option>
+					<option value="JavaScript">Java Script</option>
+					<option value="CSS">CSS</option>
+					<option value="JSP">JSP</option>
+					<option value="Spring">Spring</option>
+					<option value="Database">Database</option>
+					<option value="Android">Android</option>
+				</optgroup>
+	
+				<optgroup label="English">
+					<option value="SONG">SONG</option>
+					<option value="구어체">구어체</option>
+					<option value="MEMO">MEMO</option>
+				</optgroup>
+	
+				<option value="ETC">ETC</option>
+	
+			</select>
+	
+			<input type="hidden" id="category" name="category" value="">
+			&nbsp;&nbsp;
+			<input type="radio" name="open" value="1" checked="checked">공개&nbsp; 
+			<input type="radio" name="open" value="0">비공개
+		</div>
+		<p>
+		<div>
+			제목 :
+			<c:choose>
+				<c:when test="${task=='write' }">
+					<input type="text" name="title" size="60%" required="required">
+				</c:when>
+				<c:when test="${task=='update' }">
+					<input type="text" name="title" size="60%" value="${original.title }" required="required">
+				</c:when>
+				<c:otherwise>
+					<input type="text" name="title" size="60%" value="Re:${original.title }" required="required">
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<p>
 		<!--				
 				<c:choose>
 					<c:when test="${task=='write' }">
@@ -200,7 +215,7 @@
 						<p>${original.content }</p>
 					</c:when>
 					<c:otherwise>
-						<p>${reply.content }</p>
+						<p>${original.content }</p>
 					</c:otherwise>
 				</c:choose>
 
@@ -216,11 +231,13 @@
 				<input type="hidden" name="task" value="update">
 			</c:when>
 			<c:otherwise>
-				<input type="hidden" name="ref_num" value="${reply.board_num }">
+				<input type="hidden" name="ref_num" value="${original.board_num }">
 				<input type="hidden" name="task" value="reply">
 			</c:otherwise>
 		</c:choose>
-		<br> <input type="submit" id="submit" value="작성완료">
+		<div id="divSubmit">
+			<input type="submit" id="submit" value="작성완료">
+		</div>
 
 	</form>
 <!-- <input type="file" id="btnFile" value="파일첨부"> -->

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.one.repository.mapper.BoardMapper">
 	<insert id="insert" parameterType="BoardVO">
-		INSERT INTO BOARD(TITLE,WRITER,CONTENT,READ_COUNT,WRITE_DATE,LIST,LEVEL,RIDX,CATEGORY) 
-		VALUES(#{title},#{writer},#{content},#{read_count},#{write_date},#{list},#{level},#{ridx},#{category})
+		INSERT INTO BOARD(TITLE,WRITER,CONTENT,READ_COUNT,WRITE_DATE,LIST,LEVEL,RIDX,CATEGORY,OPEN) 
+		VALUES(#{title},#{writer},#{content},#{read_count},#{write_date},#{list},#{level},#{ridx},#{category},#{open})
 	</insert>
 	
 	<select id="maxList" resultType="int">

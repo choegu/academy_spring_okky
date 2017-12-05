@@ -77,6 +77,7 @@ $(function(){
 	 // Hide it AFTER the action was triggered
 	 $(".custom-menu").hide(100);
 	});
+	
 })
 
 
@@ -200,7 +201,7 @@ window.onload=function(){
 <body>
 <ul class='custom-menu'>
   <li data-action="first">쪽지 보내기</li>
-  <li data-action="second">회원정보 보기</li>
+<!--   <li data-action="second">회원정보 보기</li> -->
   <li data-action="third">작성자로 검색</li>
 </ul>
 	<table class="table table-striped table-bordered table-hover">
@@ -228,11 +229,21 @@ window.onload=function(){
 			
 			<c:if test="${not empty boardPage.boardList}">
 				<c:forEach items="${boardPage.boardList}" var="boardVO">
-					<c:if test="${boardVO.open!=3 }">
+					<c:if test="${(boardVO.open==1) || ((boardVO.open==0) && (boardVO.writer==sessionScope.loginId))}">
 						<tr>
 							<td>${boardVO.board_num }</td>
 							<td>${boardVO.category }</td>
 							<td id="title">
+								<span id="replySignTitle">
+									<c:forEach begin="1" end="${boardVO.level}" var="l" step="1">
+										<c:if test="${l>1}">
+											&nbsp;&nbsp;&nbsp;
+										</c:if>
+										<c:if test="${l==boardVO.level}">
+											<b>┗ </b>
+										</c:if>
+									</c:forEach>
+								</span>
 								<a href="read.do?board_num=${boardVO.board_num }">
 									${boardVO.title}
 								</a> 
@@ -253,6 +264,28 @@ window.onload=function(){
 								</c:if>
 							</td>
 							<td>${boardVO.read_count }</td>
+						</tr>
+					</c:if>
+					<c:if test="${(boardVO.open==0) && (boardVO.writer!=sessionScope.loginId) }">
+						<tr>
+						<tr>
+							<td>${boardVO.board_num }</td>
+							<td>${boardVO.category }</td>
+							<td id="title">[비공개 글입니다.]</td>
+							<td>
+								<span class="context-menu-one btn btn-neutral user-writer">${boardVO.writer }</span>
+							</td>
+							<td>
+								<fmt:formatDate value="${boardVO.write_date }" pattern="yyyyMMdd" var="writeDate"/>
+								<c:if test="${nowDate==writeDate }">
+									<fmt:formatDate value="${boardVO.write_date }" type="time" dateStyle="short" timeStyle="short"/>
+								</c:if>
+								<c:if test="${nowDate!=writeDate }">
+									<fmt:formatDate value="${boardVO.write_date }" type="date" dateStyle="short" timeStyle="short"/>
+								</c:if>
+							</td>
+							<td>${boardVO.read_count }</td>
+						</tr>
 						</tr>
 					</c:if>
 					<c:if test="${boardVO.open==3 }">

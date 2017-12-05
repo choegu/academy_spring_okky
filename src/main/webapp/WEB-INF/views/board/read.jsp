@@ -336,9 +336,18 @@
 <body>
 	<div class="container" id="articleInfo">
 		<h4 id="articleTitle"><b>${board.title }</b></h4>
+		카테고리 : ${board.category}<br>
 		작성자 : ${board.writer }<br>
 		조회수 : ${board.read_count }<br>
-		작성일시 : <fmt:formatDate value="${board.write_date }" type="both" dateStyle="short" timeStyle="short"/>
+		작성일시 : <fmt:formatDate value="${board.write_date }" type="both" dateStyle="short" timeStyle="short"/><br>
+		
+		공개여부 : 
+		<c:if test="${board.open==0 }">
+			비공개
+		</c:if>
+		<c:if test="${board.open==1 }">
+			공개
+		</c:if>
 	</div>
 	
 	<div class="container" id="bodyContent">
