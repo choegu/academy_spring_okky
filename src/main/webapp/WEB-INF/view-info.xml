@@ -81,11 +81,26 @@
 	<bean name="searchPw_fail" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/member/searchPw_fail.jsp"></property>
 	</bean>
-		<bean name="searchPw_form" class="org.springframework.web.servlet.view.JstlView">
+
+	<bean name="searchPw_form" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/member/searchPw_form.jsp"></property>
+	
 	</bean>
-		<bean name="searchPw_success" class="org.springframework.web.servlet.view.JstlView">
+
+	<bean name="searchPw_success" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/member/searchPw_Success.jsp"></property>
+	</bean>
+	
+	<bean name="beforeChangeInfo_form" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/beforeChangeInfo_form.jsp"></property>
+	</bean>
+	
+	<bean name="changeInfo_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/changeInfo_fail.jsp"></property>
+	</bean>
+	
+		<bean name="changeInfo_form" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/changeInfo_form.jsp"></property>
 	</bean>
 	
 	<!--web-inf -->
@@ -97,6 +112,9 @@
 		<property name="url" value="/WEB-INF/main.jsp"></property>
 	</bean>
 	
+	<bean name="myPage_main" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/myPage_main.jsp"></property>
+	</bean>
 	
 	
 </beans>

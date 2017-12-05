@@ -28,7 +28,7 @@
 <script type="text/javascript">
 	$(function() {
 		$('#changeInfo').click(function() {
-			$('#target iframe').attr('src', 'changeInfoForm.do');
+			$('#target iframe').attr('src', 'beforeChangeInfo.do');
 		})
 		$('#writingList').click(function() {
 			$('#target iframe').attr('src', 'writingList.do');
