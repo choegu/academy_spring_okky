@@ -213,6 +213,10 @@ $(document).bind("mousedown", function (e) {
 					</td>
 				</tr>
 			</c:if>
+			
+			<jsp:useBean id="now" class="java.util.Date" />
+			<fmt:formatDate value="${now}" pattern="yyyyMMdd" var="nowDate" />
+			
 			<c:if test="${not empty boardPage.boardList}">
 				<c:forEach items="${boardPage.boardList}" var="boardVO">
 					<c:if test="${boardVO.open!=3 }">
@@ -228,7 +232,13 @@ $(document).bind("mousedown", function (e) {
 								<span class="context-menu-one btn btn-neutral user-writer">${boardVO.writer }</span>
 							</td>
 							<td>
-								<fmt:formatDate value="${boardVO.write_date }" type="date" dateStyle="short" timeStyle="short"/>
+								<fmt:formatDate value="${boardVO.write_date }" pattern="yyyyMMdd" var="writeDate"/>
+								<c:if test="${nowDate==writeDate }">
+									<fmt:formatDate value="${boardVO.write_date }" type="time" dateStyle="short" timeStyle="short"/>
+								</c:if>
+								<c:if test="${nowDate!=writeDate }">
+									<fmt:formatDate value="${boardVO.write_date }" type="date" dateStyle="short" timeStyle="short"/>
+								</c:if>
 							</td>
 							<td>${boardVO.read_count }</td>
 						</tr>
