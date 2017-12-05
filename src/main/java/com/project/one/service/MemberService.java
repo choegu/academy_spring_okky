@@ -43,7 +43,7 @@ public class MemberService {
 			return false;
 		}
 	}
-
+	
 	public int searchIdCount(String name,String eMail) {
 		return dao.searchIdCount(name,eMail);
 	}
@@ -63,4 +63,9 @@ public class MemberService {
 	public String selectPw(String answer,String id) {
 		return dao.selectPw(answer,id);
 	}
+	
+	public MemberVO selectMemberInfo(String loginId) {
+		return dao.selectMemberInfo(loginId);
+	}
+	
 }

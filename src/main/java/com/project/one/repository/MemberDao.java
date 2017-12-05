@@ -60,4 +60,9 @@ public class MemberDao {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		return mapper.selectPw(answer,id);
 	}
+	
+	public MemberVO selectMemberInfo(String loginId) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		return mapper.selectMemberInfo(loginId);
+	}
 }
