@@ -15,7 +15,7 @@
 	</select>
 	
 	<select id="selectIdCount" resultType="int">
-		SELECT COUNT(*) FROM BOARD WHERE NOT OPEN=2 AND WRITER=#{loginId}
+		SELECT COUNT(*) FROM BOARD WHERE NOT OPEN=2 AND NOT OPEN=3 WRITER=#{loginId}
 	</select>	
 	
 	<select id="select" parameterType="int" resultType="BoardVO">
