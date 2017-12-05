@@ -23,6 +23,10 @@ public class BoardDao {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.selectTotalCount();
 	}
+	public int selectIdCount(String loginId) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.selectIdCount(loginId);
+	}
 	public int searchTitleCount(String keyword) {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.searchTitleCount(keyword);

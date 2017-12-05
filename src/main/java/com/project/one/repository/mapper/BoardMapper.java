@@ -9,6 +9,7 @@ import com.project.one.vo.BoardVO;
 public interface BoardMapper {
 	public int insert(BoardVO board);
 	public int selectTotalCount();
+	public int selectIdCount(String loginId);
 	public int searchTitleCount(String keyword);
 	public int searchContentCount(String keyword);
 	public int searchTitleContentCount(String keyword);

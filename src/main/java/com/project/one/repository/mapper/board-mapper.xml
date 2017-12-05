@@ -7,81 +7,86 @@
 	</insert>
 	
 	<select id="maxList" resultType="int">
-		SELECT MAX(LIST) FROM BOARD
+		SELECT MAX(LIST) FROM BOARD WHERE NOT OPEN=2 
 	</select>
 	
 	<select id="selectTotalCount" resultType="int">
-		SELECT COUNT(*) FROM BOARD
+		SELECT COUNT(*) FROM BOARD WHERE NOT OPEN=2 
 	</select>
 	
+	<select id="selectIdCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD WHERE NOT OPEN=2 AND WRITER=#{loginId}
+	</select>	
+	
 	<select id="select" parameterType="int" resultType="BoardVO">
-		SELECT * FROM BOARD WHERE BOARD_NUM=#{board_num} 
+		SELECT * FROM BOARD WHERE BOARD_NUM=#{board_num} AND NOT OPEN=2 
 	</select>
 	
 	<select id="replyList" resultType="int">
-		SELECT LIST FROM BOARD WHERE BOARD_NUM=#{board_num}
+		SELECT LIST FROM BOARD WHERE BOARD_NUM=#{board_num} AND NOT OPEN=2 
 	</select>
 	
 	<select id="replyLevel" resultType="int">
-		SELECT LEVEL FROM BOARD WHERE BOARD_NUM=#{board_num}
+		SELECT LEVEL FROM BOARD WHERE BOARD_NUM=#{board_num} AND NOT OPEN=2 
 	</select>
 	
 	<select id="replyRidx" resultType="int">
-		SELECT RIDX FROM BOARD WHERE BOARD_NUM=#{board_num}
+		SELECT RIDX FROM BOARD WHERE BOARD_NUM=#{board_num} AND NOT OPEN=2 
 	</select>
 	
 	<select id="replyExistCheck" resultType="int">
-		SELECT COUNT(*) FROM BOARD WHERE LIST=#{list} AND LEVEL=#{level} AND RIDX=#{ridx}
+		SELECT COUNT(*) FROM BOARD WHERE LIST=#{list} AND LEVEL=#{level} AND RIDX=#{ridx} AND NOT OPEN=2 
 	</select>
 	
 	<select id="listCount" resultType="int">
-		SELECT COUNT(LIST) FROM BOARD WHERE LIST=#{list}
+		SELECT COUNT(LIST) FROM BOARD WHERE LIST=#{list} AND NOT OPEN=2 
 	</select>
 	
 	<select id="searchTitleCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') 
+		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') AND NOT OPEN=2 
 	</select>
 	
 	<select id="searchContentCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE CONTENT LIKE CONCAT('%',#{keyword},'%') 
+		WHERE CONTENT LIKE CONCAT('%',#{keyword},'%') AND NOT OPEN=2 
 	</select>
 	
 	<select id="searchTitleContentCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%')   
+		WHERE (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%'))
+		 AND NOT OPEN=2    
 	</select>		
 	
 	<select id="searchWriterCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE WRITER LIKE #{keyword} 
+		WHERE WRITER LIKE #{keyword} AND NOT OPEN=2  
 	</select>	
 	
 	<select id="searchCategoryTitleCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category} 
+		WHERE TITLE LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category} AND NOT OPEN=2  
 	</select>
 	
 	<select id="searchCategoryContentCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE CONTENT LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category}  
+		WHERE CONTENT LIKE CONCAT('%',#{keyword},'%') AND CATEGORY=#{category} AND NOT OPEN=2   
 	</select>
 	
 	<select id="searchCategoryTitleContentCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
 		WHERE (TITLE LIKE CONCAT('%',#{keyword},'%') OR CONTENT LIKE CONCAT('%',#{keyword},'%'))
-		AND CATEGORY=#{category}    
+		AND CATEGORY=#{category} AND NOT OPEN=2     
 	</select>		
 	
 	<select id="searchCategoryWriterCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE WRITER LIKE #{keyword} AND CATEGORY=#{category}  
+		WHERE WRITER LIKE #{keyword} AND CATEGORY=#{category} AND NOT OPEN=2   
 	</select>		
 	
 	<select id="searchCategoryCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD 
-		WHERE CATEGORY LIKE #{category} 
+		WHERE CATEGORY LIKE #{category} AND NOT OPEN=2  
 	</select>
 	
 	<select id="selectList" resultType="BoardVO">
@@ -226,7 +231,7 @@
 	</select>
 	
 	<select id="inputMaxRidx" resultType="int">
-		SELECT MAX(RIDX)+1 FROM BOARD WHERE LIST=#{list}
+		SELECT MAX(RIDX)+1 FROM BOARD WHERE LIST=#{list} AND NOT OPEN=2 
 	</select>
 	
 	<update id="increaseRidx" parameterType="int">
