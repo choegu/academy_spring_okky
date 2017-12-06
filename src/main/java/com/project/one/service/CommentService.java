@@ -66,6 +66,7 @@ public class CommentService {
     
     // 댓글 수정
     public int commentUpdate(CommentVO comment) {
+    	comment.setWrite_date(new Date());
     	comment.setOpen(1); //공개글
     	return dao.commentUpdate(comment);
     }

@@ -75,7 +75,7 @@
 	<update id="commentUpdate" parameterType="CommentVO">
 		UPDATE COMMENT
 		SET
-		CONTENT = #{content}
+		CONTENT = #{content}, WRITE_DATE = #{write_date}
 		WHERE COMMENT_NUM = #{comment_num}
 	</update>
 

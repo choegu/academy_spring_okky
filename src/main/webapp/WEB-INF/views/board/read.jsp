@@ -31,7 +31,8 @@
 	}
 	
 	#articleInfo {
-		border: 1px solid green;
+		border: 10px solid #A9E2F3;
+/* 		background-color: #E0F8F7; */
 	}
 	
 	#articleTitle {
@@ -76,32 +77,45 @@
 	        data : 'board_num=${board.board_num}',
 	        dataType : 'json',
 	        success : function(data){
-	            var a =''; 
+	            var a ='';
+	            var replyLevel;
+	            var replyStart;
 	            $.each(data, function(key, value){ 
 	            	console.log(key+"success:"+value);
-	                
 	                console.log(value.comment_num+'test:'+value.content);
+	                replyLevel=0;
+	                replyStart=0;
+	                for (var i = 0; i < value.level; i++) {
+                		replyLevel += 50;
+					}	
 // 	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
 	                
 	                if (value.open==2) {
 	                	
 	                } else if (value.open==3) {
-	                	a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
+	                	a += '<div class="commentArea" style="border-bottom:1px dotted darkgray; margin-bottom: 0px; background-color:#E0F8E0; margin-left: '+replyLevel+'px">';
 	                	a += '삭제된 댓글입니다.';
 	                	a += '</div>';
 	                } else {
-	                	a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                	for (var i = 0; i < value.level; i++) {
-	                		if (i!=0) {
-								a += '&nbsp;&nbsp;&nbsp;';
-							}
-							if (i==value.level-1) {
-								a += '<b>┗ </b>';
-							}
-						}
-		                a += '<span class="commentInfo'+value.comment_num+'"> <b>★ '+value.writer+'</b>';
+// 	                	for (var i = 0; i < value.level; i++) {
+// 	                		if (i!=0) {
+// 								a += '&nbsp;&nbsp;&nbsp;';
+// 							}
+// 							if (i==value.level-1) {
+// 								a += '<b>┗ </b>';
+// 							}
+// 						}
+	                	                	
+	                	a += '<div class="commentArea" style="border-bottom:1px dotted darkgray; margin-bottom: 0px; background-color:#E0F8E0; margin-left: '+replyLevel+'px">';
+	                	
+	                	if (value.level!=0) {
+		                	a += '<img src="img/replyComment.PNG" style="position: relative; left: -38px;">';
+	                		replyStart = -38;
+	                	}
+		                
+	                	a += '<span class="commentInfo'+value.comment_num+'" style="position: relative; left: '+replyStart+'px;"> <b>★ '+value.writer+'</b>';
 		                a += ' ('+value.write_date+') </span>';
-		                a += '<span>';
+		                a += '<span style="position: relative; left: '+replyStart+'px;">';
 		                if("${sessionScope.loginId}"== value.writer){
 		                	a += '<a onclick="commentUpdate('+value.comment_num+');"> <input type="button" value="수정"></a>';
 		                	a += ' <a href="#" id="btnCmtDel"><input type="button" value="삭제"></a>';
@@ -112,17 +126,17 @@
 		                
 		                var text_content = value.content.replace(/\n/gi,"<br>");
 		                a += '<div class="commentContentH'+value.comment_num+'"> <p><br> ';
-	                	for (var i = 0; i < value.level; i++) {
-	                		if (i==0) {
-								a += '&nbsp;&nbsp;';
-							}
-							a += '&nbsp;&nbsp;&nbsp;';
-						}		                
+// 	                	for (var i = 0; i < value.level; i++) {
+// 	                		if (i==0) {
+// 								a += '&nbsp;&nbsp;';
+// 							}
+// 							a += '&nbsp;&nbsp;&nbsp;';
+// 						}		                
 		                a += text_content+'</p></div>';
-		        	    a += '<div class="commentContentT'+value.comment_num+'" style="display: none">';
-		        	    a += '<textarea class="form-control" rows="3" name="content_'+value.comment_num+'">'+value.content+'</textarea>';
+		        	    a += '<div class="commentContentT'+value.comment_num+'" style="display: none; text-align:right;">';
+		        	    a += '<textarea class="form-control" rows="6" name="content_'+value.comment_num+'">'+value.content+'</textarea>';
 		        	    a += '<button class="btn btn-default" type="button" onclick="commentUpdateProc('+value.comment_num+');">확인</button></div> ';
-		        	    a += '<div class="commentReply'+value.comment_num+'" style="display: none">';
+		        	    a += '<div class="commentReply'+value.comment_num+'" style="display: none; text-align:right;">';
 
 		        	    a += '<textarea class="form-control" rows="3" name="reply_'+value.comment_num+'"></textarea>';
 		        	    a += '<button class="btn btn-default" type="button" onclick="commentReplyProc('+value.comment_num+');">등록</button></div> ';

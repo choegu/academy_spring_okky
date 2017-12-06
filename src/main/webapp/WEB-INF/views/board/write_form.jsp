@@ -151,16 +151,15 @@
 		</div>
 		<p>
 		<div>
-			力格 :
 			<c:choose>
 				<c:when test="${task=='write' }">
-					<input type="text" name="title" size="60%" required="required">
+					<input type="text" name="title" style="width:100%;" required="required" placeholder="力格 涝仿">
 				</c:when>
 				<c:when test="${task=='update' }">
-					<input type="text" name="title" size="60%" value="${original.title }" required="required">
+					<input type="text" name="title" style="width:100%;" value="${original.title }" required="required" placeholder="力格 涝仿">
 				</c:when>
 				<c:otherwise>
-					<input type="text" name="title" size="60%" value="Re:${original.title }" required="required">
+					<input type="text" name="title" style="width:100%;" value="Re:${original.title }" required="required" placeholder="力格 涝仿">
 				</c:otherwise>
 			</c:choose>
 		</div>
