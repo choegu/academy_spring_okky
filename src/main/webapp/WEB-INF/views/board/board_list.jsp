@@ -217,12 +217,12 @@ window.onload=function(){
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
-				<th>번호</th>
+				<th>NO</th>
 				<th>분류</th>
 				<th>제목</th>
 				<th>이름</th>
 				<th>날짜</th>
-				<th>조회</th>
+				<th>R</th>
 			</tr>
 		</thead>
 		<tbody>
