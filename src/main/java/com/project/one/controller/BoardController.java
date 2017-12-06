@@ -21,6 +21,18 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
+	// interceptor (임시)
+	@RequestMapping("/nologin.do")
+	public String nologin() {
+		return "nologin";
+	}
+	
+	// 카테고리 리스트
+	@RequestMapping("/categoryList.do")
+	public String categoryList() {
+		return "category_list";
+	}
+	
 	// 게시판 리스트
 	@RequestMapping("/board.do")
 	public ModelAndView board(@RequestParam(defaultValue="1")int page) {

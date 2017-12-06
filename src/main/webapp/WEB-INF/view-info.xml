@@ -4,6 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Board -->
+	<bean name="nologin" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/board/nologin.jsp"></property>
+	</bean>	
+		
+	<bean name="category_list" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/board/category_list.jsp"></property>
+	</bean>	
+	
 	<bean name="board_list" class="org.springframework.web.servlet.view.JstlView">
 	<property name="url" value="/WEB-INF/views/board/board_list.jsp"></property>
 	</bean>

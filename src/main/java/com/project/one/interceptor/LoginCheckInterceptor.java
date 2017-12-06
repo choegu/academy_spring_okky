@@ -17,7 +17,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 		if(loginId != null && loginId.length()>0) {
 			return true;
 		}else {
-			response.sendRedirect("main.do");
+			response.sendRedirect("nologin.do");
 			return false;
 		}
 	}

@@ -93,7 +93,10 @@
 			$('#target').height = height;
 			$('.content-wrapper').height = height;
 		}else{
-			frm.style.height = 100 + "vh";
+// 			frm.style.height = 100 + "vh";
+			$(frm).css('height',height);
+			$('#target').height = height;
+			$('.content-wrapper').height = height;
 		}	
 	}
 	

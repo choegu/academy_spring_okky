@@ -80,21 +80,30 @@
 	            var a ='';
 	            var replyLevel;
 	            var replyStart;
+	            var replyZero;
 	            $.each(data, function(key, value){ 
 	            	console.log(key+"success:"+value);
 	                console.log(value.comment_num+'test:'+value.content);
 	                replyLevel=0;
 	                replyStart=0;
+	                replyZero=0;
 	                for (var i = 0; i < value.level; i++) {
                 		replyLevel += 50;
 					}	
+	                if (value.level==0) {
+	                	replyZero=10;
+	                }
 // 	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
 	                
 	                if (value.open==2) {
 	                	
 	                } else if (value.open==3) {
-	                	a += '<div class="commentArea" style="border-bottom:1px dotted darkgray; margin-bottom: 0px; background-color:#E0F8E0; margin-left: '+replyLevel+'px">';
-	                	a += '삭제된 댓글입니다.';
+	                	a += '<div class="commentArea" style="border-bottom:1px dotted darkgray; margin-top: '+replyZero+'px; background-color:#E0F8E0; min-height:50px; margin-left: '+replyLevel+'px">';
+	                	if (value.level!=0) {
+		                	a += '<img src="img/replyComment.PNG" style="position: relative; left: -38px;">';
+	                		replyStart = -38;
+	                	}	            
+	                	a += '<span style="position: relative; left: '+replyStart+'px;">[삭제된 댓글입니다.]</span>';	                	
 	                	a += '</div>';
 	                } else {
 // 	                	for (var i = 0; i < value.level; i++) {
@@ -106,7 +115,7 @@
 // 							}
 // 						}
 	                	                	
-	                	a += '<div class="commentArea" style="border-bottom:1px dotted darkgray; margin-bottom: 0px; background-color:#E0F8E0; margin-left: '+replyLevel+'px">';
+	                	a += '<div class="commentArea" style="border-bottom:1px dotted darkgray; margin-top: '+replyZero+'px; background-color:#E0F8E0; margin-left: '+replyLevel+'px">';
 	                	
 	                	if (value.level!=0) {
 		                	a += '<img src="img/replyComment.PNG" style="position: relative; left: -38px;">';
@@ -329,8 +338,8 @@
 	        data : 'comment_num='+comment_num,
 	        dataType : 'json',
 	        success : function(d){
-	        	alert('댓글이 삭제되었습니다');
 	            if(d == 1) {
+		        	alert('댓글이 삭제되었습니다');
 	            	commentList(); //댓글 삭제후 목록 출력 
 	            } else {
 	            	$('body').append(data);

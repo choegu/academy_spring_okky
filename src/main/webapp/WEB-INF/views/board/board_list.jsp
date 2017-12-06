@@ -98,49 +98,13 @@ window.onload=function(){
 		$('#searchOption').val(searchOption);
 	}
 	
+	var parentDoc= window.parent.document;
+	var ifrm = $(parentDoc).find('#the_iframe');
 	
-	//Make the DIV element draggagle:
-	dragElement(document.getElementById(("mydiv")));
-
-	function dragElement(elmnt) {
-	  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-	  if (document.getElementById(elmnt.id + "header")) {
-	    /* if present, the header is where you move the DIV from:*/
-	    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-	  } else {
-	    /* otherwise, move the DIV from anywhere inside the DIV:*/
-	    elmnt.onmousedown = dragMouseDown;
-	  }
-
-	  function dragMouseDown(e) {
-	    e = e || window.event;
-	    // get the mouse cursor position at startup:
-	    pos3 = e.clientX;
-	    pos4 = e.clientY;
-	    document.onmouseup = closeDragElement;
-	    // call a function whenever the cursor moves:
-	    document.onmousemove = elementDrag;
-	  }
-
-	  function elementDrag(e) {
-	    e = e || window.event;
-	    // calculate the new cursor position:
-	    pos1 = pos3 - e.clientX;
-	    pos2 = pos4 - e.clientY;
-	    pos3 = e.clientX;
-	    pos4 = e.clientY;
-	    // set the element's new position:
-	    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-	    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-	  }
-
-	  function closeDragElement() {
-	    /* stop moving when mouse button is released:*/
-	    document.onmouseup = null;
-	    document.onmousemove = null;
-	  }
-	}
+	var board_height = $(document).height();
 	
+	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+	parent.resizeFrame(ifrm, board_height);
 };
 
 
@@ -242,23 +206,6 @@ window.onload=function(){
  		padding-right: 10px; 
  	} 
 
-/* 드래그 테스트 */
-#mydiv {
-    position: fixed;
-    z-index: 9;
-    background-color: #f1f1f1;
-    border: 1px solid #d3d3d3;
-    text-align: center;
-}
-
-#mydivheader {
-    padding: 10px;
-    cursor: move;
-    z-index: 10;
-    background-color: #2196F3;
-    color: #fff;
-}
-
 </style>
 </head>
 <body>
@@ -270,12 +217,12 @@ window.onload=function(){
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
-				<th>글번호</th>
-				<th>카테고리</th>
+				<th>번호</th>
+				<th>분류</th>
 				<th>제목</th>
-				<th>작성자</th>
-				<th>작성일</th>
-				<th>조회수</th>
+				<th>이름</th>
+				<th>날짜</th>
+				<th>조회</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -409,15 +356,6 @@ window.onload=function(){
 			<input type="hidden" name="searchOption" value="writer">
 			<input type="hidden" id="searchForWriterName" name="searchText" value="">
 		</form>
-	</div>
-
-	<!--Draggable DIV: -->
-	<div id="mydiv">
-		<!--Include a header DIV with the same name as the draggable DIV, followed by "header":-->
-		<div id="mydivheader">Click here to move</div>
-		<p>Move</p>
-		<p>this</p>
-		<p>DIV</p>
 	</div>
 </body>
 </html>

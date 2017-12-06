@@ -153,13 +153,13 @@
 		<div>
 			<c:choose>
 				<c:when test="${task=='write' }">
-					<input type="text" name="title" style="width:100%;" required="required" placeholder="제목 입력">
+					<input type="text" name="title" style="width:100%;" maxlength="50" required="required" placeholder="제목 입력 (최대 50자 가능)">
 				</c:when>
 				<c:when test="${task=='update' }">
-					<input type="text" name="title" style="width:100%;" value="${original.title }" required="required" placeholder="제목 입력">
+					<input type="text" name="title" style="width:100%;" maxlength="50" value="${original.title }" required="required" placeholder="제목 입력 (최대 50자 가능)">
 				</c:when>
 				<c:otherwise>
-					<input type="text" name="title" style="width:100%;" value="Re:${original.title }" required="required" placeholder="제목 입력">
+					<input type="text" name="title" style="width:100%;" maxlength="50" value="Re:${original.title }" required="required" placeholder="제목 입력 (최대 50자 가능)">
 				</c:otherwise>
 			</c:choose>
 		</div>
