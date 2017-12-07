@@ -196,6 +196,23 @@ public class MemberController {
 		}
 	}
 
+	@RequestMapping("/beforeMemberLeave.do")
+	public String beforeMemberLeave() {
+		return "memberLeave_form";
+	}
+	//회원탈퇴 부분 비밀번호 적는곳
+	@RequestMapping("/memberLeave.do")
+	public String memberLeave(String pw,HttpSession session) {
+		String loginId = (String)session.getAttribute("loginId");
+		if(service.checkPassword(loginId, pw)) {
+			service.deleteMember(loginId);
+			session.invalidate();
+			return "memberLeave_success";
+		}else {
+			return "memberLeave_fail";
+		}
+	}
+
 	@RequestMapping("/logOut.do")
 	public String logOut(HttpSession session) {
 		session.invalidate();

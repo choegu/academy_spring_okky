@@ -75,4 +75,9 @@ public class MemberDao {
 		MemberMapper mapper = session.getMapper(MemberMapper.class);
 		return mapper.updateMemberInfo(member);
 	}
+	
+	public void deleteMember(String loginId) {
+		MemberMapper mapper = session.getMapper(MemberMapper.class);
+		mapper.deleteMember(loginId);
+	}
 }

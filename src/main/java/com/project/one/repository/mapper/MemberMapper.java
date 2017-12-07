@@ -17,6 +17,7 @@ public interface MemberMapper {
 	public MemberVO selectMemberInfo(String loginId);
 	public int checkPassword(@Param("loginId")String loginId,@Param("pw")String pw);
 	public int updateMemberInfo(MemberVO member);
+	public void deleteMember(String loginId);
 }
 
 

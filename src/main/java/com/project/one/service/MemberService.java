@@ -84,5 +84,9 @@ public class MemberService {
 		}
 	}
 	
+	public void deleteMember(String loginId) {
+		dao.deleteMember(loginId);
+	}
+	
 	
 }

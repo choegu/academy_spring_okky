@@ -115,6 +115,18 @@
 		<property name="url" value="/WEB-INF/views/member/changeInfo_form.jsp"></property>
 	</bean>
 	
+	<bean name="memberLeave_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/memberLeave_fail.jsp"></property>
+	</bean>
+	
+	<bean name="memberLeave_form" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/memberLeave_form.jsp"></property>
+	</bean>	
+	
+	<bean name="memberLeave_success" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/memberLeave_success.jsp"></property>
+	</bean>
+	
 	<!--web-inf -->
 	<bean name="index" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/index.jsp"></property>
@@ -127,6 +139,4 @@
 	<bean name="myPage_main" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/myPage_main.jsp"></property>
 	</bean>
-	
-	
 </beans>

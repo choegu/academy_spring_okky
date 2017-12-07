@@ -50,4 +50,8 @@
 		UPDATE MEMBER SET PW=#{pw},NAME=#{name},EMAIL=#{eMail},QUESTION=#{question},QUESTIONANSWER=#{questionAnswer}
 		WHERE ID=#{id}
 	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM MEMBER WHERE ID=#{loginId}
+	</delete>
 </mapper>
