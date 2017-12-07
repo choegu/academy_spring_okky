@@ -51,7 +51,7 @@
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
 		id="mainNav">
-		<a class="navbar-brand" href="main.do">Knowledge Sharing!!</a>
+		<a class="navbar-brand" href="main.do"><b> Knowledge Sharing!!</b></a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false"
@@ -105,18 +105,18 @@
 			<!-- 			메세지 부분 위에 해드  -->
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link" href="study_room.jsp"><i
-						class="fa fa-fw fa-book"></i>STUDY ROOM</a></li>
+						class="fa fa-fw fa-book"></i><b>STUDY ROOM</b></a></li>
 				<li class="nav-item"><a class="nav-link" href="community.jsp"><i
-						class="fa fa-fw fa-comments-o"></i>COMMUNITY</a></li>
+						class="fa fa-fw fa-comments-o"></i><b>COMMUNITY</b></a></li>
 				<c:if test="${empty sessionScope.loginId}">
 					<li class="nav-item"><a class="nav-link" href="index.jsp">
-						<i class="fa fa-fw fa-lock"></i>LOGIN</a></li>
+						<b style="color: #66FF66;"><i class="fa fa-fw fa-lock"></i>LOGIN</b></a></li>
 				</c:if>		
 				<c:if test="${not empty sessionScope.loginId}">
 					<li class="nav-item"><a class="nav-link" href="myPage.jsp">
-						<i class="fa fa-fw  fa-user"></i>MY PAGE</a></li>
+						<i class="fa fa-fw  fa-user"></i><b>MY PAGE</b></a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-						<i class="fa fa-fw fa-unlock-alt"></i>LOGOUT</a></li>
+						<b style="color: #FF3300;"><i class="fa fa-fw fa-unlock-alt"></i>LOGOUT</b></a></li>
 				</c:if>
 			</ul>
 		</div>
