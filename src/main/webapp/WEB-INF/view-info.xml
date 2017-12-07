@@ -61,7 +61,13 @@
 	<bean name="deleteSendAll_success" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/message/deleteSendAll_success.jsp"></property>
 	</bean>
-	
+	<bean name="deleteSendAll_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/message/deleteSendAll_fail.jsp"></property>
+	</bean>
+	<bean name="deleteReceiveAll_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/message/deleteReceiveAll_fail.jsp"></property>
+	</bean>
+
     <!-- member -->
     <bean name="login_fail" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/member/login_fail.jsp"></property>

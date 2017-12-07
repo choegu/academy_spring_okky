@@ -14,14 +14,13 @@ import com.project.one.service.MemberService;
 import com.project.one.service.MessageService;
 import com.project.one.vo.MessageVO;
 
-
 @Controller
 public class MessageController {
 	@Autowired
 	private MessageService service;
 	@Autowired
 	private MemberService memberService;
-	
+
 	@RequestMapping("/receiveMessage.do")
 	public ModelAndView receiveMessage(@RequestParam(defaultValue = "1") int page, HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
@@ -43,17 +42,17 @@ public class MessageController {
 	@RequestMapping("/messageWriteForm.do")
 	public ModelAndView messageWriteForm(@RequestParam(defaultValue = "") String receiveId) {
 		ModelAndView mv = new ModelAndView();
-		if(receiveId.equals("")) {
+		if (receiveId.equals("")) {
 			mv.addObject("receiveId", receiveId);
 			mv.setViewName("messageWrite_form");
-		}else {
-			if(memberService.receiveIdCheck(receiveId)) {
+		} else {
+			if (memberService.receiveIdCheck(receiveId)) {
 				mv.addObject("receiveId", receiveId);
 				mv.setViewName("messageWrite_form");
-			}else {
+			} else {
 				mv.setViewName("message_fail");
 			}
-		}		
+		}
 		return mv;
 	}
 
@@ -61,57 +60,78 @@ public class MessageController {
 	@RequestMapping(value = "writeMessage.do", method = RequestMethod.POST)
 	public String writeMessage(MessageVO message, HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
-		if(message.getReceive_id().equals(loginId)) {
+		if (message.getReceive_id().equals(loginId)) {
 			return String.valueOf(3);
 		}
 		if (memberService.receiveIdCheck(message.getReceive_id())) {
 			if (service.writeMessage(message, loginId)) {
 				return String.valueOf(0);
-			}else {
+			} else {
 				return String.valueOf(1);
 			}
 		} else {
 			return String.valueOf(2);
 		}
 	}
-	
+
 	@RequestMapping("/sendMessageRead.do")
 	public ModelAndView sendMessageRead(int message_num) {
 		ModelAndView mv = new ModelAndView();
 		MessageVO message = service.sendMessageRead(message_num);
-		mv.addObject("message",message);
+		mv.addObject("message", message);
 		mv.setViewName("sendMessageRead");
 		return mv;
 	}
-	
+
 	@RequestMapping("/receiveMessageRead.do")
 	public ModelAndView receiveMessageRead(int message_num) {
 		ModelAndView mv = new ModelAndView();
 		MessageVO message = service.receiveMessageRead(message_num);
-		mv.addObject("message",message);
+		mv.addObject("message", message);
 		mv.setViewName("receiveMessageRead");
 		return mv;
 	}
-	
+
 	@RequestMapping("/deleteReceiveAll.do")
 	public String deleteReceiveAll(HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
-		if(service.deleteReceiveAll(loginId)) {
+		if (service.deleteReceiveAll(loginId)) {
 			return "deleteReceiveAll_success";
-		}else {
+		} else {
 			return "deleteReceiveAll_fail";
 		}
 	}
-	
+
 	@RequestMapping("/deleteSendAll.do")
 	public String deleteSendAll(HttpSession session) {
 		System.out.println("dsadsadsad");
 		String loginId = (String) session.getAttribute("loginId");
-		if(service.deleteSendAll(loginId)) {
+		if (service.deleteSendAll(loginId)) {
 			return "deleteSendAll_success";
-		}else {
+		} else {
 			return "deleteSendAll_fail";
 		}
 	}
 
+	@ResponseBody
+	@RequestMapping(value="deleteReceiveCheck.do",method=RequestMethod.POST)
+	public String deleteReceiveCheck(@RequestParam("checkDelete") String[] checkDelete) {
+		for (String checkDel : checkDelete) {
+			if(service.deleteReceiveCheck(checkDel)==0) {
+				return String.valueOf(0);
+			}
+		}
+		return String.valueOf(1);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="deleteSendCheck.do",method=RequestMethod.POST)
+	public String deleteSendCheck(@RequestParam("checkDelete") String[] checkDelete) {
+		for (String checkDel : checkDelete) {
+			if(service.deleteSendCheck(checkDel)==0) {
+				return String.valueOf(0);
+			}
+		}
+		return String.valueOf(1);
+	}
 }

@@ -7,18 +7,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.one.service.MemberService;
 import com.project.one.service.MessageService;
+import com.project.one.vo.MemberVO;
 
 @Controller
 public class MainController {
 	@Autowired
 	private MessageService messageService;
+	@Autowired
+	private MemberService memberService;
+	
 	
 	@RequestMapping("/main.do")
 	public ModelAndView main(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		String loginId = (String) session.getAttribute("loginId");
+		
+		MemberVO member = memberService.selectMemberInfo(loginId);
 		int noCheckMessage = messageService.noCheckMessageCount(loginId);
+		mv.addObject("name",member.getName());
 		mv.addObject("noCheck",noCheckMessage);
 		mv.addObject("loginId",loginId);
 		mv.setViewName("index");

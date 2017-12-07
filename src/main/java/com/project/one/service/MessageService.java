@@ -90,4 +90,12 @@ public class MessageService {
 	public int noCheckMessageCount(String loginId) {
 		return dao.noCheckMessageCount(loginId);
 	}
+	
+	public int deleteReceiveCheck(String checkDel) {
+		return dao.deleteReceiveCheck(checkDel);
+	}
+	
+	public int deleteSendCheck(String checkDel) {
+		return dao.deleteSendCheck(checkDel);
+	}
 }

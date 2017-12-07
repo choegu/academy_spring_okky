@@ -32,7 +32,10 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		if (service.loginCheck(id, pw)) {
 			session.setAttribute("loginId", id);
+			String loginId = (String)session.getAttribute("loginId");
+			MemberVO member = service.selectMemberInfo(loginId);
 			int noCheckMessage = messageService.noCheckMessageCount(id);
+			mv.addObject("name",member.getName());
 			mv.addObject("noCheck", noCheckMessage);
 			mv.addObject("loginId", id);
 			mv.setViewName("index");
