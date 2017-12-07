@@ -12,13 +12,13 @@
 		▼ IT
 	</h3>
 	<p>
-		<a href="board.do?searchOption=category&category=JAVA">▶JAVA</a>
-		<a href="board.do?searchOption=category&category=JavaScript">▶JavaScript</a>
-		<a href="board.do?searchOption=category&category=CSS">▶CSS</a>
-		<a href="board.do?searchOption=category&category=JSP">▶JSP</a>
-		<a href="board.do?searchOption=category&category=Spring">▶Spring</a>
-		<a href="board.do?searchOption=category&category=Database">▶Database</a>
-		<a href="board.do?searchOption=category&category=Android">▶Android</a> 
+		<a href="boardSearch.do?searchOption=category&category=JAVA">▶JAVA</a>
+		<a href="boardSearch.do?searchOption=category&category=JavaScript">▶JavaScript</a>
+		<a href="boardSearch.do?searchOption=category&category=CSS">▶CSS</a>
+		<a href="boardSearch.do?searchOption=category&category=JSP">▶JSP</a>
+		<a href="boardSearch.do?searchOption=category&category=Spring">▶Spring</a>
+		<a href="boardSearch.do?searchOption=category&category=Database">▶Database</a>
+		<a href="boardSearch.do?searchOption=category&category=Android">▶Android</a> 
 	</p>
 </div>
 
@@ -27,9 +27,9 @@
 		▼ English
 	</h3>
 	<p>
-		<a href="board.do?searchOption=category&category=SONG">▶SONG</a>
-		<a href="board.do?searchOption=category&category=구어체">▶구어체</a>
-		<a href="board.do?searchOption=category&category=MEMO">▶MEMO</a>
+		<a href="boardSearch.do?searchOption=category&category=SONG">▶SONG</a>
+		<a href="boardSearch.do?searchOption=category&category=구어체">▶구어체</a>
+		<a href="boardSearch.do?searchOption=category&category=MEMO">▶MEMO</a>
 	</p>
 </div>
 
@@ -38,7 +38,7 @@
 		▼ ETC
 	</h3>
 	<p>
-		<a href="board.do?searchOption=category&category=ETC">▶ETC</a>
+		<a href="boardSearch.do?searchOption=category&category=ETC">▶ETC</a>
 	</p>
 </div>
 

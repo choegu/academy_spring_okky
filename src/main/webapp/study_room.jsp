@@ -202,7 +202,7 @@
 				<input type="hidden" id="hiddenCategory" name="category">
 			</form>
 			
-			<iframe src="board.do" name="the_iframe" id="the_iframe" width="100%" 
+			<iframe src="categoryList.do" name="the_iframe" id="the_iframe" width="100%" 
 				 frameborder="0" framespacing="0" marginheight="0"
 				marginwidth="0" scrolling="no" vspace="0" onload="resizeFrame(this)"></iframe>
 		</div>
