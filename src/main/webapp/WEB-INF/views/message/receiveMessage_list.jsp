@@ -34,7 +34,7 @@
 						<thead>
 							<tr>
 								<td width="5%"><i class="fa fa-fw fa-trash-o"></i></td>
-								<td width="15%">작성자</td>
+								<td width="15%">보낸사람</td>
 								<td width="50%">제목</td>
 								<td width="30%">작성일</td>
 							</tr>
