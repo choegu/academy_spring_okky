@@ -4,10 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Board -->
-	<bean name="nologin" class="org.springframework.web.servlet.view.JstlView">
-	<property name="url" value="/WEB-INF/views/board/nologin.jsp"></property>
-	</bean>	
-		
 	<bean name="category_list" class="org.springframework.web.servlet.view.JstlView">
 	<property name="url" value="/WEB-INF/views/board/category_list.jsp"></property>
 	</bean>	
@@ -66,6 +62,14 @@
 		<property name="url" value="/WEB-INF/views/member/join_form.jsp"></property>
 	</bean>
 	
+	<bean name="login_form" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/login_form.jsp"></property>
+	</bean>	
+	
+	<bean name="no_login" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/member/no_login.jsp"></property>
+	</bean>		
+	
 	<bean name="beforeSearchPw_fail" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/member/beforeSearchPw_fail.jsp"></property>
 	</bean>
@@ -107,7 +111,7 @@
 		<property name="url" value="/WEB-INF/views/member/changeInfo_fail.jsp"></property>
 	</bean>
 	
-		<bean name="changeInfo_form" class="org.springframework.web.servlet.view.JstlView">
+	<bean name="changeInfo_form" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/member/changeInfo_form.jsp"></property>
 	</bean>
 	

@@ -39,10 +39,20 @@ public class MemberController {
 		return mv;
 	}
 
+	@RequestMapping("/no_login.do")
+	public String nologin() {
+		return "no_login";
+	}
+	
 	@RequestMapping("/joinForm.do")
 	public String joinForm() {
 		return "join_form";
 	}
+	
+	@RequestMapping("/loginForm.do")
+	public String loginForm() {
+		return "login_form";
+	}	
 
 	@ResponseBody
 	@RequestMapping(value = "/checkId.do", method = RequestMethod.POST)

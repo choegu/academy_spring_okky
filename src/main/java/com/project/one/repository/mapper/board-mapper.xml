@@ -199,7 +199,8 @@
 	</select>	
 	
 	<update id="update" parameterType="BoardVO">
-		UPDATE BOARD SET TITLE=#{title}, CONTENT=#{content}, WRITE_DATE=#{write_date} 
+		UPDATE BOARD SET TITLE=#{title}, CONTENT=#{content}, WRITE_DATE=#{write_date}, 
+		CATEGORY=#{category}, OPEN=#{open} 
 		WHERE BOARD_NUM=#{board_num}
 	</update>
 	

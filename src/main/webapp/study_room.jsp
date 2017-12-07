@@ -41,6 +41,10 @@
 			$('#hiddenCategory').val(categoryName);
 			$('#ifrmForm').submit();			
 		})
+		
+		$('#write').click(function() {
+			$('#target iframe').attr('src', 'writeForm.do');
+		})		
 // 		$('#java').click(function() {
 // 			categoryName = $(this).text();
 // 			$('#target iframe').attr('src', 'boardSearch.do?searchOption=category&category='+categoryName);
@@ -158,7 +162,11 @@
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="ETC"><a class="nav-link" href="#" id="etc">
 						<i class="fa fa-fw fa-list-alt"></i><span class="nav-link-text">ETC</span>
-				</a></li>								
+				</a></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="글쓰기"><a class="nav-link" href="#" id="write">
+						<i class="fa fa-fw fa-pencil-square-o"></i><span class="nav-link-text">글쓰기</span>
+				</a></li>													
 <!-- 			카테고리 끝 -->
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">

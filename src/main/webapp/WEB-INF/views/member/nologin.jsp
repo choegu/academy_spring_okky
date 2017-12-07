@@ -5,8 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+h1 {
+	
+}
+</style>
 </head>
 <body>
-로그인되지않았습니다.
+<h1 align="center">NO LOGIN</h1>
+<div align="center">
+	<img height="200" width="382" src="img/warning.jpg">
+</div>	
+<div align="center">로그인되지않았습니다.</div>
 </body>
 </html>
