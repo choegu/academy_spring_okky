@@ -25,10 +25,10 @@
 			useGeneratedKeys="true" keyProperty="boardNum">
 	INSERT INTO COMMUNITY
 		(TITLE, WRITER, CONTENT, READ_COUNT, WRITE_DATE
-		, LIST, LEVEL, RIDX, SECRET, IP, DEVICE) 
+		, LIST, LEVEL, RIDX, SECRET) 
 	VALUES
 		(#{title},#{writer},#{content},#{readCount}, #{writeDate}
-		, #{list}, #{level}, #{ridx}, #{secret}, #{ip}, #{device})
+		, #{list}, #{level}, #{ridx}, #{secret})
 	</insert>
 	
 	<update id="updateInsertList" parameterType="int" >

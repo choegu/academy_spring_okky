@@ -39,6 +39,14 @@ input, textarea{
 </style>
 <script type="text/javascript">
 window.onload = function(){
+	document.getElementById("submitBtn").onclick = function(){
+		var str = document.getElementById("textarea").value;
+		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+		document.getElementById("content").value = str;
+		document.getElementById("frm").submit();
+		return false; 
+	}
+	
 	//높이 설정
 	var parentDoc= window.parent.document;
 	var ifrm = $(parentDoc).find('#the_iframe');
@@ -47,14 +55,6 @@ window.onload = function(){
 	
 	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
 	parent.resizeFrame(ifrm, board_height);
-	
-	document.getElementById("submitBtn").onclick = function(){
-		var str = document.getElementById("textarea").value;
-		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-		document.getElementById("content").value = str;
-		document.getElementById("frm").submit();
-		return false; 
-	}
 }
 
 </script>
