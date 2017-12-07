@@ -64,7 +64,7 @@
 				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="·Î±×ÀÎ">
 					<form action="login.do" method="post"> 
 						<table>
-					 		<tr><input style="margin-top:20px; margin-left: 4px; margin-bottom: 4px;" type="text" class="form-control" name="id" placeholder="UserId" autofocus></tr>
+					 		<tr><input style="margin-top:20px; margin-left: 4px; margin-bottom: 4px; text-transform: lowercase;" type="text" class="form-control" name="id" placeholder="UserId" autofocus></tr>
 					 		<tr><input style="margin-left: 4px; margin-bottom: 4px;" type="password" class="form-control" name="pw" placeholder="Password"></tr>
 					 		<tr><button style="margin-left: 4px; margin-bottom: 4px; cursor: pointer;" type="submit" class="form-control btn btn-primary" >LOGIN</button></tr>
 					 	</table>

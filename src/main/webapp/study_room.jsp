@@ -98,9 +98,12 @@
 			$('.content-wrapper').height = height;
 		}else{
 // 			frm.style.height = 100 + "vh";
-			$(frm).css('height',height);
-			$('#target').height = height;
-			$('.content-wrapper').height = height;
+// 			$(frm).css('height',height);
+// 			$('#target').height = height;
+// 			$('.content-wrapper').height = height;
+			frm.style.height = "auto";
+			contentHeight = frm.contentWindow.document.body.scrollHeight;
+			frm.style.height = contentHeight + 50 + "px";
 		}	
 	}
 	

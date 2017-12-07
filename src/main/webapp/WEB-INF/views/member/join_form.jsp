@@ -176,7 +176,7 @@
 						<table>
 							<tr>
 								<td><input type="text" name="id" id="id" class="form-control1"
-									placeholder="아이디">
+									placeholder="아이디" style='text-transform: lowercase;'>
 									<button class="btn1 btn-info1" id="checkBtn">중복 확인</button></td>
 							</tr>
 							<tr>

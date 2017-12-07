@@ -217,12 +217,12 @@ window.onload=function(){
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
-				<th>NO</th>
-				<th>분류</th>
-				<th>제목</th>
-				<th>이름</th>
-				<th>날짜</th>
-				<th>R</th>
+				<th nowrap="nowrap">NO</th>
+				<th nowrap="nowrap">분류</th>
+				<th nowrap="nowrap">제목</th>
+				<th nowrap="nowrap">이름</th>
+				<th nowrap="nowrap">날짜</th>
+				<th nowrap="nowrap">조회</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -241,8 +241,8 @@ window.onload=function(){
 				<c:forEach items="${boardPage.boardList}" var="boardVO">
 					<c:if test="${(boardVO.open==1) || ((boardVO.open==0) && (boardVO.writer==sessionScope.loginId))}">
 						<tr>
-							<td>${boardVO.board_num }</td>
-							<td>${boardVO.category }</td>
+							<td nowrap="nowrap">${boardVO.board_num }</td>
+							<td nowrap="nowrap">${boardVO.category }</td>
 							<td id="title">
 								<span id="replySignTitle">
 									<c:forEach begin="1" end="${boardVO.level}" var="l" step="1">
@@ -264,7 +264,7 @@ window.onload=function(){
 							<td>
 								<span class="context-menu-one btn btn-neutral user-writer">${boardVO.writer }</span>
 							</td>
-							<td>
+							<td nowrap="nowrap">
 								<fmt:formatDate value="${boardVO.write_date }" pattern="yyyyMMdd" var="writeDate"/>
 								<c:if test="${nowDate==writeDate }">
 									<fmt:formatDate value="${boardVO.write_date }" type="time" dateStyle="short" timeStyle="short"/>
@@ -273,19 +273,18 @@ window.onload=function(){
 									<fmt:formatDate value="${boardVO.write_date }" type="date" dateStyle="short" timeStyle="short"/>
 								</c:if>
 							</td>
-							<td>${boardVO.read_count }</td>
+							<td nowrap="nowrap">${boardVO.read_count }</td>
 						</tr>
 					</c:if>
 					<c:if test="${(boardVO.open==0) && (boardVO.writer!=sessionScope.loginId) }">
 						<tr>
-						<tr>
-							<td>${boardVO.board_num }</td>
-							<td>${boardVO.category }</td>
+							<td nowrap="nowrap">${boardVO.board_num }</td>
+							<td nowrap="nowrap">${boardVO.category }</td>
 							<td id="title">[비공개 글입니다.]</td>
-							<td>
+							<td nowrap="nowrap">
 								<span class="context-menu-one btn btn-neutral user-writer">${boardVO.writer }</span>
 							</td>
-							<td>
+							<td nowrap="nowrap">
 								<fmt:formatDate value="${boardVO.write_date }" pattern="yyyyMMdd" var="writeDate"/>
 								<c:if test="${nowDate==writeDate }">
 									<fmt:formatDate value="${boardVO.write_date }" type="time" dateStyle="short" timeStyle="short"/>
@@ -294,8 +293,7 @@ window.onload=function(){
 									<fmt:formatDate value="${boardVO.write_date }" type="date" dateStyle="short" timeStyle="short"/>
 								</c:if>
 							</td>
-							<td>${boardVO.read_count }</td>
-						</tr>
+							<td nowrap="nowrap">${boardVO.read_count }</td>
 						</tr>
 					</c:if>
 					<c:if test="${boardVO.open==3 }">
