@@ -55,6 +55,12 @@
 	<bean name="message_fail" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/message/message_fail.jsp"></property>
 	</bean>
+	<bean name="deleteReceiveAll_success" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/message/deleteReceiveAll_success.jsp"></property>
+	</bean>
+	<bean name="deleteSendAll_success" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/message/deleteSendAll_success.jsp"></property>
+	</bean>
 	
     <!-- member -->
     <bean name="login_fail" class="org.springframework.web.servlet.view.JstlView">

@@ -65,7 +65,7 @@
 						</tbody>
 					</table>
 					<div style="text-align: center;">
-						<c:forEach begin="${messagePage.startPage }"
+						<c:forEach begin="${messagePage.startPage}"
 							end="${messagePage.endPage}" var="p" step="1">
 							<a href="receiveMessage.do?page=${p}"><b>${p}</b></a>
 						</c:forEach>
