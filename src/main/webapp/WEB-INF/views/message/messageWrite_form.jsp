@@ -120,7 +120,7 @@
 					<br>
 							<table>
 								<tr>
-									<td><input type="text" name="receive_id" class="form-control1" placeholder="받는 사람" style="text-transform: lowercase;"></td>
+									<td><input type="text" name="receive_id" class="form-control1" placeholder="받는 사람" style="text-transform: lowercase;" value="${receiveId}"></td>
 								</tr>
 								<tr>
 									<td><input type="text" name="title" class="form-control1" placeholder="제목"></td>
