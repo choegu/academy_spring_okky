@@ -70,9 +70,13 @@
 					</c:if>
 						<c:forEach begin="${messagePage.startPage}"
 							end="${messagePage.endPage}" var="p" step="1">
-							&nbsp;<a href="receiveMessage.do?page=${p}"><b>${p}</b></a>
+							<c:if test="${messagePage.currentPage == p}">
+								&nbsp;<a href="receiveMessage.do?page=${p}"><b style="color: red;">${p}</b></a>
+							</c:if>
+							<c:if test="${messagePage.currentPage != p}">
+								&nbsp;<a href="receiveMessage.do?page=${p}"><b>${p}</b></a>
+							</c:if>
 						</c:forEach>
-						<br>
 					<c:if test="${messagePage.endPage!=messagePage.totalPage }">
 						<a href="receiveMessage.do?page=${messagePage.endPage+1 }"><b><i class="fa fa-fw fa-angle-double-right"></i></b></a>
 					</c:if>
