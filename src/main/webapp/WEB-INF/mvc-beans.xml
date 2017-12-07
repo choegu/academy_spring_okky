@@ -34,6 +34,14 @@
 			<mvc:mapping path="/updateComment.do"/>
 			<mvc:mapping path="/replyComment.do"/>
 			<mvc:mapping path="/deleteComment.do"/>
+			<mvc:mapping path="/commUpdateForm.do"/>
+			<mvc:mapping path="/commUpdate.do"/>
+			<mvc:mapping path="/commDelete.do"/>
+			<mvc:mapping path="/commWriteForm.do"/>
+			<mvc:mapping path="/commWrite.do"/>
+			<mvc:mapping path="/commComment.do"/>
+			<mvc:mapping path="/commDeleteComment.do"/>
+			<mvc:mapping path="/commUpdateComment.do"/>
 			<bean class="com.project.one.interceptor.LoginCheckInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

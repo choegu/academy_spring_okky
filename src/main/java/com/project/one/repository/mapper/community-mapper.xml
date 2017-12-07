@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.one.repository.mapper.CommunityMapper">
+
+	<select id="select" resultMap="boardResultMap">
+	SELECT * FROM COMMUNITY WHERE BOARD_NUM=#{boardNum};
+	</select>
+	
+	<select id="selectTotalCount" resultType="int">
+	SELECT COUNT(*) FROM COMMUNITY;
+	</select>
+	
+	<select id="selectList" resultMap="boardResultMap">
+	SELECT 
+		BOARD_NUM, TITLE, WRITER, WRITE_DATE, READ_COUNT, LIST, LEVEL, RIDX, DEL
+	FROM 
+		COMMUNITY
+	ORDER BY
+		LIST DESC, RIDX
+	LIMIT
+		#{startRow},#{count}
+	</select>
+	
+	<insert id="insert" parameterType="CommunityBoardVO"
+			useGeneratedKeys="true" keyProperty="boardNum">
+	INSERT INTO COMMUNITY
+		(TITLE, WRITER, CONTENT, READ_COUNT, WRITE_DATE
+		, LIST, LEVEL, RIDX, SECRET, IP, DEVICE) 
+	VALUES
+		(#{title},#{writer},#{content},#{readCount}, #{writeDate}
+		, #{list}, #{level}, #{ridx}, #{secret}, #{ip}, #{device})
+	</insert>
+	
+	<update id="updateInsertList" parameterType="int" >
+	UPDATE COMMUNITY SET LIST = #{boardNum} WHERE BOARD_NUM=#{boardNum}
+	</update>
+	
+	<update id="updateReplyRidx" parameterType="map">
+	UPDATE COMMUNITY SET RIDX = RIDX + 1 WHERE LIST = #{list} AND RIDX > #{ridx};
+	</update>
+	
+	<update id="update" parameterType="CommunityBoardVO">	
+	UPDATE 
+		COMMUNITY 
+	SET 
+		TITLE=#{title}, CONTENT=#{content}, WRITE_DATE=#{writeDate}
+	WHERE 
+		BOARD_NUM=#{boardNum}
+	</update>
+	
+	<update id="updateReadCount" parameterType="int">
+	UPDATE COMMUNITY SET READ_COUNT = READ_COUNT+1
+	WHERE BOARD_NUM = #{boardNum}
+	</update>
+	
+	<update id="updateInsertRidx" parameterType="map">
+	UPDATE COMMUNITY SET RIDX = #{ridx} WHERE BOARD_NUM = #{boardNum}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+	DELETE FROM COMMUNITY WHERE LIST = #{boardNum}
+	</delete>
+	
+	<!-- <delete id="deleteReply" parameterType="int">
+	DELETE FROM BOARD WHERE BOARD_NUM = #{boardNum}
+	</delete> -->
+	
+	<update id="deleteReply" parameterType="int">
+	UPDATE COMMUNITY SET DEL = 1 WHERE BOARD_NUM = ${boardNum}
+	</update>
+	<!-- 코멘트 -->
+	<insert id="insertComment" parameterType="CommunityCommentVO" 
+			useGeneratedKeys="true" keyProperty="commentNum">
+	INSERT INTO COMMUNITY_COMMENT
+		(BRD_NUM, CONTENT, NAME, REG_DATE) 
+	VALUES
+		(#{brdNum},#{content},#{name},#{regDate})
+	</insert>
+	
+	<select id="selectComment" resultMap="commentResultMap">
+	SELECT * FROM COMMUNITY_COMMENT WHERE COMMENT_NUM = #{commentNum}
+	</select>
+	
+	<select id="selectCommentCount" resultType="int">
+	SELECT COUNT(*) FROM COMMUNITY_COMMENT WHERE BRD_NUM = #{boardNum} 
+	</select>
+	
+	<select id="selectCommentList" parameterType="map" resultMap="commentResultMap">
+	SELECT 
+		*
+	FROM 
+		COMMUNITY_COMMENT
+	WHERE
+		BRD_NUM = #{boardNum}
+	ORDER BY
+		COMMENT_NUM
+	LIMIT
+		#{startRow},#{count}
+	</select> 
+	<update id="updateCommnet" parameterType="CommunityCommentVO">
+	UPDATE 
+		COMMUNITY_COMMENT 
+	SET 
+		CONTENT=#{content}, REG_DATE=#{regDate}
+	WHERE 
+		COMMENT_NUM=#{commentNum}	
+	</update>
+	
+	<delete id="deleteComment" parameterType="int" >
+	DELETE FROM COMMUNITY_COMMENT WHERE COMMENT_NUM = #{commentNum}
+	</delete>
+	
+	<!-- 검색 -->
+	<select id="selectWholeSearchCount" parameterType="map" resultType="int">
+	SELECT 
+		COUNT(*) 
+	FROM 
+		COMMUNITY 
+	WHERE 
+		TITLE LIKE CONCAT('%',#{searchWord},'%') or 
+		CONTENT LIKE CONCAT('%',#{searchWord},'%') 
+	</select>
+	<select id="selectTitleSearchCount" parameterType="map" resultType="int">
+	SELECT 
+		COUNT(*) 
+	FROM 
+		COMMUNITY 
+	WHERE 
+		TITLE LIKE CONCAT('%',#{searchWord},'%')
+	</select>
+	<select id="selectContentSearchCount" parameterType="map" resultType="int">
+	SELECT 
+		COUNT(*) 
+	FROM 
+		BOARD 
+	WHERE 
+		CONTENT LIKE CONCAT('%',#{searchWord},'%')
+	</select>
+	<select id="selectWriterSearchCount" parameterType="map" resultType="int">
+	SELECT 
+		COUNT(*) 
+	FROM 
+		COMMUNITY 
+	WHERE 
+		WRITER LIKE CONCAT('%',#{searchWord},'%');
+	</select>
+	
+	<select id="selectWholeList" parameterType="map" resultMap="boardResultMap">
+	SELECT 
+		BOARD_NUM, TITLE, WRITER, WRITE_DATE, READ_COUNT, LIST, LEVEL, RIDX
+	FROM 
+		COMMUNITY
+	WHERE
+		TITLE LIKE CONCAT('%',#{searchWord},'%')
+		OR
+		CONTENT LIKE CONCAT('%',#{searchWord},'%')
+	ORDER BY
+		LIST DESC, RIDX
+	LIMIT
+		#{startRow},#{count}
+	</select>
+	
+	<select id="selectTitleList" parameterType="map" resultMap="boardResultMap">
+	SELECT 
+		BOARD_NUM, TITLE, WRITER, WRITE_DATE, READ_COUNT, LIST, LEVEL, RIDX
+	FROM 
+		COMMUNITY
+	WHERE
+		TITLE LIKE CONCAT('%',#{searchWord},'%')
+	ORDER BY
+		LIST DESC, RIDX
+	LIMIT
+		#{startRow},#{count}
+	</select>
+	
+	<select id="selectContentList" parameterType="map" resultMap="boardResultMap">
+	SELECT 
+		BOARD_NUM, TITLE, WRITER, WRITE_DATE, READ_COUNT, LIST, LEVEL, RIDX
+	FROM 
+		COMMUNITY
+	WHERE
+		CONTENT LIKE CONCAT('%',#{searchWord},'%')
+	ORDER BY
+		LIST DESC, RIDX
+	LIMIT
+		#{startRow},#{count}
+	</select>
+	
+	<select id="selectWriterList"  parameterType="map" resultMap="boardResultMap">
+	SELECT 
+		BOARD_NUM, TITLE, WRITER, WRITE_DATE, READ_COUNT, LIST, LEVEL, RIDX
+	FROM 
+		COMMUNITY
+	WHERE
+		WRITER LIKE CONCAT('%',#{searchWord},'%')
+	ORDER BY
+		LIST DESC, RIDX
+	LIMIT
+		#{startRow},#{count}
+	</select>
+	
+	<resultMap type="CommunityBoardVO" id="boardResultMap">
+		<result property="title" column="TITLE"/>
+		<result property="boardNum" column="BOARD_NUM"/>
+		<result property="writer" column="WRITER"/>
+		<result property="writeDate" column="WRITE_DATE"/>
+		<result property="readCount" column="READ_COUNT"/>
+		<result property="content" column="CONTENT"/>
+		<result property="list" column="LIST"/>
+		<result property="level" column="LEVEL"/>
+		<result property="ridx" column="RIDX"/>
+		<result property="secret" column="SECRET"/>
+		<result property="ip" column="IP"/>
+		<result property="device" column="DEVICE"/>
+	</resultMap>
+	
+	<resultMap type="CommunityCommentVO" id="commentResultMap">
+		<result property="commentNum" column="COMMENT_NUM"/>
+		<result property="brdNum" column="BRD_NUM"/>
+		<result property="content" column="CONTENT"/>
+		<result property="name" column="NAME"/>
+		<result property="regDate" column="REG_DATE"/>
+		<result property="secret" column="SECRET"/>
+		<result property="ip" column="IP"/>
+		<result property="sweet" column="SWEET"/>
+		<result property="dislike" column="DISLIKE"/>
+		<result property="blame" column="BLAME"/>
+		<result property="device" column="DEVICE"/>
+		
+	</resultMap>
+</mapper>
