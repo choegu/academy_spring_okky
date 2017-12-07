@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<html>
+<head>
+<%
+   response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0"); 
+   response.addHeader("Pragma", "no-cache"); 
+   response.addDateHeader ("Expires", 0);
+ %>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title></title>
+<style type="text/css">
+	#header{
+		width: 60%;
+		margin: auto;
+		align-content: center;
+		height: 120px;
+	}
+	h1{
+		display: inline-block;
+	}
+	
+	#loginInfo{
+		margin-top:20px;
+		text-align: right;
+	}	
+</style>
+</head>
+<body>
+<div id="header">
+	<a href="commMain.do"><h1>게시판</h1></a>
+	
+	<div id="loginInfo">
+		<c:choose>
+			<c:when test="${empty sessionScope.loginId}">
+				<a href="loginForm.do">로그인</a>
+				<a href="joinForm.do">회원가입</a>
+			</c:when>
+			<c:otherwise>
+				<c:out value="${sessionScope.loginId}"/>
+				<a href="logout.do">로그아웃</a>
+				<a href="myPage.do?id=${sessionScope.loginId}">myPage</a>
+				
+			</c:otherwise>
+		</c:choose>
+	</div>
+</div>
+</body>
+</html>

@@ -139,4 +139,45 @@
 	<bean name="myPage_main" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/myPage_main.jsp"></property>
 	</bean>
+	
+	<!-- community -->
+	<bean name="comm_board_list" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/board_list.jsp"></property>
+	</bean>	
+	
+	<bean name="comm_board_search_list" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/board_search_list.jsp"></property>
+	</bean>	
+	
+	<bean name="comm_delete_result" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/delete_result.jsp"></property>
+	</bean>
+	
+	<bean name="comm_read" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/read.jsp"></property>
+	</bean>
+	
+	<bean name="comm_update_fail" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/update_fail.jsp"></property>
+	</bean>
+	
+	<bean name="comm_update_form" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/update_form.jsp"></property>
+	</bean>
+	
+	<bean name="comm_update_success" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/update_success.jsp"></property>
+	</bean>
+	
+	<bean name="comm_update_result" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/update_result.jsp"></property>
+	</bean>
+	
+	<bean name="comm_write_form" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/write_form.jsp"></property>
+	</bean>
+	
+	<bean name="comm_write_result" class="org.springframework.web.servlet.view.JstlView">
+	<property name="url" value="/WEB-INF/views/community/write_result.jsp"></property>
+	</bean>
 </beans>
