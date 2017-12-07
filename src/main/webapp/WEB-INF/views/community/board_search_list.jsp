@@ -5,25 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>게시판 리스트</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<style type="text/css">
-	#content{
-		width: 750px;
-		margin: auto;
-	}
-	table{
-		width: 100%;
-		margin: auto;
-	}
-	.class{
-		text-align: center;
-		background-color: gray;
-	}
-	.page{
-		text-align: center;
-		margin: auto;
-	}
-</style>
 <script type="text/javascript">
 window.onload = function(){
 	 $("#searchSelect > option[value="+'<c:out value="${boardPage.searchSelect}"/>'+"]").attr("selected","selected");
@@ -32,7 +19,7 @@ window.onload = function(){
 </head>
 <body>
 <div id="content">
-	<table border="1">
+	<table class="table">
 		<tr>
 			<td class="center" width="30"">번호</td>
 			<td>제목</td>

@@ -5,9 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>게시판 쓰기</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+
 <style type="text/css">
 body{
-	width: 750px;
+	width: 100%;
 	margin: auto;
 }
 table{
@@ -61,7 +67,10 @@ window.onload = function(){
 </head>
 <body>
 <form action="commWrite.do" method="post" id="frm">
-	<table border="1">
+<a href="commMain.do" class="btn">목록</a>
+	<input type="button" value="등록" id="submitBtn" class="btn"/>
+	<input type="reset" value="취소" class="btn"/>
+	<table class="table">
 		<tr>
 			<td class="title">제목</td>
 			<td>
@@ -78,9 +87,7 @@ window.onload = function(){
 		</tr>
 		
 	</table>
-	<a href="commMain.do" class="btn">목록</a>
-	<input type="button" value="등록" id="submitBtn" class="btn"/>
-	<input type="reset" value="취소" class="btn"/>
+	
 	
 	<input type="hidden" name="list" value="${list}"/>
 	<input type="hidden" name="level" value="${level}"/>

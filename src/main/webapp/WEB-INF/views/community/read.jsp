@@ -5,8 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>글 내용 확인</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <style type="text/css">
 #content {
 	width: 750px;
@@ -245,21 +249,31 @@ textarea {
 	})
 	
 	//높이 설정
-	window.onload=function(){
+// 	window.onload=function(){
 	
-	var parentDoc= window.parent.document;
-	var ifrm = $(parentDoc).find('#the_iframe');
+// 	var parentDoc= window.parent.document;
+// 	var ifrm = $(parentDoc).find('#the_iframe');
 	
-	var board_height = $(document).height();
+// 	var board_height = $(document).height();
 	
-	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
-	parent.resizeFrame(ifrm, board_height);
-	};
+// 	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+// 	parent.resizeFrame(ifrm, board_height);
+// 	};
+	
+	$(document).ajaxStop(function(){
+		var parentDoc= window.parent.document;
+ 		var ifrm = $(parentDoc).find('#the_iframe');
+ 		
+ 		var board_height = $(document).height();
+ 		
+ 		ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+ 		parent.resizeFrame(ifrm, board_height);
+	})
 </script>
 </head>
 <body>
 	<div id="content">
-		<table border="1">
+		<table class="table">
 			<tr>
 				<td class="title">제목</td>
 				<td colspan="3"><c:if test="${board.list != 0}">
@@ -284,7 +298,7 @@ textarea {
 		답글 <span id="commentCount"></span>
 
 		<div id="commentList">
-			<table border="1" id="commentTable">
+			<table class="table" id="commentTable">
 			</table>
 		</div>
 

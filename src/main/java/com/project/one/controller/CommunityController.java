@@ -135,10 +135,11 @@ public class CommunityController {
 
 	@RequestMapping(value="/commUpdate.do", method=RequestMethod.POST)
 	public ModelAndView update(CommunityBoardVO board, HttpSession session) {
+		System.out.println("controller update.do : "+board);
+		
 		ModelAndView mv = new ModelAndView();
 		boolean result = service.update(board, (String) session.getAttribute("loginId"));
 		
-		System.out.println("controller update.do : "+board.getBoardNum()+","+result);
 		if (result) {
 			mv.addObject("boardNum", board.getBoardNum());
 			mv.setViewName("comm_update_success");

@@ -5,6 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>게시판 수정</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+
 <style type="text/css">
 table{
 	width: 60%;
@@ -21,11 +27,8 @@ input, textarea{
 window.onload = function(){
 	document.getElementById("submitBtn").onclick = function(){
 		var str = document.getElementById("area").value;
-		alert("1="+str);
 		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-		alert("2="+str);
-		document.getElementById("content").value = str;
-		alert("3="+str);
+		document.getElementById("content").value = str;		
 		document.getElementById("frm").submit();
 		return false; 
 	}
@@ -44,7 +47,10 @@ window.onload = function(){
 <body>
 <form action="commUpdate.do" method="post" id="frm">
 	<input type="hidden" name="boardNum" value="${original.boardNum}">
-	<table border="1">
+	<table class="table">
+		<tr>
+			<td colspan="2"><input type="button" value="수정" id="submitBtn"/></td>
+		</tr>
 		<tr>
 			<td class="title">제목</td>
 			<td>
@@ -57,11 +63,9 @@ window.onload = function(){
 		</tr>
 		<tr>
 			<td class="title">내용</td>
-			<td><textarea id="area" name="content" rows="30">${original.content}</textarea></td>
+			<td><textarea id="area" rows="30">${original.content}</textarea></td>
 		</tr>
-		<tr>
-			<td colspan="2"><input type="button" value="수정" id="submitBtn"/></td>
-		</tr>
+		
 	</table>
 	<input type="hidden" id="content" name="content"/>
 </form>
