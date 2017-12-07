@@ -245,16 +245,26 @@ textarea {
 	})
 	
 	//높이 설정
-	window.onload=function(){
+// 	window.onload=function(){
 	
-	var parentDoc= window.parent.document;
-	var ifrm = $(parentDoc).find('#the_iframe');
+// 	var parentDoc= window.parent.document;
+// 	var ifrm = $(parentDoc).find('#the_iframe');
 	
-	var board_height = $(document).height();
+// 	var board_height = $(document).height();
 	
-	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
-	parent.resizeFrame(ifrm, board_height);
-	};
+// 	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+// 	parent.resizeFrame(ifrm, board_height);
+// 	};
+	
+	$(document).ajaxStop(function(){
+		var parentDoc= window.parent.document;
+ 		var ifrm = $(parentDoc).find('#the_iframe');
+ 		
+ 		var board_height = $(document).height();
+ 		
+ 		ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+ 		parent.resizeFrame(ifrm, board_height);
+	})
 </script>
 </head>
 <body>

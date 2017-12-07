@@ -18,16 +18,16 @@ input, textarea{
 }
 </style>
 <script type="text/javascript">
-window.onload = function(){
-	document.getElementById("submitBtn").onclick = function(){
-		var str = document.getElementById("area").value;
-		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-		document.getElementById("content").value = str;
+// window.onload = function(){
+// 	document.getElementById("submitBtn").onclick = function(){
+// 		var str = document.getElementById("area").value;
+// 		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+// 		document.getElementById("content").value = str;
 		
-		document.getElementById("frm").submit();
-		return false; 
-	}
-}
+// 		document.getElementById("frm").submit();
+// 		return false; 
+// 	}
+// }
 </script>
 </head>
 <body>

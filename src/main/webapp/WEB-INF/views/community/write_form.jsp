@@ -38,15 +38,14 @@ input, textarea{
 }
 </style>
 <script type="text/javascript">
-window.onload = function(){
-	//높이 설정
+$(function(){
 	var parentDoc= window.parent.document;
-	var ifrm = $(parentDoc).find('#the_iframe');
+// 	var ifrm = $(parentDoc).find('#the_iframe');
 	
-	var board_height = $(document).height();
+// 	var board_height = $(document).height();
 	
-	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
-	parent.resizeFrame(ifrm, board_height);
+// 	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+// 	parent.resizeFrame(ifrm, board_height);
 	
 	document.getElementById("submitBtn").onclick = function(){
 		var str = document.getElementById("textarea").value;
@@ -55,7 +54,35 @@ window.onload = function(){
 		document.getElementById("frm").submit();
 		return false; 
 	}
-}
+})
+
+// window.onload = function(){
+// 	//높이 설정
+// 	var parentDoc= window.parent.document;
+// 	var ifrm = $(parentDoc).find('#the_iframe');
+	
+// 	var board_height = $(document).height();
+	
+// 	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+// 	parent.resizeFrame(ifrm, board_height);
+	
+// 	document.getElementById("submitBtn").onclick = function(){
+// 		var str = document.getElementById("textarea").value;
+// 		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+// 		document.getElementById("content").value = str;
+// 		document.getElementById("frm").submit();
+// 		return false; 
+// 	}
+// }
+// $(document).ajaxStop(function(){
+// 	var parentDoc= window.parent.document;
+// 		var ifrm = $(parentDoc).find('#the_iframe');
+		
+// 		var board_height = $(document).height();
+		
+// 		ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+// 		parent.resizeFrame(ifrm, board_height);
+// })
 
 </script>
 </head>
