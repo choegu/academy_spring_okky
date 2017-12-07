@@ -50,7 +50,7 @@
 .form-control1 {
 	display: inline;
 	float: left;
-	width: 350%;
+	width: 330%;
 	padding: .375rem .75rem;
 	font-size: 1rem;
 	line-height: 1.5;

@@ -24,7 +24,7 @@
 	<div class="container-fluid">
 		<div class="card mb-3">
 			<div class="card-header">
-				<i class="fa fa-table"></i> 보낸 쪽지함
+				<i class="fa fa-envelope"></i> 보낸 쪽지함
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
