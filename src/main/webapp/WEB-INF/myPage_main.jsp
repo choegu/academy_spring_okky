@@ -37,7 +37,7 @@
 										timeStyle="short" /></h5>
 								<h5><b>Email:</b> ${member.eMail}</h5>
 								<h5><b>ID:</b> ${member.id}</h5>
-								<h5><b>작성한 글:</b> Colombia</h5>
+								<h5><b>작성한 글:</b> ${writingCount}</h5>
 							</div>
 							<div class="span2">
 								<div class="btn-group">

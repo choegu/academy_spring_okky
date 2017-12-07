@@ -198,6 +198,10 @@
 		LIMIT #{startRow}, #{count}		
 	</select>	
 	
+	<select id="writingCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD WHERE WRITER=#{loginId}
+	</select>
+	
 	<update id="update" parameterType="BoardVO">
 		UPDATE BOARD SET TITLE=#{title}, CONTENT=#{content}, WRITE_DATE=#{write_date}, 
 		CATEGORY=#{category}, OPEN=#{open} 

@@ -163,4 +163,9 @@ public class BoardDao {
 		BoardMapper mapper = session.getMapper(BoardMapper.class);
 		return mapper.increaseRidx(list, ridx);
 	}
+	
+	public int writingCount(String loginId) {
+		BoardMapper mapper = session.getMapper(BoardMapper.class);
+		return mapper.writingCount(loginId);
+	}
 }

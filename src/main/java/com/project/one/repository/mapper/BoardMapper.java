@@ -44,4 +44,5 @@ public interface BoardMapper {
 	public int inputRidx(@Param("list")int list, @Param("level")int level, @Param("ridx")int ridx);
 	public int inputMaxRidx(int list);
 	public int increaseRidx(@Param("list")int list, @Param("ridx")int ridx);
+	public int writingCount(String loginId);
 }

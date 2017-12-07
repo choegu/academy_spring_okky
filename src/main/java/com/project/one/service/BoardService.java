@@ -212,4 +212,8 @@ public class BoardService {
 		}
 	}
 	
+	public int writingCount(String loginId) {
+		return dao.writingCount(loginId);
+	}
+	
 }

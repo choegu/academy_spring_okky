@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.one.service.BoardService;
 import com.project.one.service.MemberService;
 import com.project.one.service.MessageService;
 import com.project.one.vo.MemberVO;
@@ -23,6 +24,8 @@ public class MemberController {
 	private MemberService service;
 	@Autowired
 	private MessageService messageService;
+	@Autowired
+	private BoardService boardService;
 
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public ModelAndView login(String id, String pw, HttpSession session) {
@@ -151,6 +154,8 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		String loginId = (String) session.getAttribute("loginId");
 		MemberVO member = service.selectMemberInfo(loginId);
+		int writingCount = boardService.writingCount(loginId);
+		mv.addObject("writingCount",writingCount);
 		mv.addObject("member", member);
 		mv.setViewName("myPage_main");
 		return mv;
