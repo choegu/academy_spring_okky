@@ -39,6 +39,9 @@
 		$('#receiveMessage').click(function() {
 			$('#target iframe').attr('src', 'receiveMessage.do');
 		})
+		$('#messageWrite').click(function(){
+			$('#target iframe').attr('src', 'messageWriteForm.do');
+		})
 	})
 	function resizeFrame(frm) {
 		frm.style.height = "auto";
@@ -78,6 +81,7 @@
 						class="fa fa-fw  fa-envelope"></i> <span class="nav-link-text">쪽지함</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseComponents">
+						<li><a href="#" id="messageWrite">쪽지 쓰기</a></li>
 						<li><a href="#" id="sendMessage">보낸 쪽지함</a></li>
 						<li><a href="#" id="receiveMessage">받은 쪽지함</a></li>
 					</ul></li>
