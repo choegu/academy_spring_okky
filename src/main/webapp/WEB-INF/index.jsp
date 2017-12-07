@@ -127,7 +127,7 @@
 	<div class="content-wrapper">
 		<!-- 	iframe!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!자동 높이 조절 -->
 		<div id="target">
-			<iframe src="receiveMessage.do" id="the_iframe" width="100%"
+			<iframe src="main_page.html" id="the_iframe" width="100%"
 				onload=resizeFrame(this) frameborder=0 framespacing=0 marginheight=0
 				marginwidth=0 scrolling=no vspace=0></iframe>
 		</div>

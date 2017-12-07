@@ -6,7 +6,18 @@
 <title>Study Room Category</title>
 <style type="text/css">
 body{
-	padding: 15px;
+	padding: 25px;
+}
+
+h1 {
+  color: black;
+  text-shadow: #99FFCC 0px 0px 10px; /* for browsers without spread support */
+  text-shadow: #99FFCC 0px 0px 10px 10px; /* for browsers with spread support */
+}
+
+h3 { 
+  color: black; 
+  text-shadow: 1px 3px 3px rgba(135, 206, 235, 1); 
 }
 </style>
 <script type="text/javascript">
