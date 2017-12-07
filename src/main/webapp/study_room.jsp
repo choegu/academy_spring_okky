@@ -182,13 +182,13 @@
 						class="fa fa-fw fa-comments-o"></i><b>COMMUNITY</b></a></li>
 				<c:if test="${empty sessionScope.loginId}">
 					<li class="nav-item"><a class="nav-link" href="index.jsp">
-						<i class="fa fa-fw fa-lock"></i><b>LOGIN</b></a></li>
+						<b style="color: #66FF66;"><i class="fa fa-fw fa-lock"></i>LOGIN</b></a></li>
 				</c:if>		
 				<c:if test="${not empty sessionScope.loginId}">
 					<li class="nav-item"><a class="nav-link" href="myPage.jsp">
 						<i class="fa fa-fw  fa-user"></i><b>MY PAGE</b></a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-						<i class="fa fa-fw fa-unlock-alt"></i><b>LOGOUT</b></a></li>
+						<b style="color: #FF3300;"><i class="fa fa-fw fa-unlock-alt"></i>LOGOUT</b></a></li>
 				</c:if>
 			</ul>
 		</div>
