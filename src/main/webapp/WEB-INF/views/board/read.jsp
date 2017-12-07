@@ -182,7 +182,7 @@
 		var parentDoc= window.parent.document;
  		var ifrm = $(parentDoc).find('#the_iframe');
  		
- 		var board_height = $(document).height();
+ 		var board_height = $(document).height()+100;
  		
  		ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
  		parent.resizeFrame(ifrm, board_height);
