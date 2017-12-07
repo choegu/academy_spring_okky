@@ -36,8 +36,10 @@
 						location.href="sendMessage.do";
 					} else if($.trim(data) == 1){
 						alert("전송 실패했습니다.");
-					} else{
+					} else if($.trim(data) == 2){
 						alert("받는 사람의 정보가 없습니다.")
+					} else{
+						alert("본인입니다.다른 유저의 아이디를 입력해주세요.")
 					}
 				}
 			}); //end ajax    

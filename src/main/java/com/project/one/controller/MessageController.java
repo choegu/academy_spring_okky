@@ -61,6 +61,9 @@ public class MessageController {
 	@RequestMapping(value = "writeMessage.do", method = RequestMethod.POST)
 	public String writeMessage(MessageVO message, HttpSession session) {
 		String loginId = (String) session.getAttribute("loginId");
+		if(message.getReceive_id().equals(loginId)) {
+			return String.valueOf(3);
+		}
 		if (memberService.receiveIdCheck(message.getReceive_id())) {
 			if (service.writeMessage(message, loginId)) {
 				return String.valueOf(0);
