@@ -49,7 +49,7 @@
 				success : function(data) {
 					if ($.trim(data) == 0) {
 						alert("회원가입 되었습니다.");
-						location.href="receiveMessage.do";
+						parent.location.href="main.do";
 					} else if($.trim(data) == 1){
 						alert("아이디 중복 체크를 해주세요.");
 					} else if($.trim(data) == 2){

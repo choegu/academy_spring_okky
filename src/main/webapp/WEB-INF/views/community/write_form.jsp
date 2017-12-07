@@ -44,6 +44,9 @@ input, textarea{
 }
 </style>
 <script type="text/javascript">
+<<<<<<< HEAD
+$(function(){
+=======
 window.onload = function(){
 	document.getElementById("submitBtn").onclick = function(){
 		var str = document.getElementById("textarea").value;
@@ -54,14 +57,57 @@ window.onload = function(){
 	}
 	
 	//높이 설정
+>>>>>>> 4a7ce7aaf3110070decddd1a6fa8f1cdf9d5b6bc
 	var parentDoc= window.parent.document;
-	var ifrm = $(parentDoc).find('#the_iframe');
+// 	var ifrm = $(parentDoc).find('#the_iframe');
 	
-	var board_height = $(document).height();
+// 	var board_height = $(document).height();
 	
+<<<<<<< HEAD
+// 	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+// 	parent.resizeFrame(ifrm, board_height);
+	
+	document.getElementById("submitBtn").onclick = function(){
+		var str = document.getElementById("textarea").value;
+		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+		document.getElementById("content").value = str;
+		document.getElementById("frm").submit();
+		return false; 
+	}
+})
+
+// window.onload = function(){
+// 	//높이 설정
+// 	var parentDoc= window.parent.document;
+// 	var ifrm = $(parentDoc).find('#the_iframe');
+	
+// 	var board_height = $(document).height();
+	
+// 	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+// 	parent.resizeFrame(ifrm, board_height);
+	
+// 	document.getElementById("submitBtn").onclick = function(){
+// 		var str = document.getElementById("textarea").value;
+// 		str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+// 		document.getElementById("content").value = str;
+// 		document.getElementById("frm").submit();
+// 		return false; 
+// 	}
+// }
+// $(document).ajaxStop(function(){
+// 	var parentDoc= window.parent.document;
+// 		var ifrm = $(parentDoc).find('#the_iframe');
+		
+// 		var board_height = $(document).height();
+		
+// 		ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
+// 		parent.resizeFrame(ifrm, board_height);
+// })
+=======
 	ifrm.attr('onload', "resizeFrame(this,'"+board_height+"px')");
 	parent.resizeFrame(ifrm, board_height);
 }
+>>>>>>> 4a7ce7aaf3110070decddd1a6fa8f1cdf9d5b6bc
 
 </script>
 </head>
