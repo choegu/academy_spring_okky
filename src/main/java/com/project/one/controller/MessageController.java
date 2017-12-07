@@ -43,8 +43,17 @@ public class MessageController {
 	@RequestMapping("/messageWriteForm.do")
 	public ModelAndView messageWriteForm(@RequestParam(defaultValue = "") String receiveId) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("receiveId", receiveId);
-		mv.setViewName("messageWrite_form");
+		if(receiveId.equals("")) {
+			mv.addObject("receiveId", receiveId);
+			mv.setViewName("messageWrite_form");
+		}else {
+			if(memberService.receiveIdCheck(receiveId)) {
+				mv.addObject("receiveId", receiveId);
+				mv.setViewName("messageWrite_form");
+			}else {
+				mv.setViewName("message_fail");
+			}
+		}		
 		return mv;
 	}
 

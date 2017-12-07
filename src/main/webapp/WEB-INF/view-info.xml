@@ -49,8 +49,11 @@
 	<bean name="sendMessage_list" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/message/sendMessage_list.jsp"></property>
 	</bean>
-		<bean name="sendMessageRead" class="org.springframework.web.servlet.view.JstlView">
+	<bean name="sendMessageRead" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/views/message/sendMessageRead.jsp"></property>
+	</bean>
+	<bean name="message_fail" class="org.springframework.web.servlet.view.JstlView">
+		<property name="url" value="/WEB-INF/views/message/message_fail.jsp"></property>
 	</bean>
 	
     <!-- member -->
