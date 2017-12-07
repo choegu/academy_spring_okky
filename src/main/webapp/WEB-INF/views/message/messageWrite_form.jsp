@@ -45,6 +45,63 @@
 		}); //end on    
 	});
 </script>
+
+<style type="text/css">
+.form-control1 {
+	display: inline;
+	float: left;
+	width: 350%;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #495057;
+	background-color: #fff;
+	background-image: none;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	margin-bottom: 7px;
+}
+
+.form-control1::-ms-expand {
+	background-color: transparent;
+	border: 0
+}
+
+.form-control1:focus {
+	color: #495057;
+	background-color: #fff;
+	border-color: #80bdff;
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
+}
+
+.form-control1::-webkit-input-placeholder {
+	color: #868e96;
+	opacity: 1
+}
+
+.form-control1:-ms-input-placeholder {
+	color: #868e96;
+	opacity: 1
+}
+
+.form-control1::-ms-input-placeholder {
+	color: #868e96;
+	opacity: 1
+}
+
+.form-control1::placeholder {
+	color: #868e96;
+	opacity: 1
+}
+
+.form-control1:disabled, .form-control[readonly] {
+	background-color: #e9ecef;
+	opacity: 1
+}
+</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -60,18 +117,16 @@
 							<i class="fa fa-fw  fa-paper-plane"></i>보내기
 					</button>
 					</div>
+					<br>
 							<table>
 								<tr>
-									<td>받는 사람 :</td>
-									<td><input type="text" name="receive_id" size="20" value="${receiveId }"></td>
+									<td><input type="text" name="receive_id" class="form-control1" placeholder="받는 사람" style="text-transform: lowercase;"></td>
 								</tr>
 								<tr>
-									<td>제목 :</td>
-									<td><input type="text" name="title" size="20"></td>
+									<td><input type="text" name="title" class="form-control1" placeholder="제목"></td>
 								</tr>
 								<tr>
-									<td>내용 :</td>
-									<td><textarea name="content" rows="20" cols="30"></textarea></td>
+									<td><textarea name="content" rows="20" cols="30" class="form-control1" placeholder="내용을 입력하세요."></textarea></td>
 								</tr>
 							</table>
 				</form>
