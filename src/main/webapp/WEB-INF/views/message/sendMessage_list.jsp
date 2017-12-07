@@ -33,7 +33,7 @@
 						<thead>
 							<tr>
 								<td width="5%"><i class="fa fa-fw fa-trash-o"></i></td>
-								<td width="15%">받는 사람</td>
+								<td width="15%">받는사람</td>
 								<td width="50%">제목</td>
 								<td width="30%">작성일</td>
 							</tr>
@@ -64,12 +64,21 @@
 						</tbody>
 					</table>
 					<div style="text-align: center;">
-						<c:forEach begin="${messagePage.startPage }"
-							end="${messagePage.endPage}" var="p" step="1">
-							
-							&nbsp;&nbsp;<a href="sendMessage.do?page=${p}"><b>${p}</b></a>
-						</c:forEach>
-						<br>
+						<c:if test="${messagePage.startPage!=1 }">
+							<a href="sendMessage.do?page=${messagePage.startPage-1 }"><b><i class="fa fa-fw fa-angle-double-left"></i></b></a>
+						</c:if>
+							<c:forEach begin="${messagePage.startPage}"
+								end="${messagePage.endPage}" var="p" step="1">
+								<c:if test="${messagePage.currentPage == p}">
+									&nbsp;<a href="sendMessage.do?page=${p}"><b style="color: red;">${p}</b></a>
+								</c:if>
+								<c:if test="${messagePage.currentPage != p}">
+									&nbsp;<a href="sendMessage.do?page=${p}"><b>${p}</b></a>
+								</c:if>
+							</c:forEach>
+						<c:if test="${messagePage.endPage!=messagePage.totalPage }">
+							<a href="sendMessage.do?page=${messagePage.endPage+1 }"><b><i class="fa fa-fw fa-angle-double-right"></i></b></a>
+						</c:if>
 					</div> 
 					<div style="text-align: right;">
 						<a href="messageWriteForm.do" title="글쓰기"><button style="background:#dcdcdc; border-radius:5px; cursor: pointer;" ><i class="fa fa-fw fa-pencil"></i></button></a>	
