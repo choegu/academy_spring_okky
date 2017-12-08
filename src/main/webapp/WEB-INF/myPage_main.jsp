@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
@@ -26,8 +27,9 @@
 					<div class="container-fluid well span6">
 						<div class="row-fluid">
 							<div class="span2">
-								<img src="img/start.JPG"
-									class="img-circle">
+								<c:if test="${writingCount <10}">
+									<img src="img/start.JPG" class="img-circle">
+								</c:if>
 							</div>
 							<div class="span8">
 								<h5><b>작성한 글:</b> ${writingCount}</h5>
