@@ -147,10 +147,6 @@
 		<property name="url" value="/WEB-INF/index.jsp"></property>
 	</bean>
 	
-	<bean name="main" class="org.springframework.web.servlet.view.JstlView">
-		<property name="url" value="/WEB-INF/main.jsp"></property>
-	</bean>
-	
 	<bean name="myPage_main" class="org.springframework.web.servlet.view.JstlView">
 		<property name="url" value="/WEB-INF/myPage_main.jsp"></property>
 	</bean>

@@ -23,18 +23,12 @@ public class MainController {
 	public ModelAndView main(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		String loginId = (String) session.getAttribute("loginId");
-		
-		MemberVO member = memberService.selectMemberInfo(loginId);
 		int noCheckMessage = messageService.noCheckMessageCount(loginId);
-		mv.addObject("name",member.getName());
+		MemberVO member = memberService.selectMemberInfo(loginId);
+		mv.addObject("member",member);
 		mv.addObject("noCheck",noCheckMessage);
 		mv.addObject("loginId",loginId);
 		mv.setViewName("index");
 		return mv;
-	}
-	
-	@RequestMapping("/mainPage.do")
-	public String mainPage() {
-		return "main";
 	}
 }

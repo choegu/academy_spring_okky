@@ -35,7 +35,7 @@ public class MemberController {
 			String loginId = (String)session.getAttribute("loginId");
 			MemberVO member = service.selectMemberInfo(loginId);
 			int noCheckMessage = messageService.noCheckMessageCount(id);
-			mv.addObject("name",member.getName());
+			mv.addObject("member",member);
 			mv.addObject("noCheck", noCheckMessage);
 			mv.addObject("loginId", id);
 			mv.setViewName("index");

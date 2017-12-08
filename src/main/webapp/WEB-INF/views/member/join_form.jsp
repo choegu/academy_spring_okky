@@ -212,7 +212,7 @@
 									<button type="submit" class="btn btn-info">
 										회원가입 <i class="fa fa-check spaceLeft"></i>
 									</button>
-									<button type="button" class="btn btn-warning" onclick="location.href='receiveMessage.do'">
+									<button type="button" class="btn btn-warning" onclick="location.href='main_page.html'">
 										가입취소 <i class="fa fa-times spaceLeft"></i>
 									</button>
 								</td>
