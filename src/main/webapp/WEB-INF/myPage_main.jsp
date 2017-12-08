@@ -30,6 +30,9 @@
 								<c:if test="${writingCount <10}">
 									<img src="img/start.JPG" class="img-circle">
 								</c:if>
+								<c:if test="${writingCount >=10}">
+									<img src="img/first.JPG" class="img-circle">
+								</c:if>
 							</div>
 							<div class="span8">
 								<h5><b>작성한 글:</b> ${writingCount}</h5>
