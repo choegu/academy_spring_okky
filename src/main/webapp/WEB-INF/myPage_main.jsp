@@ -31,7 +31,7 @@
 									<img src="img/start.JPG" class="img-circle">
 								</c:if>
 								<c:if test="${writingCount >=10}">
-									<img src="img/first.JPG" class="img-circle">
+									<img src="img/first.JPG" width="60" height="60" class="img-circle" >
 								</c:if>
 							</div>
 							<div class="span8">
