@@ -30,14 +30,14 @@
 		$('#changeInfo').click(function() {
 			$('#target iframe').attr('src', 'commMain.do');
 		})
-		$('#writingList').click(function() {
-			$('#target iframe').attr('src', 'writingList.do');
-		})
+// 		$('#writingList').click(function() {
+// 			$('#target iframe').attr('src', '#');
+// 		})
 		$('#sendMessage').click(function() {
-			$('#target iframe').attr('src', 'sendMessage.do');
+			$('#target iframe').attr('src', '#');
 		})
 		$('#receiveMessage').click(function() {
-			$('#target iframe').attr('src', 'receiveMessage.do');
+			$('#target iframe').attr('src', '#');
 		})
 	})
 // 	function resizeFrame(frm) {
