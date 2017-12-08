@@ -26,7 +26,7 @@
 					<div class="container-fluid well span6">
 						<div class="row-fluid">
 							<div class="span2">
-								<img
+								<img src="img/start.JPG"
 									class="img-circle">
 							</div>
 							<div class="span8">
