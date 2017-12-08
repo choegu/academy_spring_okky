@@ -82,4 +82,14 @@ public class MessageDao {
 		MessageMapper mapper = session.getMapper(MessageMapper.class);
 		return mapper.noCheckMessageCount(loginId);
 	}
+	
+	public int deleteReceiveCheck(String checkDel) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		return mapper.deleteReceiveCheck(checkDel);
+	}
+	
+	public int deleteSendCheck(String checkDel) {
+		MessageMapper mapper = session.getMapper(MessageMapper.class);
+		return mapper.deleteSendCheck(checkDel);
+	}
 }

@@ -18,8 +18,30 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>쪽지함</title>
-
-
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+	crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#formData').on('submit', function() {
+			var params = $('#formData').serialize();
+			$.ajax({
+				type : 'POST',
+				url : './deleteReceiveCheck.do',
+				data : params,
+				success : function(data) {
+					if($.trim(data) == 0){
+						alert("삭제에 실패했습니다.");
+					}else{
+						alert("삭제되었습니다.")
+						location.href="receiveMessage.do?page=${messagePage.currentPage}";
+					}
+				}
+			}); //end ajax    
+			return false;
+		}); //end on    
+	});
+</script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -29,11 +51,12 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
+				<form name="formData" id="formData">
 					<table class="table table-bordered" id="dataTable" width="100%"
 						cellspacing="0">
 						<thead>
 							<tr>
-								<td width="5%"><i class="fa fa-fw fa-trash-o"></i></td>
+								<td width="5%"><button title="선택 삭제" type="submit" style="background:#dcdcdc; border-radius:5px; cursor: pointer;"><i class="fa fa-fw fa-trash-o"></i></button></td>
 								<td width="15%">보낸사람</td>
 								<td width="50%">제목</td>
 								<td width="30%">작성일</td>
@@ -64,6 +87,7 @@
 							</c:if>
 						</tbody>
 					</table>
+					</form>
 					<div style="text-align: center;">
 					<c:if test="${messagePage.startPage!=1 }">
 						<a href="receiveMessage.do?page=${messagePage.startPage-1 }"><b><i class="fa fa-fw fa-angle-double-left"></i></b></a>

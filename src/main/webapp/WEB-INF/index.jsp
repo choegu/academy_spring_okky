@@ -90,8 +90,9 @@
 				</li>
 			</c:if>
 			<c:if test="${not empty sessionScope.loginId}">
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="로그인 정보">
-							 	d
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="로그인 정보"><a class="nav-link" href="myPage.jsp">
+						<i class="fa fa-fw fa-user"></i><b style="">${member.name}</b>님의 회원정보</a>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="새로운 쪽지"><a class="nav-link" href="#" id="newMessage">

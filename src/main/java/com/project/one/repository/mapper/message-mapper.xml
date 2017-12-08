@@ -55,5 +55,13 @@
 		UPDATE MESSAGE SET SEND_OPEN = 0 WHERE SEND_ID = #{loginId}
 	</update>
 	
+	<update id="deleteReceiveCheck" parameterType="String">
+		UPDATE MESSAGE SET RECEIVE_OPEN = 0 WHERE MESSAGE_NUM = #{checkDel}
+	</update>
+	
+	<update id="deleteSendCheck" parameterType="String">
+		UPDATE MESSAGE SET SEND_OPEN = 0 WHERE MESSAGE_NUM = #{checkDel}
+	</update>
+	
 	
 </mapper>

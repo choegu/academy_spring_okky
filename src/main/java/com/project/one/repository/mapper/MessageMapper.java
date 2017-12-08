@@ -20,4 +20,6 @@ public interface MessageMapper {
 	public void receiveMessageReadCheck(int message_num);
 	public MessageVO receiveMessageRead(int message_num);
 	public int noCheckMessageCount(String loginId);
+	public int deleteReceiveCheck(String checkDel);
+	public int deleteSendCheck(String checkDel);
 }
